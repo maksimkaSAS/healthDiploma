@@ -62,6 +62,116 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'pharmacies',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Pharmacies'
+					}
+				},
+				loadChildren: () => import('./modules/healthpharmacy/pages/pharmacies/pharmacies.module').then(m => m.PharmaciesModule)
+			}, 
+			{
+				path: 'comments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Comments'
+					}
+				},
+				loadChildren: () => import('./modules/healthcomment/pages/comments/comments.module').then(m => m.CommentsModule)
+			}, 
+			{
+				path: 'doctors',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Doctors'
+					}
+				},
+				loadChildren: () => import('./modules/healthdoctor/pages/doctors/doctors.module').then(m => m.DoctorsModule)
+			}, 
+			{
+				path: 'clinics',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Clinics'
+					}
+				},
+				loadChildren: () => import('./modules/healthclinic/pages/clinics/clinics.module').then(m => m.ClinicsModule)
+			}, 
+			{
+				path: 'analysis',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Analysis'
+					}
+				},
+				loadChildren: () => import('./modules/healthanalysis/pages/analysis/analysis.module').then(m => m.AnalysisModule)
+			}, 
+			{
+				path: 'symptoms',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Symptoms'
+					}
+				},
+				loadChildren: () => import('./modules/healthsymptom/pages/symptoms/symptoms.module').then(m => m.SymptomsModule)
+			}, 
+			{
+				path: 'treatment',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Treatment'
+					}
+				},
+				loadChildren: () => import('./modules/healthtreatment/pages/treatment/treatment.module').then(m => m.TreatmentModule)
+			}, 
+			{
+				path: 'diseases',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Diseases'
+					}
+				},
+				loadChildren: () => import('./modules/healthdisease/pages/diseases/diseases.module').then(m => m.DiseasesModule)
+			}, 
+			{
+				path: 'drugs',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Drugs'
+					}
+				},
+				loadChildren: () => import('./modules/healthdrug/pages/drugs/drugs.module').then(m => m.DrugsModule)
+			}, 
+			{
+				path: 'records',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Records'
+					}
+				},
+				loadChildren: () => import('./modules/healthrecord/pages/records/records.module').then(m => m.RecordsModule)
+			}, 
+			{
+				path: 'patients',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Patients'
+					}
+				},
+				loadChildren: () => import('./modules/healthpatient/pages/patients/patients.module').then(m => m.PatientsModule)
+			}, 
+			{
 				path: 'profile',
 				canActivate: [MetaGuard],
 				data: {
