@@ -28,6 +28,16 @@ const routes: Routes = [
 		children: [
 			/* guest */
 			{
+				path: 'createpatient',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Createpatient'
+					}
+				},
+				loadChildren: () => import('./pages/guest/createpatient/createpatient.module').then(m => m.CreatepatientModule)
+			}, 
+			{
 				path: 'components',
 				canActivate: [MetaGuard],
 				data: {
@@ -61,6 +71,136 @@ const routes: Routes = [
 		component: UserComponent,
 		children: [
 			/* user */
+			{
+				path: 'trade',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Trade'
+					}
+				},
+				loadChildren: () => import('./modules/healthtrade/pages/trade/trade.module').then(m => m.TradeModule)
+			}, 
+			{
+				path: 'places',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Places'
+					}
+				},
+				loadChildren: () => import('./modules/healthplace/pages/places/places.module').then(m => m.PlacesModule)
+			}, 
+			{
+				path: 'diseasefinder',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Diseasefinder'
+					}
+				},
+				loadChildren: () => import('./pages/user/diseasefinder/diseasefinder.module').then(m => m.DiseasefinderModule)
+			}, 
+			{
+				path: 'pharmacy',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Pharmacy'
+					}
+				},
+				loadChildren: () => import('./pages/user/pharmacy/pharmacy.module').then(m => m.PharmacyModule)
+			}, 
+			{
+				path: 'pharmaciespage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Pharmaciespage'
+					}
+				},
+				loadChildren: () => import('./pages/user/pharmaciespage/pharmaciespage.module').then(m => m.PharmaciespageModule)
+			}, 
+			{
+				path: 'doctorpage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Doctorpage'
+					}
+				},
+				loadChildren: () => import('./pages/user/doctorpage/doctorpage.module').then(m => m.DoctorpageModule)
+			}, 
+			{
+				path: 'doctorspage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Doctorspage'
+					}
+				},
+				loadChildren: () => import('./pages/user/doctorspage/doctorspage.module').then(m => m.DoctorspageModule)
+			}, 
+			{
+				path: 'clinicpage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Clinicpage'
+					}
+				},
+				loadChildren: () => import('./pages/user/clinicpage/clinicpage.module').then(m => m.ClinicpageModule)
+			}, 
+			{
+				path: 'clinicspage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Clinicspage'
+					}
+				},
+				loadChildren: () => import('./pages/user/clinicspage/clinicspage.module').then(m => m.ClinicspageModule)
+			}, 
+			{
+				path: 'myfirstaidkit',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Myfirstaidkit'
+					}
+				},
+				loadChildren: () => import('./pages/user/myfirstaidkit/myfirstaidkit.module').then(m => m.MyfirstaidkitModule)
+			}, 
+			{
+				path: 'patienthistory',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Patienthistory'
+					}
+				},
+				loadChildren: () => import('./pages/user/patienthistory/patienthistory.module').then(m => m.PatienthistoryModule)
+			}, 
+			{
+				path: 'patientprofile',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Patientprofile'
+					}
+				},
+				loadChildren: () => import('./pages/user/patientprofile/patientprofile.module').then(m => m.PatientprofileModule)
+			}, 
+			{
+				path: 'patient',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Patient'
+					}
+				},
+				loadChildren: () => import('./pages/user/patient/patient.module').then(m => m.PatientsModule)
+			}, 
 			{
 				path: 'pharmacies',
 				canActivate: [MetaGuard],
