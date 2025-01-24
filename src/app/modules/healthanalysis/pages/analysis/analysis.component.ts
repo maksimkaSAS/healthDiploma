@@ -6,6 +6,7 @@ import { FormService } from 'src/app/core/modules/form/form.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthanalysisFormComponents } from '../../formcomponents/healthanalysis.formcomponents';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './analysis.component.html',
@@ -58,6 +59,13 @@ export class AnalysisComponent {
 			});
 		},
 		buttons: [
+				{
+					icon: 'assignment',
+					hrefFunc: (doc: Healthanalysis): string => {
+					return '/records/' + doc.patient + '/analysis/' + doc._id;
+					},
+				},
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthanalysis): void => {
@@ -88,7 +96,8 @@ export class AnalysisComponent {
 		private _healthanalysisService: HealthanalysisService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router
 	) {}
 
 	private _bulkManagement(create = true): () => void {

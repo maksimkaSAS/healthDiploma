@@ -7,6 +7,8 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthtreatmentFormComponents } from '../../formcomponents/healthtreatment.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './treatment.component.html',
@@ -14,6 +16,9 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false,
 })
 export class TreatmentComponent {
+
+	//patient_id = this._router.url.includes('treatment/') ? this._router.url.replace('/treatment/', '') : '';
+
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm('healthtreatment', healthtreatmentFormComponents);
@@ -70,6 +75,13 @@ export class TreatmentComponent {
 		},
 		buttons: [
 			{
+					icon: 'assignment',
+					hrefFunc: (doc: Healthtreatment): string => {
+					return '/records/' + doc.patient + '/treatment/' + doc._id;
+					},
+			},
+			
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthtreatment): void => {
 					this._form.modalUnique<Healthtreatment>('healthtreatment', 'url', doc);
@@ -97,7 +109,8 @@ export class TreatmentComponent {
 		private _healthtreatmentService: HealthtreatmentService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router
 	) {
 		this.setRows();
 	}
@@ -108,7 +121,7 @@ export class TreatmentComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthtreatmentService.get({ page }).subscribe((rows) => {
+				this._healthtreatmentService.get({ page/*, query: this.patient_id ? 'patient =' + this.patient_id : '' */}).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -174,5 +187,6 @@ export class TreatmentComponent {
 
 	private _preCreate(healthtreatment: Healthtreatment): void {
 		delete healthtreatment.__created;
+		
 	}
 }

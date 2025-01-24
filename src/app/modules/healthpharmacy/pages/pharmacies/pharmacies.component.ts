@@ -11,17 +11,22 @@ import { firstValueFrom } from 'rxjs';
 @Component({
 	templateUrl: './pharmacies.component.html',
 	styleUrls: ['./pharmacies.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class PharmaciesComponent {
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthpharmacy', healthpharmacyFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthpharmacy',
+		healthpharmacyFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthpharmacyService.setPerPage.bind(this._healthpharmacyService),
+		setPerPage: this._healthpharmacyService.setPerPage.bind(
+			this._healthpharmacyService
+		),
 		allDocs: false,
 		create: (): void => {
 			this._form.modal<Healthpharmacy>(this.form, {
@@ -32,11 +37,13 @@ export class PharmaciesComponent {
 					this._preCreate(created as Healthpharmacy);
 
 					await firstValueFrom(
-						this._healthpharmacyService.create(created as Healthpharmacy)
+						this._healthpharmacyService.create(
+							created as Healthpharmacy
+						)
 					);
 
 					this.setRows();
-				},
+				}
 			});
 		},
 		update: (doc: Healthpharmacy): void => {
@@ -55,39 +62,65 @@ export class PharmaciesComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthpharmacyService.delete(doc));
+							await firstValueFrom(
+								this._healthpharmacyService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
+				icon: 'place',
+				hrefFunc: (doc: Healthpharmacy): string => {
+					return '/places/pharmacies/' + doc._id;
+				}
+			},
+
+			{
+				icon: 'comment',
+				hrefFunc: (doc: Healthpharmacy): string => {
+					return '/comments/' + doc.clinic + '/pharmacies/' + doc._id;
+				}
+			},
+
+			{
+				icon: 'comment',
+				hrefFunc: (doc: Healthpharmacy): string => {
+					return '/comments/' + doc.clinic + '/pharmacies/' + doc._id;
+				}
+			},
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthpharmacy): void => {
-					this._form.modalUnique<Healthpharmacy>('healthpharmacy', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthpharmacy>(
+						'healthpharmacy',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthpharmacy[] = [];
@@ -130,38 +163,53 @@ export class PharmaciesComponent {
 							this._preCreate(healthpharmacy);
 
 							await firstValueFrom(
-								this._healthpharmacyService.create(healthpharmacy)
+								this._healthpharmacyService.create(
+									healthpharmacy
+								)
 							);
 						}
 					} else {
 						for (const healthpharmacy of this.rows) {
 							if (
 								!healthpharmacys.find(
-									(localHealthpharmacy) => localHealthpharmacy._id === healthpharmacy._id
+									(localHealthpharmacy) =>
+										localHealthpharmacy._id ===
+										healthpharmacy._id
 								)
 							) {
 								await firstValueFrom(
-									this._healthpharmacyService.delete(healthpharmacy)
+									this._healthpharmacyService.delete(
+										healthpharmacy
+									)
 								);
 							}
 						}
 
 						for (const healthpharmacy of healthpharmacys) {
 							const localHealthpharmacy = this.rows.find(
-								(localHealthpharmacy) => localHealthpharmacy._id === healthpharmacy._id
+								(localHealthpharmacy) =>
+									localHealthpharmacy._id ===
+									healthpharmacy._id
 							);
 
 							if (localHealthpharmacy) {
-								this._core.copy(healthpharmacy, localHealthpharmacy);
+								this._core.copy(
+									healthpharmacy,
+									localHealthpharmacy
+								);
 
 								await firstValueFrom(
-									this._healthpharmacyService.update(localHealthpharmacy)
+									this._healthpharmacyService.update(
+										localHealthpharmacy
+									)
 								);
 							} else {
 								this._preCreate(healthpharmacy);
 
 								await firstValueFrom(
-									this._healthpharmacyService.create(healthpharmacy)
+									this._healthpharmacyService.create(
+										healthpharmacy
+									)
 								);
 							}
 						}

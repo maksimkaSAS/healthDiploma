@@ -10,12 +10,15 @@ import { healthpatientFormComponents } from '../../formcomponents/healthpatient.
 @Component({
 	templateUrl: './patients.component.html',
 	styleUrls: ['./patients.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class PatientsComponent {
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthpatient', healthpatientFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthpatient',
+		healthpatientFormComponents
+	);
 
 	config = {
 		create: (): void => {
@@ -27,9 +30,10 @@ export class PatientsComponent {
 					this._healthpatientService.create(created as Healthpatient);
 
 					close();
-				},
+				}
 			});
 		},
+
 		update: (doc: Healthpatient): void => {
 			this._form
 				.modal<Healthpatient>(this.form, [], doc)
@@ -46,37 +50,83 @@ export class PatientsComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: (): void => {
 							this._healthpatientService.delete(doc);
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
-				icon: 'cloud_download',
-				click: (doc: Healthpatient): void => {
-					this._form.modalUnique<Healthpatient>('healthpatient', 'url', doc);
+				icon: 'assignment',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/records/' + doc._id;
+				}
+			},
+
+			/*{
+				icon: 'sick',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/diseases/' + doc._id;
 				},
 			},
+
+			{
+				icon: 'medication',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/treatment/' + doc._id;
+				},
+			},
+
+			{
+				icon: 'health_and_safety',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/doctors/' + doc._id;
+				},
+			},
+
+			{
+				icon: 'analytics',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/analysis/' + doc._id;
+				},
+			},
+			
+			{
+				icon: 'mood_bad',
+				hrefFunc: (doc: Healthpatient): string => {
+					return '/symptoms/' + doc._id;
+				},
+			},*/
+
+			{
+				icon: 'cloud_download',
+				click: (doc: Healthpatient): void => {
+					this._form.modalUnique<Healthpatient>(
+						'healthpatient',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	get rows(): Healthpatient[] {
@@ -106,26 +156,38 @@ export class PatientsComponent {
 						for (const healthpatient of this.rows) {
 							if (
 								!healthpatients.find(
-									(localHealthpatient) => localHealthpatient._id === healthpatient._id
+									(localHealthpatient) =>
+										localHealthpatient._id ===
+										healthpatient._id
 								)
 							) {
-								this._healthpatientService.delete(healthpatient);
+								this._healthpatientService.delete(
+									healthpatient
+								);
 							}
 						}
 
 						for (const healthpatient of healthpatients) {
 							const localHealthpatient = this.rows.find(
-								(localHealthpatient) => localHealthpatient._id === healthpatient._id
+								(localHealthpatient) =>
+									localHealthpatient._id === healthpatient._id
 							);
 
 							if (localHealthpatient) {
-								this._core.copy(healthpatient, localHealthpatient);
+								this._core.copy(
+									healthpatient,
+									localHealthpatient
+								);
 
-								this._healthpatientService.update(localHealthpatient);
+								this._healthpatientService.update(
+									localHealthpatient
+								);
 							} else {
 								this._preCreate(healthpatient);
 
-								this._healthpatientService.create(healthpatient);
+								this._healthpatientService.create(
+									healthpatient
+								);
 							}
 						}
 					}

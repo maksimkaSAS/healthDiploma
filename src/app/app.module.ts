@@ -35,8 +35,11 @@ const routes: Routes = [
 						title: 'Createpatient'
 					}
 				},
-				loadChildren: () => import('./pages/guest/createpatient/createpatient.module').then(m => m.CreatepatientModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/guest/createpatient/createpatient.module'
+					).then((m) => m.CreatepatientModule)
+			},
 			{
 				path: 'components',
 				canActivate: [MetaGuard],
@@ -79,8 +82,11 @@ const routes: Routes = [
 						title: 'Trade'
 					}
 				},
-				loadChildren: () => import('./modules/healthtrade/pages/trade/trade.module').then(m => m.TradeModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthtrade/pages/trade/trade.module'
+					).then((m) => m.TradeModule)
+			},
 			{
 				path: 'places',
 				canActivate: [MetaGuard],
@@ -89,8 +95,11 @@ const routes: Routes = [
 						title: 'Places'
 					}
 				},
-				loadChildren: () => import('./modules/healthplace/pages/places/places.module').then(m => m.PlacesModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthplace/pages/places/places.module'
+					).then((m) => m.PlacesModule)
+			},
 			{
 				path: 'diseasefinder',
 				canActivate: [MetaGuard],
@@ -99,8 +108,11 @@ const routes: Routes = [
 						title: 'Diseasefinder'
 					}
 				},
-				loadChildren: () => import('./pages/user/diseasefinder/diseasefinder.module').then(m => m.DiseasefinderModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/diseasefinder/diseasefinder.module'
+					).then((m) => m.DiseasefinderModule)
+			},
 			{
 				path: 'pharmacy',
 				canActivate: [MetaGuard],
@@ -109,8 +121,11 @@ const routes: Routes = [
 						title: 'Pharmacy'
 					}
 				},
-				loadChildren: () => import('./pages/user/pharmacy/pharmacy.module').then(m => m.PharmacyModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/pharmacy/pharmacy.module').then(
+						(m) => m.PharmacyModule
+					)
+			},
 			{
 				path: 'pharmaciespage',
 				canActivate: [MetaGuard],
@@ -119,8 +134,11 @@ const routes: Routes = [
 						title: 'Pharmaciespage'
 					}
 				},
-				loadChildren: () => import('./pages/user/pharmaciespage/pharmaciespage.module').then(m => m.PharmaciespageModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/pharmaciespage/pharmaciespage.module'
+					).then((m) => m.PharmaciespageModule)
+			},
 			{
 				path: 'doctorpage',
 				canActivate: [MetaGuard],
@@ -129,8 +147,11 @@ const routes: Routes = [
 						title: 'Doctorpage'
 					}
 				},
-				loadChildren: () => import('./pages/user/doctorpage/doctorpage.module').then(m => m.DoctorpageModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/doctorpage/doctorpage.module').then(
+						(m) => m.DoctorpageModule
+					)
+			},
 			{
 				path: 'doctorspage',
 				canActivate: [MetaGuard],
@@ -139,8 +160,11 @@ const routes: Routes = [
 						title: 'Doctorspage'
 					}
 				},
-				loadChildren: () => import('./pages/user/doctorspage/doctorspage.module').then(m => m.DoctorspageModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/doctorspage/doctorspage.module').then(
+						(m) => m.DoctorspageModule
+					)
+			},
 			{
 				path: 'clinicpage',
 				canActivate: [MetaGuard],
@@ -149,8 +173,11 @@ const routes: Routes = [
 						title: 'Clinicpage'
 					}
 				},
-				loadChildren: () => import('./pages/user/clinicpage/clinicpage.module').then(m => m.ClinicpageModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/clinicpage/clinicpage.module').then(
+						(m) => m.ClinicpageModule
+					)
+			},
 			{
 				path: 'clinicspage',
 				canActivate: [MetaGuard],
@@ -159,8 +186,11 @@ const routes: Routes = [
 						title: 'Clinicspage'
 					}
 				},
-				loadChildren: () => import('./pages/user/clinicspage/clinicspage.module').then(m => m.ClinicspageModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/clinicspage/clinicspage.module').then(
+						(m) => m.ClinicspageModule
+					)
+			},
 			{
 				path: 'myfirstaidkit',
 				canActivate: [MetaGuard],
@@ -169,8 +199,11 @@ const routes: Routes = [
 						title: 'Myfirstaidkit'
 					}
 				},
-				loadChildren: () => import('./pages/user/myfirstaidkit/myfirstaidkit.module').then(m => m.MyfirstaidkitModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/myfirstaidkit/myfirstaidkit.module'
+					).then((m) => m.MyfirstaidkitModule)
+			},
 			{
 				path: 'patienthistory',
 				canActivate: [MetaGuard],
@@ -179,8 +212,11 @@ const routes: Routes = [
 						title: 'Patienthistory'
 					}
 				},
-				loadChildren: () => import('./pages/user/patienthistory/patienthistory.module').then(m => m.PatienthistoryModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/patienthistory/patienthistory.module'
+					).then((m) => m.PatienthistoryModule)
+			},
 			{
 				path: 'patientprofile',
 				canActivate: [MetaGuard],
@@ -189,8 +225,11 @@ const routes: Routes = [
 						title: 'Patientprofile'
 					}
 				},
-				loadChildren: () => import('./pages/user/patientprofile/patientprofile.module').then(m => m.PatientprofileModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/patientprofile/patientprofile.module'
+					).then((m) => m.PatientprofileModule)
+			},
 			{
 				path: 'patient',
 				canActivate: [MetaGuard],
@@ -199,8 +238,11 @@ const routes: Routes = [
 						title: 'Patient'
 					}
 				},
-				loadChildren: () => import('./pages/user/patient/patient.module').then(m => m.PatientsModule)
-			}, 
+				loadChildren: () =>
+					import('./pages/user/patient/patient.module').then(
+						(m) => m.PatientsModule
+					)
+			},
 			{
 				path: 'pharmacies',
 				canActivate: [MetaGuard],
@@ -209,8 +251,11 @@ const routes: Routes = [
 						title: 'Pharmacies'
 					}
 				},
-				loadChildren: () => import('./modules/healthpharmacy/pages/pharmacies/pharmacies.module').then(m => m.PharmaciesModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthpharmacy/pages/pharmacies/pharmacies.module'
+					).then((m) => m.PharmaciesModule)
+			},
 			{
 				path: 'comments',
 				canActivate: [MetaGuard],
@@ -219,8 +264,11 @@ const routes: Routes = [
 						title: 'Comments'
 					}
 				},
-				loadChildren: () => import('./modules/healthcomment/pages/comments/comments.module').then(m => m.CommentsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthcomment/pages/comments/comments.module'
+					).then((m) => m.CommentsModule)
+			},
 			{
 				path: 'doctors',
 				canActivate: [MetaGuard],
@@ -229,8 +277,11 @@ const routes: Routes = [
 						title: 'Doctors'
 					}
 				},
-				loadChildren: () => import('./modules/healthdoctor/pages/doctors/doctors.module').then(m => m.DoctorsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthdoctor/pages/doctors/doctors.module'
+					).then((m) => m.DoctorsModule)
+			},
 			{
 				path: 'clinics',
 				canActivate: [MetaGuard],
@@ -239,8 +290,11 @@ const routes: Routes = [
 						title: 'Clinics'
 					}
 				},
-				loadChildren: () => import('./modules/healthclinic/pages/clinics/clinics.module').then(m => m.ClinicsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthclinic/pages/clinics/clinics.module'
+					).then((m) => m.ClinicsModule)
+			},
 			{
 				path: 'analysis',
 				canActivate: [MetaGuard],
@@ -249,8 +303,11 @@ const routes: Routes = [
 						title: 'Analysis'
 					}
 				},
-				loadChildren: () => import('./modules/healthanalysis/pages/analysis/analysis.module').then(m => m.AnalysisModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthanalysis/pages/analysis/analysis.module'
+					).then((m) => m.AnalysisModule)
+			},
 			{
 				path: 'symptoms',
 				canActivate: [MetaGuard],
@@ -259,8 +316,11 @@ const routes: Routes = [
 						title: 'Symptoms'
 					}
 				},
-				loadChildren: () => import('./modules/healthsymptom/pages/symptoms/symptoms.module').then(m => m.SymptomsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthsymptom/pages/symptoms/symptoms.module'
+					).then((m) => m.SymptomsModule)
+			},
 			{
 				path: 'treatment',
 				canActivate: [MetaGuard],
@@ -269,8 +329,11 @@ const routes: Routes = [
 						title: 'Treatment'
 					}
 				},
-				loadChildren: () => import('./modules/healthtreatment/pages/treatment/treatment.module').then(m => m.TreatmentModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthtreatment/pages/treatment/treatment.module'
+					).then((m) => m.TreatmentModule)
+			},
 			{
 				path: 'diseases',
 				canActivate: [MetaGuard],
@@ -279,8 +342,11 @@ const routes: Routes = [
 						title: 'Diseases'
 					}
 				},
-				loadChildren: () => import('./modules/healthdisease/pages/diseases/diseases.module').then(m => m.DiseasesModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthdisease/pages/diseases/diseases.module'
+					).then((m) => m.DiseasesModule)
+			},
 			{
 				path: 'drugs',
 				canActivate: [MetaGuard],
@@ -289,8 +355,11 @@ const routes: Routes = [
 						title: 'Drugs'
 					}
 				},
-				loadChildren: () => import('./modules/healthdrug/pages/drugs/drugs.module').then(m => m.DrugsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthdrug/pages/drugs/drugs.module'
+					).then((m) => m.DrugsModule)
+			},
 			{
 				path: 'records',
 				canActivate: [MetaGuard],
@@ -299,8 +368,11 @@ const routes: Routes = [
 						title: 'Records'
 					}
 				},
-				loadChildren: () => import('./modules/healthrecord/pages/records/records.module').then(m => m.RecordsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthrecord/pages/records/records.module'
+					).then((m) => m.RecordsModule)
+			},
 			{
 				path: 'patients',
 				canActivate: [MetaGuard],
@@ -309,8 +381,11 @@ const routes: Routes = [
 						title: 'Patients'
 					}
 				},
-				loadChildren: () => import('./modules/healthpatient/pages/patients/patients.module').then(m => m.PatientsModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./modules/healthpatient/pages/patients/patients.module'
+					).then((m) => m.PatientsModule)
+			},
 			{
 				path: 'profile',
 				canActivate: [MetaGuard],

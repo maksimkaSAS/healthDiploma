@@ -6,6 +6,7 @@ import { FormService } from 'src/app/core/modules/form/form.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthdiseaseFormComponents } from '../../formcomponents/healthdisease.formcomponents';
+import { Route, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './diseases.component.html',
@@ -58,6 +59,22 @@ export class DiseasesComponent {
 			});
 		},
 		buttons: [
+			/*{
+				icon: 'assignment',
+				hrefFunc: (doc: Healthdisease): string => {
+					return '/records/' + doc._id;
+				},
+			},*/
+
+			{
+						icon: 'assignment',
+						hrefFunc: (doc: Healthdisease): string => {
+								return '/records/' + doc.patient + '/diseases/' + doc._id;
+						},
+			},
+
+			
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthdisease): void => {
@@ -88,7 +105,8 @@ export class DiseasesComponent {
 		private _healthdiseaseService: HealthdiseaseService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private router: Router
 	) {}
 
 	private _bulkManagement(create = true): () => void {
@@ -135,5 +153,6 @@ export class DiseasesComponent {
 
 	private _preCreate(healthdisease: Healthdisease): void {
 		delete healthdisease.__created;
+	
 	}
 }

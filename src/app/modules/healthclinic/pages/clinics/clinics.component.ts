@@ -11,17 +11,22 @@ import { firstValueFrom } from 'rxjs';
 @Component({
 	templateUrl: './clinics.component.html',
 	styleUrls: ['./clinics.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class ClinicsComponent {
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthclinic', healthclinicFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthclinic',
+		healthclinicFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthclinicService.setPerPage.bind(this._healthclinicService),
+		setPerPage: this._healthclinicService.setPerPage.bind(
+			this._healthclinicService
+		),
 		allDocs: false,
 		create: (): void => {
 			this._form.modal<Healthclinic>(this.form, {
@@ -32,11 +37,13 @@ export class ClinicsComponent {
 					this._preCreate(created as Healthclinic);
 
 					await firstValueFrom(
-						this._healthclinicService.create(created as Healthclinic)
+						this._healthclinicService.create(
+							created as Healthclinic
+						)
 					);
 
 					this.setRows();
-				},
+				}
 			});
 		},
 		update: (doc: Healthclinic): void => {
@@ -55,39 +62,65 @@ export class ClinicsComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthclinicService.delete(doc));
+							await firstValueFrom(
+								this._healthclinicService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
+				icon: 'place',
+				hrefFunc: (doc: Healthclinic): string => {
+					return '/places/clinics/' + doc._id;
+				}
+			},
+
+			{
+				icon: 'health_and_safety',
+				hrefFunc: (doc: Healthclinic): string => {
+					return '/doctors/' + doc._id;
+				}
+			},
+
+			{
+				icon: 'comment',
+				hrefFunc: (doc: Healthclinic): string => {
+					return '/comments/' + doc._id;
+				}
+			},
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthclinic): void => {
-					this._form.modalUnique<Healthclinic>('healthclinic', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthclinic>(
+						'healthclinic',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthclinic[] = [];
@@ -137,31 +170,43 @@ export class ClinicsComponent {
 						for (const healthclinic of this.rows) {
 							if (
 								!healthclinics.find(
-									(localHealthclinic) => localHealthclinic._id === healthclinic._id
+									(localHealthclinic) =>
+										localHealthclinic._id ===
+										healthclinic._id
 								)
 							) {
 								await firstValueFrom(
-									this._healthclinicService.delete(healthclinic)
+									this._healthclinicService.delete(
+										healthclinic
+									)
 								);
 							}
 						}
 
 						for (const healthclinic of healthclinics) {
 							const localHealthclinic = this.rows.find(
-								(localHealthclinic) => localHealthclinic._id === healthclinic._id
+								(localHealthclinic) =>
+									localHealthclinic._id === healthclinic._id
 							);
 
 							if (localHealthclinic) {
-								this._core.copy(healthclinic, localHealthclinic);
+								this._core.copy(
+									healthclinic,
+									localHealthclinic
+								);
 
 								await firstValueFrom(
-									this._healthclinicService.update(localHealthclinic)
+									this._healthclinicService.update(
+										localHealthclinic
+									)
 								);
 							} else {
 								this._preCreate(healthclinic);
 
 								await firstValueFrom(
-									this._healthclinicService.create(healthclinic)
+									this._healthclinicService.create(
+										healthclinic
+									)
 								);
 							}
 						}

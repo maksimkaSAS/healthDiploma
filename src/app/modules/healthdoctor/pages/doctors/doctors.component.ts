@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthdoctorFormComponents } from '../../formcomponents/healthdoctor.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './doctors.component.html',
@@ -14,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false,
 })
 export class DoctorsComponent {
+	clinic_id = this._router.url.includes('doctors/') ? this._router.url.replace('/doctors/', '') : '';
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm('healthdoctor', healthdoctorFormComponents);
@@ -23,7 +25,7 @@ export class DoctorsComponent {
 		perPage: 20,
 		setPerPage: this._healthdoctorService.setPerPage.bind(this._healthdoctorService),
 		allDocs: false,
-		create: (): void => {
+		create: this._router.url.includes('doctors/') ? (): void => {
 			this._form.modal<Healthdoctor>(this.form, {
 				label: 'Create',
 				click: async (created: unknown, close: () => void) => {
@@ -38,7 +40,7 @@ export class DoctorsComponent {
 					this.setRows();
 				},
 			});
-		},
+		} : null,
 		update: (doc: Healthdoctor): void => {
 			this._form
 				.modal<Healthdoctor>(this.form, [], doc)
@@ -69,6 +71,21 @@ export class DoctorsComponent {
 			});
 		},
 		buttons: [
+
+			{
+						icon: 'comment',
+						hrefFunc: (doc: Healthdoctor): string => {
+						return '/comments/' + doc.clinic + '/doctors/' + doc._id;
+						},
+			},
+
+			{
+				icon: 'assignment',
+				hrefFunc: (doc: Healthdoctor): string => {
+				return '/records/' + doc.patient + '/doctors/' + doc._id;
+				},
+			},
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthdoctor): void => {
@@ -97,7 +114,10 @@ export class DoctorsComponent {
 		private _healthdoctorService: HealthdoctorService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router
+				
+		
 	) {
 		this.setRows();
 	}
@@ -108,7 +128,7 @@ export class DoctorsComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthdoctorService.get({ page }).subscribe((rows) => {
+				this._healthdoctorService.get({ page, query:  this._query()}).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -174,5 +194,19 @@ export class DoctorsComponent {
 
 	private _preCreate(healthdoctor: Healthdoctor): void {
 		delete healthdoctor.__created;
+		healthdoctor.__created = false;
+		if(this.clinic_id) {
+			healthdoctor.clinic = this.clinic_id;
+		   
+		};
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		}
+
+		return query;
 	}
 }

@@ -7,6 +7,11 @@ const routes: Routes = [
 	{
 		path: '',
 		component: TradeComponent
+	},
+
+	{
+		path: ':place_id',
+		component: TradeComponent
 	}
 ];
 

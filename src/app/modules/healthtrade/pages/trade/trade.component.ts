@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthtradeFormComponents } from '../../formcomponents/healthtrade.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './trade.component.html',
@@ -14,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false,
 })
 export class TradeComponent {
+	place_id = this._router.url.includes('trade/') ? this._router.url.replace('/trade/', '') : '';
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm('healthtrade', healthtradeFormComponents);
@@ -97,8 +99,9 @@ export class TradeComponent {
 		private _healthtradeService: HealthtradeService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
-	) {
+		private _core: CoreService,
+		private _router: Router
+ 	) {
 		this.setRows();
 	}
 
@@ -108,7 +111,8 @@ export class TradeComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthtradeService.get({ page }).subscribe((rows) => {
+				this._healthtradeService.get({ page, query: this.place_id ? 
+					'place=' + this.place_id : '' }).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -174,5 +178,10 @@ export class TradeComponent {
 
 	private _preCreate(healthtrade: Healthtrade): void {
 		delete healthtrade.__created;
+
+		if(this.place_id) {
+			healthtrade.place = this.place_id;
+		   
+		};
 	}
 }

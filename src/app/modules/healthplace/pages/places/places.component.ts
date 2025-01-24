@@ -7,21 +7,27 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthplaceFormComponents } from '../../formcomponents/healthplace.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	templateUrl: './places.component.html',
 	styleUrls: ['./places.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class PlacesComponent {
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthplace', healthplaceFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthplace',
+		healthplaceFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthplaceService.setPerPage.bind(this._healthplaceService),
+		setPerPage: this._healthplaceService.setPerPage.bind(
+			this._healthplaceService
+		),
 		allDocs: false,
 		create: (): void => {
 			this._form.modal<Healthplace>(this.form, {
@@ -36,7 +42,7 @@ export class PlacesComponent {
 					);
 
 					this.setRows();
-				},
+				}
 			});
 		},
 		update: (doc: Healthplace): void => {
@@ -55,51 +61,79 @@ export class PlacesComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthplaceService.delete(doc));
+							await firstValueFrom(
+								this._healthplaceService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
+				icon: 'comment',
+				hrefFunc: (doc: Healthplace): string => {
+					return '/comments/' + doc.clinic + '/places/' + doc._id;
+				}
+			},
+
+			{
+				icon: 'store',
+				hrefFunc: (doc: Healthplace): string => {
+					return '/trade/' + doc._id;
+				}
+			},
+
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthplace): void => {
-					this._form.modalUnique<Healthplace>('healthplace', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthplace>(
+						'healthplace',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthplace[] = [];
+
+	clinic_id = '';
+	pharmacy_id = '';
 
 	constructor(
 		private _translate: TranslateService,
 		private _healthplaceService: HealthplaceService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _route: ActivatedRoute
 	) {
 		this.setRows();
+		this._route.paramMap.subscribe((params) => {
+			this.clinic_id = params.get('clinic_id') || '';
+			this.pharmacy_id = params.get('pharmacy_id') || '';
+		});
 	}
 
 	setRows(page = this._page): void {
@@ -108,11 +142,13 @@ export class PlacesComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthplaceService.get({ page }).subscribe((rows) => {
-					this.rows.splice(0, this.rows.length);
+				this._healthplaceService
+					.get({ page, query: this._query() })
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
 
-					this.rows.push(...rows);
-				});
+						this.rows.push(...rows);
+					});
 			},
 			250
 		);
@@ -137,7 +173,8 @@ export class PlacesComponent {
 						for (const healthplace of this.rows) {
 							if (
 								!healthplaces.find(
-									(localHealthplace) => localHealthplace._id === healthplace._id
+									(localHealthplace) =>
+										localHealthplace._id === healthplace._id
 								)
 							) {
 								await firstValueFrom(
@@ -148,14 +185,17 @@ export class PlacesComponent {
 
 						for (const healthplace of healthplaces) {
 							const localHealthplace = this.rows.find(
-								(localHealthplace) => localHealthplace._id === healthplace._id
+								(localHealthplace) =>
+									localHealthplace._id === healthplace._id
 							);
 
 							if (localHealthplace) {
 								this._core.copy(healthplace, localHealthplace);
 
 								await firstValueFrom(
-									this._healthplaceService.update(localHealthplace)
+									this._healthplaceService.update(
+										localHealthplace
+									)
 								);
 							} else {
 								this._preCreate(healthplace);
@@ -174,5 +214,25 @@ export class PlacesComponent {
 
 	private _preCreate(healthplace: Healthplace): void {
 		delete healthplace.__created;
+		if (this.clinic_id) {
+			healthplace.clinic = this.clinic_id;
+		}
+
+		if (this.pharmacy_id) {
+			healthplace.pharmacy = this.pharmacy_id;
+		}
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		}
+
+		if (this.pharmacy_id) {
+			query += (query ? '&' : '') + 'pharmacy=' + this.pharmacy_id;
+		}
+
+		return query;
 	}
 }

@@ -197,6 +197,28 @@
 		<span class="material-icons">local_pharmacy</span>
 		<span translate>Theme.Pharmacies</span>
 	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/places"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">place</span>
+		<span translate>Theme.Places</span>
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/trade"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">store</span>
+		<span translate>Theme.Trade</span>
+	</a>
 			
 				
 				<hr *ngIf="us.role('admin')" />

@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthsymptomFormComponents } from '../../formcomponents/healthsymptom.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './symptoms.component.html',
@@ -69,6 +70,15 @@ export class SymptomsComponent {
 			});
 		},
 		buttons: [
+
+
+			{
+				icon: 'assignment',
+				hrefFunc: (doc: Healthsymptom): string => {
+				return '/records/' + doc.patient + '/symptoms/' + doc._id;
+					},
+			},	
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthsymptom): void => {
@@ -97,7 +107,8 @@ export class SymptomsComponent {
 		private _healthsymptomService: HealthsymptomService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router
 	) {
 		this.setRows();
 	}

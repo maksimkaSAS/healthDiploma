@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthcommentFormComponents } from '../../formcomponents/healthcomment.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './comments.component.html',
@@ -14,6 +15,9 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false,
 })
 export class CommentsComponent {
+
+	clinic_id = this._router.url.includes('comments/') ? this._router.url.replace('/comments/', '') : '';
+
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm('healthcomment', healthcommentFormComponents);
@@ -92,14 +96,27 @@ export class CommentsComponent {
 
 	rows: Healthcomment[] = [];
 
+	//clinic_id = '';
+	doctor_id = '';
+	pharmacy_id = '';
+	place_id = '';
+
 	constructor(
 		private _translate: TranslateService,
 		private _healthcommentService: HealthcommentService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router,
+		private _route: ActivatedRoute
 	) {
 		this.setRows();
+		this._route.paramMap.subscribe(params => {
+			this.doctor_id = params.get('doctor_id') || '';
+			this.pharmacy_id = params.get('pharmacy_id') || '';
+			this.place_id = params.get('place_id') || '';
+			
+		});
 	}
 
 	setRows(page = this._page): void {
@@ -108,7 +125,9 @@ export class CommentsComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthcommentService.get({ page }).subscribe((rows) => {
+				this._healthcommentService.get({ page, query:  this._query()/*query: this.clinic_id ? 
+					'clinic=' + this.clinic_id : ''
+				 */}).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -174,5 +193,45 @@ export class CommentsComponent {
 
 	private _preCreate(healthcomment: Healthcomment): void {
 		delete healthcomment.__created;
+		if(this.clinic_id) {
+			healthcomment.clinic = this.clinic_id;
+		   
+		}
+
+		if(this.doctor_id) {
+			healthcomment.doctor = this.doctor_id;
+		   
+		};
+
+		if(this.pharmacy_id) {
+			healthcomment.pharmacy = this.pharmacy_id;
+		   
+		};
+
+		if(this.place_id) {
+			healthcomment.place = this.place_id;
+		   
+		};
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		}
+
+		if (this.doctor_id) {
+			query += (query ? '&' : '') + 'doctor=' + this.doctor_id;
+		}
+
+		if (this.pharmacy_id) {
+			query += (query ? '&' : '') + 'pharmacy=' + this.pharmacy_id;
+		}
+
+		if (this.place_id) {
+			query += (query ? '&' : '') + 'place=' + this.place_id;
+		}
+
+		return query;
 	}
 }
