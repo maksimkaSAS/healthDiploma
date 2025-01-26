@@ -13,20 +13,26 @@ import { Router } from '@angular/router';
 @Component({
 	templateUrl: './treatment.component.html',
 	styleUrls: ['./treatment.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class TreatmentComponent {
-
-	//patient_id = this._router.url.includes('treatment/') ? this._router.url.replace('/treatment/', '') : '';
+	patient_id = this._router.url.includes('treatment/')
+		? this._router.url.replace('/treatment/', '')
+		: '';
 
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthtreatment', healthtreatmentFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthtreatment',
+		healthtreatmentFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthtreatmentService.setPerPage.bind(this._healthtreatmentService),
+		setPerPage: this._healthtreatmentService.setPerPage.bind(
+			this._healthtreatmentService
+		),
 		allDocs: false,
 		create: (): void => {
 			this._form.modal<Healthtreatment>(this.form, {
@@ -37,11 +43,13 @@ export class TreatmentComponent {
 					this._preCreate(created as Healthtreatment);
 
 					await firstValueFrom(
-						this._healthtreatmentService.create(created as Healthtreatment)
+						this._healthtreatmentService.create(
+							created as Healthtreatment
+						)
 					);
 
 					this.setRows();
-				},
+				}
 			});
 		},
 		update: (doc: Healthtreatment): void => {
@@ -60,46 +68,52 @@ export class TreatmentComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthtreatmentService.delete(doc));
+							await firstValueFrom(
+								this._healthtreatmentService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
-					icon: 'assignment',
-					hrefFunc: (doc: Healthtreatment): string => {
+				icon: 'assignment',
+				hrefFunc: (doc: Healthtreatment): string => {
 					return '/records/' + doc.patient + '/treatment/' + doc._id;
-					},
+				}
 			},
-			
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthtreatment): void => {
-					this._form.modalUnique<Healthtreatment>('healthtreatment', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthtreatment>(
+						'healthtreatment',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthtreatment[] = [];
@@ -121,11 +135,16 @@ export class TreatmentComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthtreatmentService.get({ page/*, query: this.patient_id ? 'patient =' + this.patient_id : '' */}).subscribe((rows) => {
-					this.rows.splice(0, this.rows.length);
+				this._healthtreatmentService
+					.get({
+						page,
+						query: this._query() /*, query: this.patient_id ? 'patient =' + this.patient_id : '' */
+					})
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
 
-					this.rows.push(...rows);
-				});
+						this.rows.push(...rows);
+					});
 			},
 			250
 		);
@@ -143,38 +162,53 @@ export class TreatmentComponent {
 							this._preCreate(healthtreatment);
 
 							await firstValueFrom(
-								this._healthtreatmentService.create(healthtreatment)
+								this._healthtreatmentService.create(
+									healthtreatment
+								)
 							);
 						}
 					} else {
 						for (const healthtreatment of this.rows) {
 							if (
 								!healthtreatments.find(
-									(localHealthtreatment) => localHealthtreatment._id === healthtreatment._id
+									(localHealthtreatment) =>
+										localHealthtreatment._id ===
+										healthtreatment._id
 								)
 							) {
 								await firstValueFrom(
-									this._healthtreatmentService.delete(healthtreatment)
+									this._healthtreatmentService.delete(
+										healthtreatment
+									)
 								);
 							}
 						}
 
 						for (const healthtreatment of healthtreatments) {
 							const localHealthtreatment = this.rows.find(
-								(localHealthtreatment) => localHealthtreatment._id === healthtreatment._id
+								(localHealthtreatment) =>
+									localHealthtreatment._id ===
+									healthtreatment._id
 							);
 
 							if (localHealthtreatment) {
-								this._core.copy(healthtreatment, localHealthtreatment);
+								this._core.copy(
+									healthtreatment,
+									localHealthtreatment
+								);
 
 								await firstValueFrom(
-									this._healthtreatmentService.update(localHealthtreatment)
+									this._healthtreatmentService.update(
+										localHealthtreatment
+									)
 								);
 							} else {
 								this._preCreate(healthtreatment);
 
 								await firstValueFrom(
-									this._healthtreatmentService.create(healthtreatment)
+									this._healthtreatmentService.create(
+										healthtreatment
+									)
 								);
 							}
 						}
@@ -187,6 +221,18 @@ export class TreatmentComponent {
 
 	private _preCreate(healthtreatment: Healthtreatment): void {
 		delete healthtreatment.__created;
-		
+
+		if (this.patient_id) {
+			healthtreatment.patient = this.patient_id;
+		}
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.patient_id) {
+			query += (query ? '&' : '') + 'patient=' + this.patient_id;
+		}
+
+		return query;
 	}
 }

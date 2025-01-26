@@ -12,17 +12,26 @@ import { Router } from '@angular/router';
 @Component({
 	templateUrl: './symptoms.component.html',
 	styleUrls: ['./symptoms.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class SymptomsComponent {
+	patient_id = this._router.url.includes('symptoms/')
+		? this._router.url.replace('/symptoms/', '')
+		: '';
+
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthsymptom', healthsymptomFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthsymptom',
+		healthsymptomFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthsymptomService.setPerPage.bind(this._healthsymptomService),
+		setPerPage: this._healthsymptomService.setPerPage.bind(
+			this._healthsymptomService
+		),
 		allDocs: false,
 		create: (): void => {
 			this._form.modal<Healthsymptom>(this.form, {
@@ -33,11 +42,13 @@ export class SymptomsComponent {
 					this._preCreate(created as Healthsymptom);
 
 					await firstValueFrom(
-						this._healthsymptomService.create(created as Healthsymptom)
+						this._healthsymptomService.create(
+							created as Healthsymptom
+						)
 					);
 
 					this.setRows();
-				},
+				}
 			});
 		},
 		update: (doc: Healthsymptom): void => {
@@ -56,48 +67,52 @@ export class SymptomsComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthsymptomService.delete(doc));
+							await firstValueFrom(
+								this._healthsymptomService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
-
-
 			{
 				icon: 'assignment',
 				hrefFunc: (doc: Healthsymptom): string => {
-				return '/records/' + doc.patient + '/symptoms/' + doc._id;
-					},
-			},	
+					return '/records/' + doc.patient + '/symptoms/' + doc._id;
+				}
+			},
 
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthsymptom): void => {
-					this._form.modalUnique<Healthsymptom>('healthsymptom', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthsymptom>(
+						'healthsymptom',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthsymptom[] = [];
@@ -119,11 +134,13 @@ export class SymptomsComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthsymptomService.get({ page }).subscribe((rows) => {
-					this.rows.splice(0, this.rows.length);
+				this._healthsymptomService
+					.get({ page, query: this._query() })
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
 
-					this.rows.push(...rows);
-				});
+						this.rows.push(...rows);
+					});
 			},
 			250
 		);
@@ -148,31 +165,43 @@ export class SymptomsComponent {
 						for (const healthsymptom of this.rows) {
 							if (
 								!healthsymptoms.find(
-									(localHealthsymptom) => localHealthsymptom._id === healthsymptom._id
+									(localHealthsymptom) =>
+										localHealthsymptom._id ===
+										healthsymptom._id
 								)
 							) {
 								await firstValueFrom(
-									this._healthsymptomService.delete(healthsymptom)
+									this._healthsymptomService.delete(
+										healthsymptom
+									)
 								);
 							}
 						}
 
 						for (const healthsymptom of healthsymptoms) {
 							const localHealthsymptom = this.rows.find(
-								(localHealthsymptom) => localHealthsymptom._id === healthsymptom._id
+								(localHealthsymptom) =>
+									localHealthsymptom._id === healthsymptom._id
 							);
 
 							if (localHealthsymptom) {
-								this._core.copy(healthsymptom, localHealthsymptom);
+								this._core.copy(
+									healthsymptom,
+									localHealthsymptom
+								);
 
 								await firstValueFrom(
-									this._healthsymptomService.update(localHealthsymptom)
+									this._healthsymptomService.update(
+										localHealthsymptom
+									)
 								);
 							} else {
 								this._preCreate(healthsymptom);
 
 								await firstValueFrom(
-									this._healthsymptomService.create(healthsymptom)
+									this._healthsymptomService.create(
+										healthsymptom
+									)
 								);
 							}
 						}
@@ -185,5 +214,18 @@ export class SymptomsComponent {
 
 	private _preCreate(healthsymptom: Healthsymptom): void {
 		delete healthsymptom.__created;
+
+		if (this.patient_id) {
+			healthsymptom.patient = this.patient_id;
+		}
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.patient_id) {
+			query += (query ? '&' : '') + 'patient=' + this.patient_id;
+		}
+
+		return query;
 	}
 }

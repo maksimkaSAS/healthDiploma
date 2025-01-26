@@ -69,40 +69,40 @@ export class PatientsComponent {
 				}
 			},
 
-			/*{
+			{
 				icon: 'sick',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/diseases/' + doc._id;
-				},
+				}
 			},
 
 			{
 				icon: 'medication',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/treatment/' + doc._id;
-				},
+				}
 			},
 
 			{
 				icon: 'health_and_safety',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/doctors/' + doc._id;
-				},
+				}
 			},
 
 			{
 				icon: 'analytics',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/analysis/' + doc._id;
-				},
+				}
 			},
-			
+
 			{
 				icon: 'mood_bad',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/symptoms/' + doc._id;
-				},
-			},*/
+				}
+			},
 
 			{
 				icon: 'cloud_download',

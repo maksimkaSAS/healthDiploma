@@ -11,12 +11,19 @@ import { Route, Router } from '@angular/router';
 @Component({
 	templateUrl: './diseases.component.html',
 	styleUrls: ['./diseases.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class DiseasesComponent {
+	patient_id = this._router.url.includes('diseases/')
+		? this._router.url.replace('/diseases/', '')
+		: '';
+
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthdisease', healthdiseaseFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthdisease',
+		healthdiseaseFormComponents
+	);
 
 	config = {
 		create: (): void => {
@@ -28,7 +35,7 @@ export class DiseasesComponent {
 					this._healthdiseaseService.create(created as Healthdisease);
 
 					close();
-				},
+				}
 			});
 		},
 		update: (doc: Healthdisease): void => {
@@ -47,15 +54,15 @@ export class DiseasesComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: (): void => {
 							this._healthdiseaseService.delete(doc);
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
@@ -67,33 +74,35 @@ export class DiseasesComponent {
 			},*/
 
 			{
-						icon: 'assignment',
-						hrefFunc: (doc: Healthdisease): string => {
-								return '/records/' + doc.patient + '/diseases/' + doc._id;
-						},
+				icon: 'assignment',
+				hrefFunc: (doc: Healthdisease): string => {
+					return '/records/' + doc.patient + '/diseases/' + doc._id;
+				}
 			},
-
-			
 
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthdisease): void => {
-					this._form.modalUnique<Healthdisease>('healthdisease', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthdisease>(
+						'healthdisease',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	get rows(): Healthdisease[] {
@@ -106,8 +115,30 @@ export class DiseasesComponent {
 		private _alert: AlertService,
 		private _form: FormService,
 		private _core: CoreService,
-		private router: Router
-	) {}
+		private _router: Router
+	) {
+		this.setRows();
+	}
+
+	setRows(page = this._page): void {
+		this._page = page;
+
+		this._core.afterWhile(
+			this,
+			() => {
+				this._healthdiseaseService
+					.get({ page, query: this._query() })
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
+
+						this.rows.push(...rows);
+					});
+			},
+			250
+		);
+	}
+
+	private _page = 1;
 
 	private _bulkManagement(create = true): () => void {
 		return (): void => {
@@ -124,26 +155,38 @@ export class DiseasesComponent {
 						for (const healthdisease of this.rows) {
 							if (
 								!healthdiseases.find(
-									(localHealthdisease) => localHealthdisease._id === healthdisease._id
+									(localHealthdisease) =>
+										localHealthdisease._id ===
+										healthdisease._id
 								)
 							) {
-								this._healthdiseaseService.delete(healthdisease);
+								this._healthdiseaseService.delete(
+									healthdisease
+								);
 							}
 						}
 
 						for (const healthdisease of healthdiseases) {
 							const localHealthdisease = this.rows.find(
-								(localHealthdisease) => localHealthdisease._id === healthdisease._id
+								(localHealthdisease) =>
+									localHealthdisease._id === healthdisease._id
 							);
 
 							if (localHealthdisease) {
-								this._core.copy(healthdisease, localHealthdisease);
+								this._core.copy(
+									healthdisease,
+									localHealthdisease
+								);
 
-								this._healthdiseaseService.update(localHealthdisease);
+								this._healthdiseaseService.update(
+									localHealthdisease
+								);
 							} else {
 								this._preCreate(healthdisease);
 
-								this._healthdiseaseService.create(healthdisease);
+								this._healthdiseaseService.create(
+									healthdisease
+								);
 							}
 						}
 					}
@@ -153,6 +196,18 @@ export class DiseasesComponent {
 
 	private _preCreate(healthdisease: Healthdisease): void {
 		delete healthdisease.__created;
-	
+
+		if (this.patient_id) {
+			healthdisease.patient = this.patient_id;
+		}
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.patient_id) {
+			query += (query ? '&' : '') + 'patient=' + this.patient_id;
+		}
+
+		return query;
 	}
 }

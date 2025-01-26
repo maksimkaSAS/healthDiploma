@@ -11,6 +11,10 @@ const routes: Routes = [
 	{
 		path: ':clinic_id',
 		component: DoctorsComponent
+	},
+	{
+		path: ':patient_id',
+		component: DoctorsComponent
 	}
 ];
 

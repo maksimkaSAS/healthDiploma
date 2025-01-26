@@ -9,7 +9,10 @@ const routes: Routes = [
 		component: DiseasesComponent
 	},
 
-	
+	{
+		path: ':patient_id',
+		component: DiseasesComponent
+	}
 ];
 
 @NgModule({

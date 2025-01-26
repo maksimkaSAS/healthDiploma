@@ -7,6 +7,11 @@ const routes: Routes = [
 	{
 		path: '',
 		component: AnalysisComponent
+	},
+
+	{
+		path: ':patient_id',
+		component: AnalysisComponent
 	}
 ];
 

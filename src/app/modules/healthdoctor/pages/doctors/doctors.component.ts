@@ -12,35 +12,49 @@ import { Router } from '@angular/router';
 @Component({
 	templateUrl: './doctors.component.html',
 	styleUrls: ['./doctors.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class DoctorsComponent {
-	clinic_id = this._router.url.includes('doctors/') ? this._router.url.replace('/doctors/', '') : '';
+	clinic_id = this._router.url.includes('doctors/')
+		? this._router.url.replace('/doctors/', '')
+		: '';
+	patient_id = this._router.url.includes('doctors/')
+		? this._router.url.replace('/doctors/', '')
+		: '';
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthdoctor', healthdoctorFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthdoctor',
+		healthdoctorFormComponents
+	);
 
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
-		setPerPage: this._healthdoctorService.setPerPage.bind(this._healthdoctorService),
+		setPerPage: this._healthdoctorService.setPerPage.bind(
+			this._healthdoctorService
+		),
 		allDocs: false,
-		create: this._router.url.includes('doctors/') ? (): void => {
-			this._form.modal<Healthdoctor>(this.form, {
-				label: 'Create',
-				click: async (created: unknown, close: () => void) => {
-					close();
+		create: this._router.url.includes('doctors/')
+			? (): void => {
+					this._form.modal<Healthdoctor>(this.form, {
+						label: 'Create',
+						click: async (created: unknown, close: () => void) => {
+							close();
 
-					this._preCreate(created as Healthdoctor);
+							this._preCreate(created as Healthdoctor);
 
-					await firstValueFrom(
-						this._healthdoctorService.create(created as Healthdoctor)
-					);
+							await firstValueFrom(
+								this._healthdoctorService.create(
+									created as Healthdoctor
+								)
+							);
 
-					this.setRows();
-				},
-			});
-		} : null,
+							this.setRows();
+						}
+					});
+			  }
+			: null,
 		update: (doc: Healthdoctor): void => {
 			this._form
 				.modal<Healthdoctor>(this.form, [], doc)
@@ -57,54 +71,59 @@ export class DoctorsComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: async (): Promise<void> => {
-							await firstValueFrom(this._healthdoctorService.delete(doc));
+							await firstValueFrom(
+								this._healthdoctorService.delete(doc)
+							);
 
 							this.setRows();
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
-
 			{
-						icon: 'comment',
-						hrefFunc: (doc: Healthdoctor): string => {
-						return '/comments/' + doc.clinic + '/doctors/' + doc._id;
-						},
+				icon: 'comment',
+				hrefFunc: (doc: Healthdoctor): string => {
+					return '/comments/' + doc.clinic + '/doctors/' + doc._id;
+				}
 			},
 
 			{
 				icon: 'assignment',
 				hrefFunc: (doc: Healthdoctor): string => {
-				return '/records/' + doc.patient + '/doctors/' + doc._id;
-				},
+					return '/records/' + doc.patient + '/doctors/' + doc._id;
+				}
 			},
 
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthdoctor): void => {
-					this._form.modalUnique<Healthdoctor>('healthdoctor', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthdoctor>(
+						'healthdoctor',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	rows: Healthdoctor[] = [];
@@ -116,8 +135,6 @@ export class DoctorsComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _router: Router
-				
-		
 	) {
 		this.setRows();
 	}
@@ -128,11 +145,13 @@ export class DoctorsComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthdoctorService.get({ page, query:  this._query()}).subscribe((rows) => {
-					this.rows.splice(0, this.rows.length);
+				this._healthdoctorService
+					.get({ page, query: this._query() })
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
 
-					this.rows.push(...rows);
-				});
+						this.rows.push(...rows);
+					});
 			},
 			250
 		);
@@ -157,31 +176,43 @@ export class DoctorsComponent {
 						for (const healthdoctor of this.rows) {
 							if (
 								!healthdoctors.find(
-									(localHealthdoctor) => localHealthdoctor._id === healthdoctor._id
+									(localHealthdoctor) =>
+										localHealthdoctor._id ===
+										healthdoctor._id
 								)
 							) {
 								await firstValueFrom(
-									this._healthdoctorService.delete(healthdoctor)
+									this._healthdoctorService.delete(
+										healthdoctor
+									)
 								);
 							}
 						}
 
 						for (const healthdoctor of healthdoctors) {
 							const localHealthdoctor = this.rows.find(
-								(localHealthdoctor) => localHealthdoctor._id === healthdoctor._id
+								(localHealthdoctor) =>
+									localHealthdoctor._id === healthdoctor._id
 							);
 
 							if (localHealthdoctor) {
-								this._core.copy(healthdoctor, localHealthdoctor);
+								this._core.copy(
+									healthdoctor,
+									localHealthdoctor
+								);
 
 								await firstValueFrom(
-									this._healthdoctorService.update(localHealthdoctor)
+									this._healthdoctorService.update(
+										localHealthdoctor
+									)
 								);
 							} else {
 								this._preCreate(healthdoctor);
 
 								await firstValueFrom(
-									this._healthdoctorService.create(healthdoctor)
+									this._healthdoctorService.create(
+										healthdoctor
+									)
 								);
 							}
 						}
@@ -195,16 +226,23 @@ export class DoctorsComponent {
 	private _preCreate(healthdoctor: Healthdoctor): void {
 		delete healthdoctor.__created;
 		healthdoctor.__created = false;
-		if(this.clinic_id) {
+		if (this.clinic_id) {
 			healthdoctor.clinic = this.clinic_id;
-		   
-		};
+		}
+
+		if (this.patient_id) {
+			healthdoctor.patient = this.patient_id;
+		}
 	}
 
 	private _query(): string {
 		let query = '';
 		if (this.clinic_id) {
 			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		}
+
+		if (this.patient_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.patient_id;
 		}
 
 		return query;

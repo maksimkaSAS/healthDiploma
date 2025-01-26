@@ -8,6 +8,7 @@ const routes: Routes = [
 		path: '',
 		component: TreatmentComponent
 	},
+
 	{
 		path: ':patient_id',
 		component: TreatmentComponent
