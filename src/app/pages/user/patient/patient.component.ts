@@ -11,6 +11,6 @@ export class PatientsComponent {
 	get patient(): Healthpatient[] {
 		return this._healthpatientService.healthpatients;
 	}
-
+	isMenuOpen=false;
 	constructor(private _healthpatientService: HealthpatientService) {}
 }
