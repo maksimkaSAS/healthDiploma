@@ -231,7 +231,7 @@ const routes: Routes = [
 					).then((m) => m.PatientprofileModule)
 			},
 			{
-				path: 'patient',
+				path: 'mypatients',
 				canActivate: [MetaGuard],
 				data: {
 					meta: {
