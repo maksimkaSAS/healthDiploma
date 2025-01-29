@@ -219,6 +219,63 @@
 		<span class="material-icons">store</span>
 		<span translate>Theme.Trade</span>
 	</a>
+	<hr />
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/doctorspage"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">medical_services</span>
+		<span translate>Theme.Doctors</span>
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/pharmacy"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">local_pharmacy</span>
+		<span translate>Theme.Pharmacies</span>
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/allcomments"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">comment</span>
+		<span translate>Theme.Comments</span>
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/clinicspage"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">local_hospital</span>
+		<span translate>Theme.Clinics</span>
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/allplaces"
+		class="nav__burger-link"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">place</span>
+		<span translate>Theme.Places</span>
+	</a>
+	
 			
 				
 				<hr *ngIf="us.role('admin')" />

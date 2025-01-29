@@ -2,3 +2,6 @@
 <section>pharmacy details</section>
 <section>contact information</section>
 <section>working hours</section>
+
+<app-mypharmacy *ngFor="let pharmacy of pharmacies" [pharmacy] = 'pharmacy'></app-mypharmacy>
+

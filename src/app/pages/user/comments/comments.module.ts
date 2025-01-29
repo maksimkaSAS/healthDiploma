@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
-import { ClinicspageComponent } from './clinicspage.component';
+import { CommentsComponent } from './comments.component';
 import { Routes, RouterModule } from '@angular/router';
-import { ClinicComponent } from './clinic/clinic.component';
+import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: ClinicspageComponent
+		component: CommentsComponent
 	}
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes), CoreModule],
-	declarations: [ClinicspageComponent, ClinicComponent]
+	declarations: [CommentsComponent, CommentComponent]
 })
-export class ClinicspageModule {}
+export class CommentsModule {}

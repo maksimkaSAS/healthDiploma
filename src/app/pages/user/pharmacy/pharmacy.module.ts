@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
 import { PharmacyComponent } from './pharmacy.component';
 import { Routes, RouterModule } from '@angular/router';
+import { MypharmacyComponent } from './mypharmacy/mypharmacy.component';
 
 const routes: Routes = [
 	{
@@ -12,6 +13,6 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [RouterModule.forChild(routes), CoreModule],
-	declarations: [PharmacyComponent]
+	declarations: [PharmacyComponent, MypharmacyComponent]
 })
 export class PharmacyModule {}

@@ -3,3 +3,5 @@
 <section>filters panel with options for location, services, and ratings</section>
 <section>clinics list displaying name, address, rating, and key services</section>
 
+
+<app-clinic *ngFor="let clinic of clinics" [clinic] = 'clinic'></app-clinic>

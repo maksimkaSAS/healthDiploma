@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
-import { ClinicspageComponent } from './clinicspage.component';
+import { PlacesComponent } from './places.component';
 import { Routes, RouterModule } from '@angular/router';
-import { ClinicComponent } from './clinic/clinic.component';
+import { PlaceComponent } from './place/place.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: ClinicspageComponent
+		component: PlacesComponent
 	}
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes), CoreModule],
-	declarations: [ClinicspageComponent, ClinicComponent]
+	declarations: [PlacesComponent, PlaceComponent]
 })
-export class ClinicspageModule {}
+export class PlacesModule {}

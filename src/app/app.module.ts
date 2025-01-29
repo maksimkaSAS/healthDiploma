@@ -75,6 +75,32 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'allplaces',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Places'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/places/places.module').then(
+						(m) => m.PlacesModule
+					)
+			},
+			{
+				path: 'allcomments',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Comments'
+					}
+				},
+				loadChildren: () =>
+					import('./pages/user/comments/comments.module').then(
+						(m) => m.CommentsModule
+					)
+			},
+			{
 				path: 'trade',
 				canActivate: [MetaGuard],
 				data: {
