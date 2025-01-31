@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: ':patient_id',
 		component: OnepatientpageComponent
 	}
 ];

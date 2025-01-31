@@ -103,3 +103,5 @@ treatment.patient
 doctor.patient
 symptom.patient
 analysis.patient
+
+клініки, лікарі, аптеки в топ бар
