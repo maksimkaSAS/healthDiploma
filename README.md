@@ -105,3 +105,46 @@ symptom.patient
 analysis.patient
 
 клініки, лікарі, аптеки в топ бар
+
+
+phone: Контактний номер телефону.
+email: Контактний email клініки.
+website: Офіційний вебсайт клініки (якщо є).
+working_hours: Графік роботи клініки.
+license_number: Номер ліцензії клініки (за потреби).
+
+*specialties(Список спеціальностей, які надаються в клініці (наприклад, кардіологія, хірургія, дерматологія).), *emergency_contact(Номер телефону або контакт для екстрених випадків.), 
+*clinic_type (Тип клініки (наприклад, приватна, державна, спеціалізована))
+
+
+{
+    phone: String
+},
+
+{
+    email: String
+},
+
+{
+    website: String
+},
+
+{
+    working_hours: String
+},
+
+{
+   license_number: String
+},
+
+{
+   specialties: String
+},
+
+{
+   clinic_type: String
+},
+
+
+
+
