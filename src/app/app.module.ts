@@ -74,6 +74,16 @@ const routes: Routes = [
 		component: UserComponent,
 		children: [
 			/* user */
+			{
+				path: 'onepharmacypage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Onepharmacypage'
+					}
+				},
+				loadChildren: () => import('./pages/user/onepharmacypage/onepharmacypage.module').then(m => m.OnepharmacypageModule)
+			}, 
 		
 			{
 				path: 'onepatientpage',

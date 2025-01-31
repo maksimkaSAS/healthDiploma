@@ -1,7 +1,36 @@
-<p>Page Pharmacy is connected</p>
-<section>pharmacy details</section>
-<section>contact information</section>
-<section>working hours</section>
 
-<app-mypharmacy *ngFor="let pharmacy of pharmacies" [pharmacy] = 'pharmacy'></app-mypharmacy>
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
+    <div class="documents-container">
+        <div class="documents-list">
+            <div class="burger-wrap" class="burger-wrap"  (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+                <div class="burger" [class.burger--close]="isMenuOpen"></div>
+            </div> 
+            <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
+                <div class="documents-sidebar-content">
+                    <div class="documents-sidebar__img">
+                        <img src="assets/default.png" alt="">
+                    </div>
+                    <div class="documents-sidebar__title">
+                        Title of sidebar...
+                    </div>
+                    <div class="documents-sidebar__description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae consequatur quae. Modi corporis rem amet tempore debitis assumenda minima repellat labore expedita quam. Itaque accusamus culpa ullam necessitatibus nisi.
+                    </div>
+                </div>
+            </div>
+            <div class="documents-main">
+                <div class="documents-main-content">
+                    <div *ngFor="let pharmacy of pharmacies" class="documents-main-row">
+                        <a routerLink="/onepharmacypage/{{pharmacy._id}}">
+                        <app-mypharmacy  [pharmacy] = 'pharmacy'></app-mypharmacy>
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 

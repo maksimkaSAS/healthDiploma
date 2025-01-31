@@ -19,4 +19,6 @@ export class ClinicspageComponent {
 				this.clinics = clinics;
 			});
 	}
+
+	isMenuOpen=false;
 }

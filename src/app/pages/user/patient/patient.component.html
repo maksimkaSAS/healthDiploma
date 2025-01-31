@@ -20,9 +20,10 @@
             </div>
             <div class="documents-main">
                 <div class="documents-main-content">
-                    <div *ngFor="let patient of patient" class="documents-main-row">
-                        <a routerLink="/onepatientpage/{{patient._id}}"></a>
+                    <div *ngFor="let patient of patients" class="documents-main-row">
+                        <a routerLink="/onepatientpage/{{patient._id}}">
                         <app-mypatient  [patient] = 'patient'></app-mypatient>
+                    </a>
                     </div>
                 </div>
             </div>

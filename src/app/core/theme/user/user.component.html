@@ -10,6 +10,63 @@
 				>
 					<span class="material-icons">face</span>
 				</a>
+
+				<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/doctorspage"
+		class="nav__a"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">medical_services</span>
+		
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/pharmacy"
+		class="nav__a"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">local_pharmacy</span>
+		
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/allcomments"
+		class="nav__a"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">comment</span>
+		
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/clinicspage"
+		class="nav__a"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">local_hospital</span>
+		
+	</a>
+
+	<a
+		[routerLinkActiveOptions]="{ exact: true }"
+		routerLinkActive="_activeLink"
+		routerLink="/allplaces"
+		class="nav__a"
+		(click)="hideSidebar()"
+	>
+		<span class="material-icons">place</span>
+		
+	</a>
+	
+
 			</li>
 			<li class="nav__li _burger" (click)="showSidebar = !showSidebar">
 				<a class="nav__toggle" [class._active]="showSidebar">
@@ -221,7 +278,7 @@
 	</a>
 	<hr />
 
-	<a
+	<!--<a
 		[routerLinkActiveOptions]="{ exact: true }"
 		routerLinkActive="_activeLink"
 		routerLink="/doctorspage"
@@ -274,7 +331,7 @@
 	>
 		<span class="material-icons">place</span>
 		<span translate>Theme.Places</span>
-	</a>
+	</a> -->
 	
 			
 				

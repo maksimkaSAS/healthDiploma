@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
-import { ClinicpageComponent } from './clinicpage.component';
+import { OnepharmacypageComponent } from './onepharmacypage.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 	{
-		path: ':clinic_id',
-		component: ClinicpageComponent
+		path: ':pharmacy_id',
+		component: OnepharmacypageComponent
 	}
 ];
 
 @NgModule({
 	imports: [RouterModule.forChild(routes), CoreModule],
-	declarations: [ClinicpageComponent]
+	declarations: [OnepharmacypageComponent]
 })
-export class ClinicpageModule {}
+export class OnepharmacypageModule {}

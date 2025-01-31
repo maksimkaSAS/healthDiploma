@@ -8,7 +8,7 @@ import { HealthpatientService } from 'src/app/modules/healthpatient/services/hea
 	standalone: false
 })
 export class PatientsComponent {
-	get patient(): Healthpatient[] {
+	get patients(): Healthpatient[] {
 		return this._healthpatientService.healthpatients;
 	}
 	isMenuOpen=false;

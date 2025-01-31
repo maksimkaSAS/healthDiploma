@@ -19,4 +19,6 @@ export class PharmacyComponent {
 				this.pharmacies = pharmacies;
 			});
 	}
+
+	isMenuOpen=false;
 }
