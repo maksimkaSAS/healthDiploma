@@ -14,71 +14,64 @@
 
 			<li class="nav__li">
 				<a
-			[routerLinkActiveOptions]="{ exact: true }"
-			routerLinkActive="_activeLink"
-			routerLink="/doctorspage"
-			class="nav__a"
-			(click)="hideSidebar()"
-		>
-			<span class="material-icons">medical_services</span>
-			
-		</a>
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/doctorspage"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">medical_services </span>
+				</a>
 			</li>
 
 			<li class="nav__li">
 				<a
-				
-				[routerLinkActiveOptions]="{ exact: true }"
-				routerLinkActive="_activeLink"
-				routerLink="/pharmacy"
-				class="nav__a"
-				(click)="hideSidebar()"
-			>
-				<span class="material-icons">local_pharmacy</span>
-				
-			</a>
-			
-		
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/pharmacy"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">local_pharmacy</span>
+				</a>
 			</li>
 
-			
-	
-		
-	
-		<a
-			[routerLinkActiveOptions]="{ exact: true }"
-			routerLinkActive="_activeLink"
-			routerLink="/allcomments"
-			class="nav__a"
-			(click)="hideSidebar()"
-		>
-			<span class="material-icons">comment</span>
-			
-		</a>
-	
-		<a
-			[routerLinkActiveOptions]="{ exact: true }"
-			routerLinkActive="_activeLink"
-			routerLink="/clinicspage"
-			class="nav__a"
-			(click)="hideSidebar()"
-		>
-			<span class="material-icons">local_hospital</span>
-			
-		</a>
-	
-		<a
-			[routerLinkActiveOptions]="{ exact: true }"
-			routerLinkActive="_activeLink"
-			routerLink="/allplaces"
-			class="nav__a"
-			(click)="hideSidebar()"
-		>
-			<span class="material-icons">place</span>
-			
-		</a>
-		
-	
+			<li class="nav__li">
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/allcomments"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">comment</span>
+				</a>
+			</li>
+
+			<li class="nav__li">
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/clinicspage"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">local_hospital</span>
+				</a>
+			</li>
+
+			<li class="nav__li">
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/allplaces"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">place</span>
+				</a>
+			</li>
+
 			<li class="nav__li _burger" (click)="showSidebar = !showSidebar">
 				<a class="nav__toggle" [class._active]="showSidebar">
 					<span class="nav__toggle-line"></span>
@@ -206,90 +199,90 @@
 					<span translate>Theme.Treatment</span>
 				</a>
 				<a
-				[routerLinkActiveOptions]="{ exact: true }"
-				routerLinkActive="_activeLink"
-				routerLink="/symptoms"
-				class="nav__burger-link"
-				(click)="hideSidebar()"
-			>
-				<span class="material-icons">mood_bad</span>
-				<span translate>Theme.Symptoms</span>
-			</a>
-			<a
-				[routerLinkActiveOptions]="{ exact: true }"
-				routerLinkActive="_activeLink"
-				routerLink="/analysis"
-				class="nav__burger-link"
-				(click)="hideSidebar()"
-			>
-				<span class="material-icons">analytics</span>
-				<span translate>Theme.Analysis</span>
-			</a>
-			<a
-			[routerLinkActiveOptions]="{ exact: true }"
-			routerLinkActive="_activeLink"
-			routerLink="/clinics"
-			class="nav__burger-link"
-			(click)="hideSidebar()"
-		>
-			<span class="material-icons">local_hospital</span>
-			<span translate>Theme.Clinics</span>
-		</a>
-		<a
-		[routerLinkActiveOptions]="{ exact: true }"
-		routerLinkActive="_activeLink"
-		routerLink="/doctors"
-		class="nav__burger-link"
-		(click)="hideSidebar()"
-	>
-		<span class="material-icons">health_and_safety</span>
-		<span translate>Theme.Doctors</span>
-	</a>
-	<a
-		[routerLinkActiveOptions]="{ exact: true }"
-		routerLinkActive="_activeLink"
-		routerLink="/comments"
-		class="nav__burger-link"
-		(click)="hideSidebar()"
-	>
-		<span class="material-icons">comment</span>
-		<span translate>Theme.Comments</span>
-	</a>
-	<a
-		[routerLinkActiveOptions]="{ exact: true }"
-		routerLinkActive="_activeLink"
-		routerLink="/pharmacies"
-		class="nav__burger-link"
-		(click)="hideSidebar()"
-	>
-		<span class="material-icons">local_pharmacy</span>
-		<span translate>Theme.Pharmacies</span>
-	</a>
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/symptoms"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">mood_bad</span>
+					<span translate>Theme.Symptoms</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/analysis"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">analytics</span>
+					<span translate>Theme.Analysis</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/clinics"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">local_hospital</span>
+					<span translate>Theme.Clinics</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/doctors"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">health_and_safety</span>
+					<span translate>Theme.Doctors</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/comments"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">comment</span>
+					<span translate>Theme.Comments</span>
+				</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/pharmacies"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">local_pharmacy</span>
+					<span translate>Theme.Pharmacies</span>
+				</a>
 
-	<a
-		[routerLinkActiveOptions]="{ exact: true }"
-		routerLinkActive="_activeLink"
-		routerLink="/places"
-		class="nav__burger-link"
-		(click)="hideSidebar()"
-	>
-		<span class="material-icons">place</span>
-		<span translate>Theme.Places</span>
-	</a>
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/places"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">place</span>
+					<span translate>Theme.Places</span>
+				</a>
 
-	<a
-		[routerLinkActiveOptions]="{ exact: true }"
-		routerLinkActive="_activeLink"
-		routerLink="/trade"
-		class="nav__burger-link"
-		(click)="hideSidebar()"
-	>
-		<span class="material-icons">store</span>
-		<span translate>Theme.Trade</span>
-	</a>
-	<hr />
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/trade"
+					class="nav__burger-link"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">store</span>
+					<span translate>Theme.Trade</span>
+				</a>
+				<hr />
 
-	<!--<a
+				<!--<a
 		[routerLinkActiveOptions]="{ exact: true }"
 		routerLinkActive="_activeLink"
 		routerLink="/doctorspage"
@@ -343,9 +336,7 @@
 		<span class="material-icons">place</span>
 		<span translate>Theme.Places</span>
 	</a> -->
-	
-			
-				
+
 				<hr *ngIf="us.role('admin')" />
 			</div>
 		</div>

@@ -106,45 +106,41 @@ analysis.patient
 
 клініки, лікарі, аптеки в топ бар
 
-
 phone: Контактний номер телефону.
 email: Контактний email клініки.
 website: Офіційний вебсайт клініки (якщо є).
 working_hours: Графік роботи клініки.
 license_number: Номер ліцензії клініки (за потреби).
 
-*specialties(Список спеціальностей, які надаються в клініці (наприклад, кардіологія, хірургія, дерматологія).), *emergency_contact(Номер телефону або контакт для екстрених випадків.), 
-*clinic_type (Тип клініки (наприклад, приватна, державна, спеціалізована))
+*specialties(Список спеціальностей, які надаються в клініці (наприклад, кардіологія, хірургія, дерматологія).), *emergency_contact(Номер телефону або контакт для екстрених випадків.),
+\*clinic_type (Тип клініки (наприклад, приватна, державна, спеціалізована))
 
-
-{
-    phone: String
-},
+Doctors
 
 {
-    email: String
+phone: String,
+specialty: String,
+experienceYears: String,
+consultationFee: String,
 },
+
+Pharmacy
 
 {
-    website: String
+address: String,
+phone: String,
+email: String,
+workingHours: String,
+website: String,
+availableMedicines: String,
+deliveryAvailable: String,
 },
+
+Place
 
 {
-    working_hours: String
-},
-
-{
-   license_number: String
-},
-
-{
-   specialties: String
-},
-
-{
-   clinic_type: String
-},
-
-
-
-
+address: String,
+latitude: String,
+longitude: String,
+placeType: String,
+}
