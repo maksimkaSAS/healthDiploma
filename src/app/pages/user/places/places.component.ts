@@ -19,4 +19,5 @@ export class PlacesComponent {
 				this.places = places;
 			});
 	}
+	isMenuOpen = false;
 }

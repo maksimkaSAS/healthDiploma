@@ -5,4 +5,8 @@ export interface Healthdoctor extends CrudDocument {
 	description: string;
 	clinic: string;
 	patient: string;
+	phone: string;
+	specialty: string;
+	experienceYears: string;
+	consultationFee: string;
 }

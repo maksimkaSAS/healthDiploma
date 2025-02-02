@@ -75,6 +75,16 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'oneplacepage',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Oneplacepage'
+					}
+				},
+				loadChildren: () => import('./pages/user/oneplacepage/oneplacepage.module').then(m => m.OneplacepageModule)
+			}, 
+			{
 				path: 'onepharmacypage',
 				canActivate: [MetaGuard],
 				data: {
@@ -82,9 +92,12 @@ const routes: Routes = [
 						title: 'Onepharmacypage'
 					}
 				},
-				loadChildren: () => import('./pages/user/onepharmacypage/onepharmacypage.module').then(m => m.OnepharmacypageModule)
-			}, 
-		
+				loadChildren: () =>
+					import(
+						'./pages/user/onepharmacypage/onepharmacypage.module'
+					).then((m) => m.OnepharmacypageModule)
+			},
+
 			{
 				path: 'onepatientpage',
 				canActivate: [MetaGuard],
@@ -93,8 +106,11 @@ const routes: Routes = [
 						title: 'Onepatientpage'
 					}
 				},
-				loadChildren: () => import('./pages/user/onepatientpage/onepatientpage.module').then(m => m.OnepatientpageModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/onepatientpage/onepatientpage.module'
+					).then((m) => m.OnepatientpageModule)
+			},
 			{
 				path: 'allplaces',
 				canActivate: [MetaGuard],
