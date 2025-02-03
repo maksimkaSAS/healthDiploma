@@ -7,7 +7,13 @@ const routes: Routes = [
 	{
 		path: '',
 		component: DrugsComponent
-	}
+	},
+
+	/*{
+		path: ':record_id',
+		component: DrugsComponent
+	},*/
+
 ];
 
 @NgModule({

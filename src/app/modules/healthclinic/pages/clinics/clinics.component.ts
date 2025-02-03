@@ -7,6 +7,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthclinicFormComponents } from '../../formcomponents/healthclinic.formcomponents';
 import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './clinics.component.html',
@@ -14,6 +15,7 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false
 })
 export class ClinicsComponent {
+	record_id = this._router.url.includes('clinics/') ? this._router.url.replace('/clinics/', '') : '';
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm(
@@ -130,7 +132,8 @@ export class ClinicsComponent {
 		private _healthclinicService: HealthclinicService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
+		private _core: CoreService,
+		private _router: Router,
 	) {
 		this.setRows();
 	}
@@ -141,7 +144,7 @@ export class ClinicsComponent {
 		this._core.afterWhile(
 			this,
 			() => {
-				this._healthclinicService.get({ page }).subscribe((rows) => {
+				this._healthclinicService.get({ page, query: this._query() }).subscribe((rows) => {
 					this.rows.splice(0, this.rows.length);
 
 					this.rows.push(...rows);
@@ -219,5 +222,18 @@ export class ClinicsComponent {
 
 	private _preCreate(healthclinic: Healthclinic): void {
 		delete healthclinic.__created;
+
+		if (this.record_id) {
+			healthclinic.record = this.record_id;
+		}
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.record_id) {
+			query += (query ? '&' : '') + 'record=' + this.record_id;
+		}
+
+		return query;
 	}
 }

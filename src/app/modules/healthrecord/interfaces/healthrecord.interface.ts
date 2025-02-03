@@ -9,5 +9,5 @@ export interface Healthrecord extends CrudDocument {
 	doctor: string;
 	symptom: string;
 	analysis: string;
-	//clinic: string;
+	clinic: string;
 }

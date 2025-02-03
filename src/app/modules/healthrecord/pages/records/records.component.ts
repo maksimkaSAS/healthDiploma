@@ -83,6 +83,12 @@ export class RecordsComponent {
 		},
 		buttons: [
 			{
+							icon: 'local_hospital',
+							hrefFunc: (doc: Healthrecord): string => {
+								return '/clinics/' + doc._id;
+							}
+						},
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthrecord): void => {
 					this._form.modalUnique<Healthrecord>(

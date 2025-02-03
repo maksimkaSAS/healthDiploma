@@ -10,4 +10,5 @@ export interface Healthclinic extends CrudDocument {
 	licenseNumber: string;
 	clinicType: string;
 	description: string;
+	record: string;
 }

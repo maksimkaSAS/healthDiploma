@@ -6,6 +6,7 @@ import { FormService } from 'src/app/core/modules/form/form.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthdrugFormComponents } from '../../formcomponents/healthdrug.formcomponents';
+import { Router } from '@angular/router';
 
 @Component({
 	templateUrl: './drugs.component.html',
@@ -13,6 +14,7 @@ import { healthdrugFormComponents } from '../../formcomponents/healthdrug.formco
 	standalone: false
 })
 export class DrugsComponent {
+	//record_id = this._router.url.includes('drugs/') ? this._router.url.replace('/drugs/', '') : '';
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm(
@@ -64,7 +66,7 @@ export class DrugsComponent {
 			{
 				icon: 'place',
 				hrefFunc: (doc: Healthdrug): string => {
-					return '/places/' + doc._id;
+					return '/places/drugs/' + doc._id;
 				}
 			},
 
@@ -102,8 +104,32 @@ export class DrugsComponent {
 		private _healthdrugService: HealthdrugService,
 		private _alert: AlertService,
 		private _form: FormService,
-		private _core: CoreService
-	) {}
+		private _core: CoreService,
+		private _router: Router,
+	) {
+		this.setRows();
+		
+	}
+
+	setRows(page = this._page): void {
+		this._page = page;
+
+		this._core.afterWhile(
+			this,
+			() => {
+				this._healthdrugService
+					.get({ page, query: this._query() })
+					.subscribe((rows) => {
+						this.rows.splice(0, this.rows.length);
+
+						this.rows.push(...rows);
+					});
+			},
+			250
+		);
+	}
+
+	private _page = 1;
 
 	private _bulkManagement(create = true): () => void {
 		return (): void => {
@@ -151,5 +177,18 @@ export class DrugsComponent {
 
 	private _preCreate(healthdrug: Healthdrug): void {
 		delete healthdrug.__created;
+
+		/*if (this.record_id) {
+			healthdrug.record = this.record_id;
+		}*/
+	}
+
+	private _query(): string {
+		let query = '';
+		/*if (this.record_id) {
+			query += (query ? '&' : '') + 'record=' + this.record_id;
+		}*/
+
+		return query;
 	}
 }

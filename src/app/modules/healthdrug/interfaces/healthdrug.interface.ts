@@ -6,4 +6,5 @@ export interface Healthdrug extends CrudDocument {
 	dose: string;
 	frequency: string;
 	startDate: Date;
+	//record: string;
 }

@@ -7,6 +7,11 @@ const routes: Routes = [
 	{
 		path: '',
 		component: ClinicsComponent
+	},
+
+	{
+		path: ':record_id',
+		component: ClinicsComponent
 	}
 ];
 
