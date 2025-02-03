@@ -81,6 +81,13 @@ export class ClinicsComponent {
 		},
 		buttons: [
 			{
+				icon: 'assignment',
+				hrefFunc: (doc: Healthclinic): string => {
+					return '/records/clinics/' + doc._id;
+				}
+			},
+
+			{
 				icon: 'place',
 				hrefFunc: (doc: Healthclinic): string => {
 					return '/places/clinics/' + doc._id;
@@ -223,16 +230,16 @@ export class ClinicsComponent {
 	private _preCreate(healthclinic: Healthclinic): void {
 		delete healthclinic.__created;
 
-		if (this.record_id) {
+		/*if (this.record_id) {
 			healthclinic.record = this.record_id;
-		}
+		}*/
 	}
 
 	private _query(): string {
 		let query = '';
-		if (this.record_id) {
+		/*if (this.record_id) {
 			query += (query ? '&' : '') + 'record=' + this.record_id;
-		}
+		}*/
 
 		return query;
 	}

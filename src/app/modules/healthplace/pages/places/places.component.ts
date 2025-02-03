@@ -133,13 +133,16 @@ export class PlacesComponent {
 		private _core: CoreService,
 		private _route: ActivatedRoute
 	) {
-		this.setRows();
+		
 		this._route.paramMap.subscribe((params) => {
 			this.clinic_id = params.get('clinic_id') || '';
 			this.pharmacy_id = params.get('pharmacy_id') || '';
 			this.drug_id = params.get('drug_id') || '';
+			
 		});
+		this.setRows();
 	}
+	
 
 	setRows(page = this._page): void {
 		this._page = page;

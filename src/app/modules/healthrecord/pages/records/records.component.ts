@@ -82,12 +82,12 @@ export class RecordsComponent {
 			});
 		},
 		buttons: [
-			{
+			/*{
 							icon: 'local_hospital',
 							hrefFunc: (doc: Healthrecord): string => {
 								return '/clinics/' + doc._id;
 							}
-						},
+						},*/
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthrecord): void => {
@@ -121,6 +121,7 @@ export class RecordsComponent {
 	doctor_id = '';
 	symptom_id = '';
 	analysis_id = '';
+	clinic_id = '';
 	//disease_id = '';
 
 	constructor(
@@ -132,7 +133,7 @@ export class RecordsComponent {
 		private _router: Router,
 		private _route: ActivatedRoute
 	) {
-		this.setRows();
+		
 		this._route.paramMap.subscribe((params) => {
 			this.patient_id = params.get('patient_id') || '';
 			this.disease_id = params.get('disease_id') || '';
@@ -140,7 +141,10 @@ export class RecordsComponent {
 			this.doctor_id = params.get('doctor_id') || '';
 			this.symptom_id = params.get('symptom_id') || '';
 			this.analysis_id = params.get('analysis_id') || '';
+			this.clinic_id = params.get('clinic_id') || '';
 		});
+
+		this.setRows();
 		console.log(this.patient_id);
 
 		/*this._route.paramMap.subscribe(params => {this.disease_id = params.get('disease_id') || ''});
@@ -257,6 +261,10 @@ export class RecordsComponent {
 			healthrecord.analysis = this.analysis_id;
 		}
 
+		if (this.clinic_id) {
+			healthrecord.clinic = this.clinic_id;
+		}
+
 		/* if(this.disease_id) {
 			healthrecord.healthdisease = this.disease_id;
 			
@@ -287,6 +295,10 @@ export class RecordsComponent {
 
 		if (this.analysis_id) {
 			query += (query ? '&' : '') + 'analysis=' + this.analysis_id;
+		}
+
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
 		}
 
 		/*	if (this.disease_id) {

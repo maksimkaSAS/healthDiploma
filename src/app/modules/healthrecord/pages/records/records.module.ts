@@ -37,7 +37,12 @@ const routes: Routes = [
 	{
 		path: ':patient_id/analysis/:analysis_id',
 		component: RecordsComponent
-	}
+	},
+
+	{
+		path: ':clinics/:clinic_id',
+		component: RecordsComponent
+	},
 
 	/*{
 		path: ':disease_id',

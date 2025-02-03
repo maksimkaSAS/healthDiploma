@@ -20,7 +20,7 @@ const routes: Routes = [
 	},
 
 	{
-		path: 'drugs/:drugs_id',
+		path: 'drugs/:drug_id',
 		component: PlacesComponent
 	}
 ];

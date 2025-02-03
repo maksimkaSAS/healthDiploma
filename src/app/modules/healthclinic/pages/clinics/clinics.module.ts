@@ -9,10 +9,10 @@ const routes: Routes = [
 		component: ClinicsComponent
 	},
 
-	{
+	/*{
 		path: ':record_id',
 		component: ClinicsComponent
-	}
+	}*/
 ];
 
 @NgModule({

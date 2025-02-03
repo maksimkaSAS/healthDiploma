@@ -105,7 +105,7 @@ symptom.patient
 analysis.patient
 
 place in drug
-clinic in record
+record in clinic
 
 клініки, лікарі, аптеки в топ бар
 
