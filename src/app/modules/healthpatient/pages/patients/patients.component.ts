@@ -83,12 +83,12 @@ export class PatientsComponent {
 				}
 			},
 
-			{
+			/*{
 				icon: 'health_and_safety',
 				hrefFunc: (doc: Healthpatient): string => {
 					return '/doctors/' + doc._id;
 				}
-			},
+			},*/
 
 			{
 				icon: 'analytics',

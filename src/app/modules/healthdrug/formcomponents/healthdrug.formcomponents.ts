@@ -30,6 +30,51 @@ export const healthdrugFormComponents = {
 					value: 'Description',
 				}
 			]
-		}
+		},
+
+		{
+			name: 'Text',
+			key: 'dose',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'fill dose',
+				},
+				{
+					name: 'Label',
+					value: 'Dose',
+				}
+			]
+		},
+
+		{
+			name: 'Text',
+			key: 'frequency',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'fill frequency',
+				},
+				{
+					name: 'Label',
+					value: 'Frequency',
+				}
+			]
+		},
+
+		{
+			name: 'Text',
+			key: 'startDate',
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'fill start date',
+				},
+				{
+					name: 'Label',
+					value: 'Start date',
+				}
+			]
+		},
 	]
 }

@@ -1,16 +1,7 @@
 <div class="wrapper" id="wrapper">
 	<nav class="nav" (clickOutside)="showSidebar = false">
 		<ul class="nav__ul container" [class._active]="showSidebar">
-			<li class="nav__li">
-				<a
-					routerLinkActive="_activeLink"
-					(click)="showSidebar = false"
-					routerLink="/mypatients"
-					class="nav__a"
-				>
-					<span class="material-icons">face</span>
-				</a>
-			</li>
+			
 
 			<li class="nav__li">
 				<a
@@ -40,18 +31,6 @@
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/allcomments"
-					class="nav__a"
-					(click)="hideSidebar()"
-				>
-					<span class="material-icons">comment</span>
-				</a>
-			</li>
-
-			<li class="nav__li">
-				<a
-					[routerLinkActiveOptions]="{ exact: true }"
-					routerLinkActive="_activeLink"
 					routerLink="/clinicspage"
 					class="nav__a"
 					(click)="hideSidebar()"
@@ -62,13 +41,12 @@
 
 			<li class="nav__li">
 				<a
-					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
-					routerLink="/allplaces"
+					(click)="showSidebar = false"
+					routerLink="/mypatients"
 					class="nav__a"
-					(click)="hideSidebar()"
 				>
-					<span class="material-icons">place</span>
+					<span class="material-icons">face</span>
 				</a>
 			</li>
 

@@ -18,9 +18,9 @@ export class DoctorsComponent {
 	clinic_id = this._router.url.includes('doctors/')
 		? this._router.url.replace('/doctors/', '')
 		: '';
-	patient_id = this._router.url.includes('doctors/')
+	/*patient_id = this._router.url.includes('doctors/')
 		? this._router.url.replace('/doctors/', '')
-		: '';
+		: '';*/
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm(
@@ -94,12 +94,12 @@ export class DoctorsComponent {
 				}
 			},
 
-			{
+			/*{
 				icon: 'assignment',
 				hrefFunc: (doc: Healthdoctor): string => {
 					return '/records/' + doc.patient + '/doctors/' + doc._id;
 				}
-			},
+			},*/
 
 			{
 				icon: 'cloud_download',
@@ -230,9 +230,9 @@ export class DoctorsComponent {
 			healthdoctor.clinic = this.clinic_id;
 		}
 
-		if (this.patient_id) {
+	/*	if (this.patient_id) {
 			healthdoctor.patient = this.patient_id;
-		}
+		}*/
 	}
 
 	private _query(): string {
@@ -241,9 +241,9 @@ export class DoctorsComponent {
 			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
 		}
 
-		if (this.patient_id) {
+		/*if (this.patient_id) {
 			query += (query ? '&' : '') + 'clinic=' + this.patient_id;
-		}
+		}*/
 
 		return query;
 	}

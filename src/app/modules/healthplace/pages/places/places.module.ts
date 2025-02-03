@@ -17,6 +17,11 @@ const routes: Routes = [
 	{
 		path: 'pharmacies/:pharmacy_id',
 		component: PlacesComponent
+	},
+
+	{
+		path: 'drugs/:drugs_id',
+		component: PlacesComponent
 	}
 ];
 

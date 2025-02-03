@@ -10,12 +10,15 @@ import { healthdrugFormComponents } from '../../formcomponents/healthdrug.formco
 @Component({
 	templateUrl: './drugs.component.html',
 	styleUrls: ['./drugs.component.scss'],
-	standalone: false,
+	standalone: false
 })
 export class DrugsComponent {
 	columns = ['name', 'description'];
 
-	form: FormInterface = this._form.getForm('healthdrug', healthdrugFormComponents);
+	form: FormInterface = this._form.getForm(
+		'healthdrug',
+		healthdrugFormComponents
+	);
 
 	config = {
 		create: (): void => {
@@ -27,7 +30,7 @@ export class DrugsComponent {
 					this._healthdrugService.create(created as Healthdrug);
 
 					close();
-				},
+				}
 			});
 		},
 		update: (doc: Healthdrug): void => {
@@ -46,37 +49,48 @@ export class DrugsComponent {
 				),
 				buttons: [
 					{
-						text: this._translate.translate('Common.No'),
+						text: this._translate.translate('Common.No')
 					},
 					{
 						text: this._translate.translate('Common.Yes'),
 						callback: (): void => {
 							this._healthdrugService.delete(doc);
-						},
-					},
-				],
+						}
+					}
+				]
 			});
 		},
 		buttons: [
 			{
+				icon: 'place',
+				hrefFunc: (doc: Healthdrug): string => {
+					return '/places/' + doc._id;
+				}
+			},
+
+			{
 				icon: 'cloud_download',
 				click: (doc: Healthdrug): void => {
-					this._form.modalUnique<Healthdrug>('healthdrug', 'url', doc);
-				},
-			},
+					this._form.modalUnique<Healthdrug>(
+						'healthdrug',
+						'url',
+						doc
+					);
+				}
+			}
 		],
 		headerButtons: [
 			{
 				icon: 'playlist_add',
 				click: this._bulkManagement(),
-				class: 'playlist',
+				class: 'playlist'
 			},
 			{
 				icon: 'edit_note',
 				click: this._bulkManagement(false),
-				class: 'edit',
-			},
-		],
+				class: 'edit'
+			}
+		]
 	};
 
 	get rows(): Healthdrug[] {
@@ -106,7 +120,8 @@ export class DrugsComponent {
 						for (const healthdrug of this.rows) {
 							if (
 								!healthdrugs.find(
-									(localHealthdrug) => localHealthdrug._id === healthdrug._id
+									(localHealthdrug) =>
+										localHealthdrug._id === healthdrug._id
 								)
 							) {
 								this._healthdrugService.delete(healthdrug);
@@ -115,7 +130,8 @@ export class DrugsComponent {
 
 						for (const healthdrug of healthdrugs) {
 							const localHealthdrug = this.rows.find(
-								(localHealthdrug) => localHealthdrug._id === healthdrug._id
+								(localHealthdrug) =>
+									localHealthdrug._id === healthdrug._id
 							);
 
 							if (localHealthdrug) {

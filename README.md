@@ -100,9 +100,12 @@ wHealth \*\*\* — це мобільний додаток для управлі�
 
 disease.patient
 treatment.patient
-doctor.patient
+--doctor.patient (deleted)
 symptom.patient
 analysis.patient
+
+place in drug
+clinic in record
 
 клініки, лікарі, аптеки в топ бар
 
@@ -144,3 +147,29 @@ latitude: String,
 longitude: String,
 placeType: String,
 }
+
+---
+
+Patient
+
+{
+
+ dateOfBirth: String,  
+ gender: String,  
+ phone: String,  
+ email: String,  
+ address: String,  
+}
+
+Drug
+
+ {
+  medicationName: String,   
+  dose: String,             
+  frequency: String,        
+  startDate: Date, 
+}
+
+
+
+

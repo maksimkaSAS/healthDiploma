@@ -5,6 +5,7 @@ export interface Healthplace extends CrudDocument {
 	description: string;
 	clinic: string;
 	pharmacy: string;
+	drug:string;
 	address: string;
 	latitude: string;
 	longitude: string;

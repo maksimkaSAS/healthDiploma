@@ -15,6 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 	standalone: false
 })
 export class PlacesComponent {
+	/*drug_id = this._router.url.includes('drugs/')
+		? this._router.url.replace('/drugs/', '')
+		: '';*/
 	columns = ['name', 'description'];
 
 	form: FormInterface = this._form.getForm(
@@ -120,6 +123,7 @@ export class PlacesComponent {
 
 	clinic_id = '';
 	pharmacy_id = '';
+	drug_id = '';
 
 	constructor(
 		private _translate: TranslateService,
@@ -133,6 +137,7 @@ export class PlacesComponent {
 		this._route.paramMap.subscribe((params) => {
 			this.clinic_id = params.get('clinic_id') || '';
 			this.pharmacy_id = params.get('pharmacy_id') || '';
+			this.drug_id = params.get('drug_id') || '';
 		});
 	}
 
@@ -221,6 +226,10 @@ export class PlacesComponent {
 		if (this.pharmacy_id) {
 			healthplace.pharmacy = this.pharmacy_id;
 		}
+
+		if (this.drug_id) {
+			healthplace.drug = this.drug_id;
+		}
 	}
 
 	private _query(): string {
@@ -231,6 +240,10 @@ export class PlacesComponent {
 
 		if (this.pharmacy_id) {
 			query += (query ? '&' : '') + 'pharmacy=' + this.pharmacy_id;
+		}
+
+		if (this.drug_id) {
+			query += (query ? '&' : '') + 'drug=' + this.drug_id;
 		}
 
 		return query;
