@@ -1,7 +1,13 @@
 <!--{{patient|json}}-->
-<div class="documents__title">
-    {{patient.name}}
-</div>
-<div class="documents__description">
-    {{patient.description}}
-</div>
+<a routerLink="/onepatientpage/{{patient._id}}">
+    <div class="documents__title">
+        {{patient.name}}
+    </div>
+    <div class="documents__description">
+        {{patient.description}}
+    </div>           
+</a>
+
+<a routerLink="/patienthistory/{{patient._id}}" class="nav__burger-link">
+    <span class="material-icons">folder</span>
+</a>

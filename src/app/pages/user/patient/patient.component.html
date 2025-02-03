@@ -21,9 +21,8 @@
             <div class="documents-main">
                 <div class="documents-main-content">
                     <div *ngFor="let patient of patients" class="documents-main-row">
-                        <a routerLink="/onepatientpage/{{patient._id}}">
                         <app-mypatient  [patient] = 'patient'></app-mypatient>
-                    </a>
+                        
                     </div>
                 </div>
             </div>
