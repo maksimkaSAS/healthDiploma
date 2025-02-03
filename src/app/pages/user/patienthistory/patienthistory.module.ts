@@ -2,13 +2,10 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
 import { PatienthistoryComponent } from './patienthistory.component';
 import { Routes, RouterModule } from '@angular/router';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: PatienthistoryComponent
-	},
-
+	
 	{
 		path: ':patient_id',
 		component: PatienthistoryComponent
@@ -17,6 +14,6 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [RouterModule.forChild(routes), CoreModule],
-	declarations: [PatienthistoryComponent]
+	declarations: [PatienthistoryComponent, HistoryComponent]
 })
 export class PatienthistoryModule {}
