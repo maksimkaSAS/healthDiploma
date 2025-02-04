@@ -20,15 +20,26 @@ export class PatienthistoryComponent {
 		this._route.paramMap.subscribe((params) => {
 			this.patient_id = params.get('patient_id') || '';
 		});
+
+		this.load();
 	}
 
-	ngOnInit(): void {
+	load(): void {
+		this._healthrecordService
+			.get({ page: 1, query: this._query() })
+			.subscribe((records) => {
+				this.records.splice(this.records.length);
+				this.records.push(...records);
+			});
+	}
+
+	/*ngOnInit(): void {
 		this._healthrecordService
 			.get({ query: this._query() })
 			.subscribe((records) => {
 				this.records = records;
 			});
-	}
+	}*/
 
 	private _query(): string {
 		let query = '';
