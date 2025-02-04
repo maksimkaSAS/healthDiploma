@@ -16,4 +16,5 @@ export class OnepatienthistoryComponent {
 			private _healthrecordService: HealthrecordService,
 			private _router: Router
 		) {}
+		isMenuOpen = false;
 }

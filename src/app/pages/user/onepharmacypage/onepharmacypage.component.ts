@@ -17,4 +17,6 @@ export class OnepharmacypageComponent {
 		private _router: Router
 	) {}
 
+	isMenuOpen = false;
+
 }

@@ -1,7 +1,71 @@
-<h1>{{onepatient.name}}</h1>
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+	<div class="documents-container">
+		<div class="documents-list">
+			<div
+				class="burger-wrap"
+				class="burger-wrap"
+				(click)="isMenuOpen=!isMenuOpen"
+				[class.burger-wrap--open]="isMenuOpen"
+			>
+				<div class="burger" [class.burger--close]="isMenuOpen"></div>
+			</div>
+			<div
+				class="documents-sidebar"
+				[class.documents-sidebar--open]="isMenuOpen"
+			>
+				<div class="documents-sidebar-content">
+
+					 <wbutton (click) = "update(onepatient)">Update</wbutton>  
+					 <wbutton (click) = "delete(onepatient)">Delete</wbutton>  
+					<!--<div class="documents-sidebar__img">
+						<img src="assets/default.png" alt="" />
+					</div>
+					<div class="documents-sidebar__title">
+						Title of sidebar...
+					</div>
+					<div class="documents-sidebar__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Sint molestiae consequatur quae. Modi corporis rem amet
+						tempore debitis assumenda minima repellat labore
+						expedita quam. Itaque accusamus culpa ullam
+						necessitatibus nisi.
+					</div>-->
+				</div>
+			</div>
+			<div class="documents-main">
+				<div class="documents-main-content">
+					<div class="documents-main-row">
+						<div class="documents__name">
+							{{onepatient.name}}
+						</div>
+						<div class="documents__description">
+							{{onepatient.dateOfBirth}}
+						</div>
+						<div class="documents__gender">
+							{{onepatient.gender}}
+						</div>
+						<div class="documents__phone">
+							{{onepatient.phone}}
+						</div>
+						<div class="documents__email">
+							{{onepatient.email}}
+						</div>
+						<div class="documents__address">
+                            {{onepatient.address}}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--<h1>{{onepatient.name}}</h1>
 <h1>{{onepatient.dateOfBirth}}</h1>
 <h1>{{onepatient.gender}}</h1>
 <h1>{{onepatient.phone}}</h1>
 <h1>{{onepatient.email}}</h1>
-<h1>{{onepatient.address}}</h1>
+<h1>{{onepatient.address}}</h1>-->
 

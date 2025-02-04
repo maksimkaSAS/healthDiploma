@@ -1,8 +1,74 @@
-<h1>{{onepharmacy.name}}</h1>
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+	<div class="documents-container">
+		<div class="documents-list">
+			<div
+				class="burger-wrap"
+				class="burger-wrap"
+				(click)="isMenuOpen=!isMenuOpen"
+				[class.burger-wrap--open]="isMenuOpen"
+			>
+				<div class="burger" [class.burger--close]="isMenuOpen"></div>
+			</div>
+			<div
+				class="documents-sidebar"
+				[class.documents-sidebar--open]="isMenuOpen"
+			>
+				<div class="documents-sidebar-content">
+					<div class="documents-sidebar__img">
+						<img src="assets/default.png" alt="" />
+					</div>
+					<div class="documents-sidebar__title">
+						Title of sidebar...
+					</div>
+					<div class="documents-sidebar__description">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Sint molestiae consequatur quae. Modi corporis rem amet
+						tempore debitis assumenda minima repellat labore
+						expedita quam. Itaque accusamus culpa ullam
+						necessitatibus nisi.
+					</div>
+				</div>
+			</div>
+			<div class="documents-main">
+				<div class="documents-main-content">
+					<div class="documents-main-row">
+						<div class="documents__name">
+							{{onepharmacy.name}}
+						</div>
+						<div class="documents__description">
+							{{onepharmacy.address}}
+						</div>
+						<div class="documents__gender">
+							{{onepharmacy.phone}}
+						</div>
+						<div class="documents__phone">
+							{{onepharmacy.email}}
+						</div>
+						<div class="documents__email">
+                            {{onepharmacy.workingHours}}
+						</div>
+						<div class="documents__address">
+                            {{onepharmacy.website}}
+						</div>
+                        <div class="documents__address">
+                            {{onepharmacy.availableMedicines}}
+						</div>
+                        <div class="documents__address">
+                            {{onepharmacy.deliveryAvailable}}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<h1>{{onepharmacy.name}}</h1>
 <h1>{{onepharmacy.address}}</h1>
 <h1>{{onepharmacy.phone}}</h1>
 <h1>{{onepharmacy.email}}</h1>
 <h1>{{onepharmacy.workingHours}}</h1>
 <h1>{{onepharmacy.website}}</h1>
 <h1>{{onepharmacy.availableMedicines}}</h1>
-<h1>{{onepharmacy.deliveryAvailable}}</h1>
+<h1>{{onepharmacy.deliveryAvailable}}</h1>-->

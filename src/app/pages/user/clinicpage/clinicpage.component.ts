@@ -17,4 +17,6 @@ export class ClinicpageComponent {
 			private _healthclinicService: HealthclinicService,
 			private _router: Router
 		) {}
+
+		isMenuOpen = false;
 }
