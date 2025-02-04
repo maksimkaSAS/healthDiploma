@@ -92,12 +92,7 @@ export class PharmaciesComponent {
 				}
 			},
 
-			{
-				icon: 'comment',
-				hrefFunc: (doc: Healthpharmacy): string => {
-					return '/comments/' + doc.clinic + '/pharmacies/' + doc._id;
-				}
-			},
+		
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthpharmacy): void => {
