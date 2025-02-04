@@ -171,5 +171,16 @@ Drug
 }
 
 
+Records
+{
+    diagnosis: string;
+    visitDate: date;
+    allergy; string;
+    result: string;
+    treatmentType: string;
+}
+
+сайдбар
+
 
 

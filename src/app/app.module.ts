@@ -75,6 +75,16 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'onepatienthistory',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Onepatienthistory'
+					}
+				},
+				loadChildren: () => import('./pages/user/onepatienthistory/onepatienthistory.module').then(m => m.OnepatienthistoryModule)
+			}, 
+			{
 				path: 'oneplacepage',
 				canActivate: [MetaGuard],
 				data: {

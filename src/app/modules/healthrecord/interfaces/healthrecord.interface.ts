@@ -10,4 +10,9 @@ export interface Healthrecord extends CrudDocument {
 	symptom: string;
 	analysis: string;
 	clinic: string;
+	diagnosis: string;
+	visitDate: Date;
+	allergy: string;
+	result: string;
+	treatmentType: string;
 }

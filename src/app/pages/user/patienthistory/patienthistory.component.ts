@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Healthrecord } from 'src/app/modules/healthrecord/interfaces/healthrecord.interface';
 import { HealthrecordService } from 'src/app/modules/healthrecord/services/healthrecord.service';
 
@@ -9,16 +10,34 @@ import { HealthrecordService } from 'src/app/modules/healthrecord/services/healt
 })
 export class PatienthistoryComponent {
 	records: Healthrecord[] = [];
-	
-		constructor(private _healthrecordService: HealthrecordService) {}
-	
-		ngOnInit(): void {
-			this._healthrecordService
-				.get({}, { name: 'public' })
-				.subscribe((records) => {
-					this.records = records;
-				});
+
+	patient_id = '';
+
+	constructor(
+		private _healthrecordService: HealthrecordService,
+		private _route: ActivatedRoute
+	) {
+		this._route.paramMap.subscribe((params) => {
+			this.patient_id = params.get('patient_id') || '';
+		});
+	}
+
+	ngOnInit(): void {
+		this._healthrecordService
+			.get({ query: this._query() })
+			.subscribe((records) => {
+				this.records = records;
+			});
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.patient_id) {
+			query += (query ? '&' : '') + 'patient=' + this.patient_id;
 		}
-	
-		isMenuOpen=false;
+
+		return query;
+	}
+
+	isMenuOpen = false;
 }

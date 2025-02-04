@@ -21,7 +21,7 @@
             <div class="documents-main">
                 <div class="documents-main-content">
                     <div *ngFor="let record of records" class="documents-main-row">
-                        <a routerLink="/patienthistory/{{record._id}}">
+                        <a routerLink="/onepatienthistory/{{record._id}}">
                         <app-history  [record] = 'record'></app-history>
                     </a>
                     </div>
