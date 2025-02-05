@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormService } from 'src/app/core/modules/form/form.service';
+import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
 
@@ -10,15 +13,52 @@ import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/h
 export class PharmacyComponent {
 	pharmacies: Healthpharmacy[] = [];
 
-	constructor(private _healthpharmacyService: HealthpharmacyService) {}
+	constructor(
+		private _healthpharmacyService: HealthpharmacyService,
+		private _form: FormService
+	) {this.load();}
 
-	ngOnInit(): void {
+	load(): void {
+		this._healthpharmacyService
+			.get({}, { name: 'public' })
+			.subscribe((pharmacies) => {
+				this.pharmacies.splice(0, this.pharmacies.length);
+				this.pharmacies.push(...pharmacies);
+			});
+	}
+
+	form: FormInterface = this._form.getForm(
+			'clinic',
+			healthpharmacyFormComponents
+		);
+
+		create(): void {
+				this._form.modal<Healthpharmacy>(this.form, {
+					label: 'Create',
+					click: async (
+						created: unknown,
+						close: () => void
+					): Promise<void> => {
+						close();
+		
+						this._healthpharmacyService
+							.create(created as Healthpharmacy)
+							.subscribe(() => {
+								this.load();
+							});
+		
+						close();
+					}
+				});
+			}
+
+	/*ngOnInit(): void {
 		this._healthpharmacyService
 			.get({}, { name: 'public' })
 			.subscribe((pharmacies) => {
 				this.pharmacies = pharmacies;
 			});
-	}
+	}*/
 
-	isMenuOpen=false;
+	isMenuOpen = false;
 }

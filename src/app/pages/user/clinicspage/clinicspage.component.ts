@@ -17,20 +17,31 @@ export class ClinicspageComponent {
 
 	constructor(
 		private _healthclinicService: HealthclinicService,
-		
-		private _form: FormService,
-		
-	) {}
+
+		private _form: FormService
+	) {
+		this.load();
+	}
 
 	isMenuOpen = false;
 
-	ngOnInit(): void {
+	load(): void {
+		this._healthclinicService
+			.get({}, { name: 'public' })
+			.subscribe((clinics) => {
+				this.clinics.splice(0, this.clinics.length);
+				this.clinics.push(...clinics);
+			});
+	}
+
+	/*ngOnInit(): void {
 		this._healthclinicService
 			.get({}, { name: 'public' })
 			.subscribe((clinics) => {
 				this.clinics = clinics;
 			});
-	}
+	}*/
+
 	form: FormInterface = this._form.getForm(
 		'clinic',
 		healthclinicFormComponents
@@ -38,10 +49,17 @@ export class ClinicspageComponent {
 	create(): void {
 		this._form.modal<Healthclinic>(this.form, {
 			label: 'Create',
-			click:  (created: unknown, close: () => void) => {
+			click: async (
+				created: unknown,
+				close: () => void
+			): Promise<void> => {
 				close();
 
-				this._healthclinicService.create(created as Healthclinic);
+				this._healthclinicService
+					.create(created as Healthclinic)
+					.subscribe(() => {
+						this.load();
+					});
 
 				close();
 			}

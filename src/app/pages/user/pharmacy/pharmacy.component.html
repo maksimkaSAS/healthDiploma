@@ -14,16 +14,17 @@
                         Title of sidebar...
                     </div>
                     <div class="documents-sidebar__description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint molestiae consequatur quae. Modi corporis rem amet tempore debitis assumenda minima repellat labore expedita quam. Itaque accusamus culpa ullam necessitatibus nisi.
+                        <wbutton (click) = "create()">Create</wbutton>
                     </div>
                 </div>
             </div>
             <div class="documents-main">
                 <div class="documents-main-content">
                     <div *ngFor="let pharmacy of pharmacies" class="documents-main-row">
-                        <a routerLink="/onepharmacypage/{{pharmacy._id}}">
-                        <app-mypharmacy  [pharmacy] = 'pharmacy'></app-mypharmacy>
-                    </a>
+                        
+                        <app-mypharmacy  [pharmacy] = 'pharmacy'
+                        (load) = 'load()'></app-mypharmacy>
+               
                     </div>
                 </div>
             </div>

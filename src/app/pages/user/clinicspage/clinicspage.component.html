@@ -23,8 +23,9 @@
                 <div class="documents-main-content">
                     <div *ngFor="let clinic of clinics" class="documents-main-row">
                        
-                        <app-clinic  [clinic] = 'clinic'></app-clinic>
-                  
+                        <app-clinic  [clinic] = 'clinic'
+                        (load) = 'load()'></app-clinic>
+                        
                     </div>
                 </div>
             </div>

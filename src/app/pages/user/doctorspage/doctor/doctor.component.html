@@ -1,2 +1,9 @@
 
-<div class="documents__title">{{doctor.name}}</div>
+
+
+<a routerLink="/doctorpage/{{doctor._id}}">
+    <div class="documents__title">{{doctor.name}}</div>
+</a>
+
+<span (click) = "update(doctor)" class="material-icons">edit</span>
+<span (click) = "delete(doctor)" class="material-icons">delete</span>
