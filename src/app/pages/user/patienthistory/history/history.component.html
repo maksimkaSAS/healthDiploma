@@ -1,1 +1,8 @@
-<div class="documents__description">{{record.name}}</div>
+
+<a routerLink="/onepatienthistory/{{record._id}}">
+    <div class="documents__description">{{record.name}}</div>
+</a>
+
+
+<span (click) = "update(record)" class="material-icons">edit</span>
+<span (click) = "delete(record)" class="material-icons">delete</span>
