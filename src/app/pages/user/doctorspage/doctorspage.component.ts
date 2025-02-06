@@ -35,10 +35,7 @@ export class DoctorspageComponent {
 		
 	}
 
-	resetFilter(): void {
-        this.clinic_id = '';  // Скидаємо фільтр
-        this.load();  // Перезавантажуємо список лікарів
-    }
+	
 
 	form: FormInterface = this._form.getForm(
 			'clinic',
