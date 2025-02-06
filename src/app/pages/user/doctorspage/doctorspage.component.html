@@ -1,38 +1,42 @@
-
 <div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen"> 
     <div class="documents-container">
         <div class="documents-list">
-            <div class="burger-wrap" class="burger-wrap"  (click)="isMenuOpen=!isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
+            <div class="burger-wrap" (click)="isMenuOpen = !isMenuOpen" [class.burger-wrap--open]="isMenuOpen">
                 <div class="burger" [class.burger--close]="isMenuOpen"></div>
             </div> 
             <div class="documents-sidebar" [class.documents-sidebar--open]="isMenuOpen">
                 <div class="documents-sidebar-content">
                     <div class="documents-sidebar__img">
-                        <img src="assets/default.png" alt="">
+                        <img src="assets/default.png" alt=""/>
                     </div>
                     <div class="documents-sidebar__title">
                         Title of sidebar...
                     </div>
                     <div class="documents-sidebar__description">
-                        <wbutton (click) = "create()">Create</wbutton>
-                       </div>
-                </div>
-            </div>
-            <div class="documents-main">
-                <div class="documents-main-content">
-                    <div *ngFor="let doctor of doctors" class="documents-main-row">
-                       
-                        <app-doctor  [doctor] = 'doctor'
-                        (load) = 'load()'></app-doctor>
-                    
+                        <wbutton (click)="create()">Create</wbutton>
+                        <healthclinic-selector 
+                            [value]="clinic_id" 
+                            (wChange)="clinic_id = $event; load()">
+                        </healthclinic-selector>
+
+                        <button class="reset-button" (click)="resetFilter()">
+                            <span class="reset-icon">×</span>  <!-- Хрестик -->
+                        </button>
+                        
                     </div>
                 </div>
             </div>
 
+            <div class="documents-main">
+                <div class="documents-main-content">
+                    
+                    <ng-container *ngFor="let doctor of doctors">
+                        <div class="documents-main-row">
+                            <app-doctor [doctor]="doctor" (load)="load()"></app-doctor>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-

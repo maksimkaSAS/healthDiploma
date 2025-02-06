@@ -12,6 +12,8 @@ import {
 	providedIn: 'root',
 })
 export class HealthclinicService extends CrudService<Healthclinic> {
+	healthclinics: Healthclinic[] = this.getDocs();
+	
 	constructor(
 		_http: HttpService,
 		_store: StoreService,

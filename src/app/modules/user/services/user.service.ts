@@ -33,7 +33,7 @@ export class UserService extends CrudService<User> {
 		_store: StoreService,
 		_alert: AlertService,
 		_core: CoreService,
-		private _router: Router
+		private _router: Router,
 	) {
 		super(
 			{
@@ -156,6 +156,8 @@ export class UserService extends CrudService<User> {
 		setTimeout(() => {
 			location.reload();
 		}, 100);
+
+		this.core.emit('wipe');
 	}
 
 	updateAdmin(user: User): void {

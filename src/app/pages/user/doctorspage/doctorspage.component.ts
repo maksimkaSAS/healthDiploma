@@ -11,6 +11,8 @@ import { HealthdoctorService } from 'src/app/modules/healthdoctor/services/healt
 	standalone: false
 })
 export class DoctorspageComponent {
+	//TODO clinic_id = '';
+	clinic_id = '';
 	doctors: Healthdoctor[] = [];
 
 	constructor(private _healthdoctorService: HealthdoctorService,
@@ -18,17 +20,25 @@ export class DoctorspageComponent {
 	) {
 		this.load();
 	}
+
 	isMenuOpen=false;
 
 	load(): void {
 		this._healthdoctorService
-			.get({}, { name: 'public' })
+			.get({
+				query: this.clinic_id ? 'clinic=' + this.clinic_id : ''
+			}, { name: 'public' })
 			.subscribe((doctors) => {
 				this.doctors.splice(0, this.doctors.length);
 				this.doctors.push(...doctors);
 			});
 		
 	}
+
+	resetFilter(): void {
+        this.clinic_id = '';  // Скидаємо фільтр
+        this.load();  // Перезавантажуємо список лікарів
+    }
 
 	form: FormInterface = this._form.getForm(
 			'clinic',

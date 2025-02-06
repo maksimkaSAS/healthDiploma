@@ -105,7 +105,7 @@ export class SignComponent {
 		private _router: Router,
 		private _form: FormService,
 		private _translate: TranslateService,
-		private _core: CoreService
+		
 	) {}
 
 	submit(): void {
@@ -181,7 +181,7 @@ export class SignComponent {
 	private _set = (user: User): void => {
 		if (user) {
 
-			this._core.emit('wipe');
+	
 			const token = (user as unknown as { token: string }).token || '';
 
 			if (token) {

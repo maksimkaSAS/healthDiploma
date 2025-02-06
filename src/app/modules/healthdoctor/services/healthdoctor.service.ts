@@ -12,6 +12,7 @@ import {
 	providedIn: 'root',
 })
 export class HealthdoctorService extends CrudService<Healthdoctor> {
+	healthdoctors: Healthdoctor[];
 	constructor(
 		_http: HttpService,
 		_store: StoreService,
