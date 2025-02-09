@@ -13,6 +13,7 @@ import { AlertService, CoreService } from 'wacom';
 	standalone: false
 })
 export class ClinicspageComponent {
+	place_id = '';
 	clinics: Healthclinic[] = [];
 
 	constructor(
@@ -27,7 +28,12 @@ export class ClinicspageComponent {
 
 	load(): void {
 		this._healthclinicService
-			.get({}, { name: 'public' })
+			.get(
+				{
+					query: this.place_id ? 'place=' + this.place_id : ''
+				},
+				{ name: 'public' }
+			)
 			.subscribe((clinics) => {
 				this.clinics.splice(0, this.clinics.length);
 				this.clinics.push(...clinics);
