@@ -22,7 +22,7 @@
 					</div>
 					<div class="documents-sidebar__description">
 						<wbutton (click)="create()">Create</wbutton>
-
+						{{place_id}}
 						<healthplace-selector
 							[value]="place_id"
 							(wChange)="place_id = $event; load()"

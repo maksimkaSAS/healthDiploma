@@ -48,16 +48,40 @@ export const healthpatientFormComponents = {
 		},
 
 		{
-			name: 'Text',
+			name: 'Select',
 			key: 'gender',
+			fields: [
+			  {
+				name: 'Placeholder',
+				value: 'Select gender',
+			  },
+			  {
+				name: 'Label',
+				value: 'Gender',
+			  },
+			  {
+				name: 'Items',
+				value: ['Male', 'Female'],
+			  }
+			]
+		  },
+
+		{
+			name: 'Select',
+			key: 'category',
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill gender',
+					value: 'fill patient category',
 				},
 				{
 					name: 'Label',
-					value: 'Gender',
+					value: 'Patient category',
+				},
+
+				{
+				  name: 'Items',
+				  value: ['Child', 'Adult', 'Elderly'],
 				}
 			]
 		},

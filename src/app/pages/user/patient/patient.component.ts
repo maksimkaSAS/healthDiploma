@@ -15,24 +15,61 @@ export class PatientsComponent {
 		return this._healthpatientService.healthpatients;
 	}
 
-	form: FormInterface = this._form.getForm('patient', healthpatientFormComponents);
-	isMenuOpen=false;
-	constructor(private _healthpatientService: HealthpatientService, private _form: FormService,) {}
+	gender = '';
+	category = '';
+	search = '';
+
+	load(): void {
+		this._healthpatientService
+			.get(
+				{
+					query: this._query()
+				}
+				// { name: 'public' }
+			)
+			.subscribe((patients) => {
+				this.patients.splice(0, this.patients.length);
+				// const patientGender = patients.filter(
+				// 	(patients) => !this.gender || patients.gender === this.gender
+				// );
+				this.patients.push(...patients);
+			});
+	}
+
+	private _query(): string {
+		let query = '';
+		if (this.gender) {
+			query += (query ? '&' : '') + 'gender=' + this.gender;
+		}
+
+		if (this.category) {
+			query += (query ? '&' : '') + 'category=' + this.category;
+		}
+
+		if (this.search) {
+			query += (query ? '&' : '') + 'search=' + this.search;
+		}
+		return query;
+	}
+
+	form: FormInterface = this._form.getForm(
+		'patient',
+		healthpatientFormComponents
+	);
+	isMenuOpen = false;
+	constructor(
+		private _healthpatientService: HealthpatientService,
+		private _form: FormService
+	) {}
 
 	create(): void {
 		this._form.modal<Healthpatient>(this.form, {
 			label: 'Create',
 			click: (created: unknown, close: () => void) => {
-				
-
 				this._healthpatientService.create(created as Healthpatient);
 
 				close();
 			}
-		
 		});
-	
+	}
 }
-}
-
-
