@@ -75,6 +75,17 @@ const routes: Routes = [
 		children: [
 			/* user */
 			{
+				path: 'links',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Links'
+					}
+				},
+				loadChildren: () => import('./modules/healthlink/pages/links/links.module').then(m => m.LinksModule)
+			}, 
+		
+			{
 				path: 'onepatienthistory',
 				canActivate: [MetaGuard],
 				data: {

@@ -16,7 +16,7 @@ import { Healthdrug } from '../../interfaces/healthdrug.interface';
 	styleUrls: ['./healthdrug-selector.component.scss'],
 	imports: [SelectModule]
 })
-export class SelectUserComponent implements OnChanges {
+export class SelectHealthdrugComponent implements OnChanges {
 	@Input() value: string;
 
 	@Output() wChange = new EventEmitter();

@@ -124,6 +124,7 @@ export class PlacesComponent {
 	clinic_id = '';
 	pharmacy_id = '';
 	drug_id = '';
+	link_id = '';
 
 	constructor(
 		private _translate: TranslateService,
@@ -138,6 +139,7 @@ export class PlacesComponent {
 			this.clinic_id = params.get('clinic_id') || '';
 			this.pharmacy_id = params.get('pharmacy_id') || '';
 			this.drug_id = params.get('drug_id') || '';
+			this.link_id = params.get('link_id') || '';
 			
 		});
 		this.setRows();
@@ -233,6 +235,10 @@ export class PlacesComponent {
 		if (this.drug_id) {
 			healthplace.drug = this.drug_id;
 		}
+
+		if (this.link_id) {
+			healthplace.link = this.link_id;
+		}
 	}
 
 	private _query(): string {
@@ -247,6 +253,10 @@ export class PlacesComponent {
 
 		if (this.drug_id) {
 			query += (query ? '&' : '') + 'drug=' + this.drug_id;
+		}
+
+		if (this.link_id) {
+			query += (query ? '&' : '') + 'link=' + this.link_id;
 		}
 
 		return query;

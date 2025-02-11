@@ -22,6 +22,11 @@ const routes: Routes = [
 	{
 		path: 'drugs/:drug_id',
 		component: PlacesComponent
+	},
+
+	{
+		path: 'links/:link_id',
+		component: PlacesComponent
 	}
 ];
 

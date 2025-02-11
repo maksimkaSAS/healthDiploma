@@ -14,6 +14,9 @@ export class PharmacyComponent {
 	//TODO drug_id = '';
 	drug_id = '';
 	search = '';
+	pharmacy_drug = '';
+	
+	// link_id = '';
 	pharmacies: Healthpharmacy[] = [];
 
 	constructor(
@@ -47,6 +50,16 @@ export class PharmacyComponent {
 		if (this.drug_id) {
 			query += (query ? '&' : '') + 'drug=' + this.drug_id;
 		}
+
+		// if (this.pharmacy_drug) {
+		// 	query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
+		// }
+
+		
+
+		// if (this.link_id) {
+		// 	query += (query ? '&' : '') + 'link=' + this.link_id;
+		// }
 		return query;
 	}
 
@@ -85,3 +98,18 @@ export class PharmacyComponent {
 
 	isMenuOpen = false;
 }
+
+
+/*const addIds = async (rec, res, next) => 
+{
+	if(rec.query.pharmacy.drug) {
+		rec.locals.pharmacy_ids = ( await waw.Healthlink.find({
+		drug: req.query.pharmacy_drug,
+		}).select("pharmacy")
+		).map((p) => p.pharmacy);
+
+		query._id = pharmacy_ids
+
+	}
+}
+*/

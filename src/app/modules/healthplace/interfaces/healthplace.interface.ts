@@ -10,4 +10,5 @@ export interface Healthplace extends CrudDocument {
 	latitude: string;
 	longitude: string;
 	placeType: string;
+	link: string;
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Healthpharmacy } from '../interfaces/healthpharmacy.interface';
+import { Healthlink } from '../interfaces/healthlink.interface';
 import {
 	AlertService,
 	CoreService,
@@ -11,8 +11,8 @@ import {
 @Injectable({
 	providedIn: 'root',
 })
-export class HealthpharmacyService extends CrudService<Healthpharmacy> {
-	healthpharmacy: Healthpharmacy[] = this.getDocs();
+export class HealthlinkService extends CrudService<Healthlink> {
+	healthlinks: Healthlink[];
 	constructor(
 		_http: HttpService,
 		_store: StoreService,
@@ -21,7 +21,7 @@ export class HealthpharmacyService extends CrudService<Healthpharmacy> {
 	) {
 		super(
 			{
-				name: 'healthpharmacy',
+				name: 'healthlink',
 			},
 			_http,
 			_store,
