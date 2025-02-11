@@ -21,11 +21,13 @@
 						Title of sidebar...
 					</div>
 					<div class="documents-sidebar__description">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Sint molestiae consequatur quae. Modi corporis rem amet
-						tempore debitis assumenda minima repellat labore
-						expedita quam. Itaque accusamus culpa ullam
-						necessitatibus nisi.
+						<wbutton (click)="create()">Create</wbutton>
+
+						<healthclinic-selector
+							[value]="clinic_id"
+							(wChange)="clinic_id = $event; load()"
+						>
+						</healthclinic-selector>
 					</div>
 				</div>
 			</div>
@@ -35,9 +37,7 @@
 						*ngFor="let place of places"
 						class="documents-main-row"
 					>
-						<a routerLink="/oneplacepage/{{place._id}}">
-							<app-place [place]="place"></app-place>
-						</a>
+						<app-place [place]="place" (load)="load()"></app-place>
 					</div>
 				</div>
 			</div>

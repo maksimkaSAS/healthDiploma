@@ -1,1 +1,7 @@
-{{place|json}}
+
+<a routerLink="/oneplacepage/{{place._id}}">
+    <div class="documents__title">{{place.name}}</div>
+</a>
+
+<span (click)="update(place)" class="material-icons">edit</span>
+<span (click)="delete(place)" class="material-icons">delete</span>

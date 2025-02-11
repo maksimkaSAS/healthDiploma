@@ -1,8 +1,6 @@
 <div class="wrapper" id="wrapper">
 	<nav class="nav" (clickOutside)="showSidebar = false">
 		<ul class="nav__ul container" [class._active]="showSidebar">
-			
-
 			<li class="nav__li">
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
@@ -12,6 +10,19 @@
 					(click)="hideSidebar()"
 				>
 					<span class="material-icons">medical_services </span>
+				</a>
+			</li>
+
+			<li class="nav__li">
+				<a
+					[routerLinkActiveOptions]="{ exact: true }"
+					routerLinkActive="_activeLink"
+					routerLink="/allplaces"
+					class="nav__a"
+					(click)="hideSidebar()"
+				>
+					<span class="material-icons">place</span>
+					
 				</a>
 			</li>
 

@@ -22,11 +22,19 @@
 					</div>
 					<div class="documents-sidebar__description">
 						<wbutton (click)="create()">Create</wbutton>
+
+
+						<winput
+							[type]="'search'"
+                            
+							(wChange)="search = $event.toString()"
+							(wSubmit)="load()"
+						></winput>
 						
-						<healthplace-selector
+						<!-- <healthplace-selector
 							[value]="place_id"
 							(wChange)="place_id = $event; load()"
-						></healthplace-selector>
+						></healthplace-selector> -->
 					</div>
 				</div>
 			</div>

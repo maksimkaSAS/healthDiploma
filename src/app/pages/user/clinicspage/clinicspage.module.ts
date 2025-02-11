@@ -11,10 +11,10 @@ const routes: Routes = [
 		component: ClinicspageComponent
 	},
 
-	{
-		path: ':place_id',
-		component: ClinicspageComponent
-	}
+	// {
+	// 	path: ':place_id',
+	// 	component: ClinicspageComponent
+	// }
 ];
 
 @NgModule({

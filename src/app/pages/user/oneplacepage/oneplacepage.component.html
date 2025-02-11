@@ -1,3 +1,71 @@
+<div class="documents-wrapper" [class.documents-wrapper--open]="isMenuOpen">
+	<div class="documents-container">
+		<div class="documents-list">
+			<div
+				class="burger-wrap"
+				class="burger-wrap"
+				(click)="isMenuOpen=!isMenuOpen"
+				[class.burger-wrap--open]="isMenuOpen"
+			>
+				<div class="burger" [class.burger--close]="isMenuOpen"></div>
+			</div>
+			<div
+				class="documents-sidebar"
+				[class.documents-sidebar--open]="isMenuOpen"
+			>
+				<div class="documents-sidebar-content">
+					<div class="documents-sidebar__img">
+						<img src="assets/default.png" alt="" />
+					</div>
+					<div class="documents-sidebar__title">
+						Title of sidebar...
+					</div>
+					<div class="documents-sidebar__description">
+						<wbutton (click) = "update(oneplace)">Update</wbutton>  
+					 <wbutton (click) = "delete(oneplace)">Delete</wbutton>  
+					</div>
+				</div>
+			</div>
+			<div class="documents-main">
+				<div class="documents-main-content">
+					<div class="documents-main-row">
+						<div class="documents__name">
+							{{oneplace.name}}
+						</div>
+						<div class="documents__phone">
+							{{oneplace.address}}
+						</div>
+						<div class="documents__latitude">
+							{{oneplace.latitude}}
+						</div>
+						<div class="documents__longitude">
+							{{oneplace.longitude}}
+						</div>
+						<div class="documents__placeType">
+							{{oneplace.placeType}}
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!--<h1>{{onedoctor.name}}</h1>
+<h1>{{onedoctor.phone}}</h1>
+<h1>{{onedoctor.specialty}}</h1>
+<h1>{{onedoctor.experienceYears}}</h1>
+<h1>{{onedoctor.consultationFee}}</h1>-->
+
+
+
 <h1>{{oneplace.name}}</h1>
 <h1>{{oneplace.address}}</h1>
 <h1>{{oneplace.latitude}}</h1>

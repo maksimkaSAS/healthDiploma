@@ -13,7 +13,8 @@ import { AlertService, CoreService } from 'wacom';
 	standalone: false
 })
 export class ClinicspageComponent {
-	place_id = '';
+	// place_id = '';
+	search = '';
 	clinics: Healthclinic[] = [];
 
 	constructor(
@@ -30,7 +31,8 @@ export class ClinicspageComponent {
 		this._healthclinicService
 			.get(
 				{
-					query: this.place_id ? 'place=' + this.place_id : ''
+					// query: this.place_id ? 'place=' + this.place_id : ''
+					query: this._query()
 				},
 				{ name: 'public' }
 			)
@@ -38,6 +40,15 @@ export class ClinicspageComponent {
 				this.clinics.splice(0, this.clinics.length);
 				this.clinics.push(...clinics);
 			});
+	}
+
+	private _query(): string {
+		let query = '';
+
+		if (this.search) {
+			query += (query ? '&' : '') + 'search=' + this.search;
+		}
+		return query;
 	}
 
 	/*ngOnInit(): void {

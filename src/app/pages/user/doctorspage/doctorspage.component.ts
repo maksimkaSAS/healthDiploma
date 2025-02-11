@@ -15,52 +15,53 @@ export class DoctorspageComponent {
 	clinic_id = '';
 	doctors: Healthdoctor[] = [];
 
-	constructor(private _healthdoctorService: HealthdoctorService,
+	constructor(
+		private _healthdoctorService: HealthdoctorService,
 		private _form: FormService
 	) {
 		this.load();
 	}
 
-	isMenuOpen=false;
+	isMenuOpen = false;
 
 	load(): void {
 		this._healthdoctorService
-			.get({
-				query: this.clinic_id ? 'clinic=' + this.clinic_id : ''
-			}, { name: 'public' })
+			.get(
+				{
+					query: this.clinic_id ? 'clinic=' + this.clinic_id : ''
+				},
+				{ name: 'public' }
+			)
 			.subscribe((doctors) => {
 				this.doctors.splice(0, this.doctors.length);
 				this.doctors.push(...doctors);
 			});
-		
 	}
 
-	
-
 	form: FormInterface = this._form.getForm(
-			'clinic',
-			healthdoctorFormComponents
-		);
+		'clinic',
+		healthdoctorFormComponents
+	);
 
-		create(): void {
-				this._form.modal<Healthdoctor>(this.form, {
-					label: 'Create',
-					click: async (created: unknown,
-					 close: () => void
-					): Promise<void> => {
-						close();
-		
-						this._healthdoctorService
-							.create(created as Healthdoctor)
-							.subscribe(() => {
-								this.load();
-							});
-		
-						close();
-					}
-				});
+	create(): void {
+		this._form.modal<Healthdoctor>(this.form, {
+			label: 'Create',
+			click: async (
+				created: unknown,
+				close: () => void
+			): Promise<void> => {
+				close();
+
+				this._healthdoctorService
+					.create(created as Healthdoctor)
+					.subscribe(() => {
+						this.load();
+					});
+
+				close();
 			}
-
+		});
+	}
 
 	/*ngOnInit(): void {
 		this._healthdoctorService
@@ -69,7 +70,4 @@ export class DoctorspageComponent {
 				this.doctors = doctors;
 			});
 	}*/
-
-	
 }
-

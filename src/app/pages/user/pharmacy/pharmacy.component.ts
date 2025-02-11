@@ -13,6 +13,7 @@ import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/h
 export class PharmacyComponent {
 	//TODO drug_id = '';
 	drug_id = '';
+	search = '';
 	pharmacies: Healthpharmacy[] = [];
 
 	constructor(
@@ -26,7 +27,7 @@ export class PharmacyComponent {
 		this._healthpharmacyService
 			.get(
 				{
-					query: this.drug_id ? 'drug=' + this.drug_id : ''
+					query: this._query()
 				},
 				{ name: 'public' }
 			)
@@ -34,6 +35,19 @@ export class PharmacyComponent {
 				this.pharmacies.splice(0, this.pharmacies.length);
 				this.pharmacies.push(...pharmacies);
 			});
+	}
+
+	private _query(): string {
+		let query = '';
+
+		if (this.search) {
+			query += (query ? '&' : '') + 'search=' + this.search;
+		}
+
+		if (this.drug_id) {
+			query += (query ? '&' : '') + 'drug=' + this.drug_id;
+		}
+		return query;
 	}
 
 	form: FormInterface = this._form.getForm(
