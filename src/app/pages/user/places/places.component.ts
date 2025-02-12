@@ -46,12 +46,12 @@ export class PlacesComponent {
 		// }
 
 		if (this.pharmacy_drug) {
-			query += (query ? '&' : '') + 'place_drug=' + this.pharmacy_drug;
+			query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
 		}
 
 
 		if (this.clinic_id) {
-			query += (query ? '&' : '') + 'clinic_id=' + this.clinic_id;
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
 		}
 
 		

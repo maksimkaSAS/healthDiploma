@@ -14,5 +14,7 @@ export class HealthclinicService extends CrudService<Healthclinic> {
 		super({
 			name: 'healthclinic'
 		});
+
+		this.get({}, {name: 'public'});
 	}
 }
