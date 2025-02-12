@@ -16,7 +16,7 @@ import { Healthplace } from '../../interfaces/healthplace.interface';
 	styleUrls: ['./healthplace-selector.component.scss'],
 	imports: [SelectModule]
 })
-export class SelectUserComponent implements OnChanges {
+export class SelectPlaceComponent implements OnChanges {
 	@Input() value: string;
 
 	@Output() wChange = new EventEmitter();

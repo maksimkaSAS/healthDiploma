@@ -23,14 +23,13 @@
 					<div class="documents-sidebar__description">
 						<wbutton (click)="create()">Create</wbutton>
 
-
 						<winput
 							[type]="'search'"
-                            
-							(wChange)="search = $event.toString()"
+							(wChange)="search = $event + ''"
 							(wSubmit)="load()"
+							[clearable]="true"
 						></winput>
-						
+
 						<!-- <healthplace-selector
 							[value]="place_id"
 							(wChange)="place_id = $event; load()"

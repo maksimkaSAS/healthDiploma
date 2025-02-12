@@ -22,7 +22,7 @@ export class SelectUserComponent implements OnChanges {
 	@Output() wChange = new EventEmitter();
 
 	get items(): Healthpharmacy[] {
-		return this._healthpharmacyService.healthpharmacys;
+		return this._healthpharmacyService.healthpharmacy;
 	}
 
 	constructor(private _healthpharmacyService: HealthpharmacyService) {}

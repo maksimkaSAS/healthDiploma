@@ -3,7 +3,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { DoctorspageComponent } from './doctorspage.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DoctorComponent } from './doctor/doctor.component';
-import { SelectUserComponent } from 'src/app/modules/healthclinic/selectors/healthclinic/healthclinic-selector.component';
+import { SelectHealthClinicComponent } from 'src/app/modules/healthclinic/selectors/healthclinic/healthclinic-selector.component';
 
 const routes: Routes = [
 	{
@@ -18,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes), CoreModule, SelectUserComponent],
+	imports: [RouterModule.forChild(routes), CoreModule, SelectHealthClinicComponent],
 	declarations: [DoctorspageComponent, DoctorComponent]
 })
 export class DoctorspageModule {}

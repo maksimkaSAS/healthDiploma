@@ -12,10 +12,11 @@ import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/h
 })
 export class PharmacyComponent {
 	//TODO drug_id = '';
-	drug_id = '';
+	// drug_id = '';
 	search = '';
 	pharmacy_drug = '';
-	
+	place_drug = '';
+
 	// link_id = '';
 	pharmacies: Healthpharmacy[] = [];
 
@@ -47,21 +48,22 @@ export class PharmacyComponent {
 			query += (query ? '&' : '') + 'search=' + this.search;
 		}
 
-		if (this.drug_id) {
-			query += (query ? '&' : '') + 'drug=' + this.drug_id;
+		// if (this.drug_id) {
+		// 	query += (query ? '&' : '') + 'drug=' + this.drug_id;
+		// }
+
+		if (this.pharmacy_drug) {
+			query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
 		}
 
-		// if (this.pharmacy_drug) {
-		// 	query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
+		// if (this.place_drug) {
+		// 	query += (query ? '&' : '') + 'place_drug=' + this.place_drug;
 		// }
 
-		
-
-		// if (this.link_id) {
-		// 	query += (query ? '&' : '') + 'link=' + this.link_id;
-		// }
 		return query;
 	}
+
+	
 
 	form: FormInterface = this._form.getForm(
 		'clinic',
@@ -98,7 +100,6 @@ export class PharmacyComponent {
 
 	isMenuOpen = false;
 }
-
 
 /*const addIds = async (rec, res, next) => 
 {

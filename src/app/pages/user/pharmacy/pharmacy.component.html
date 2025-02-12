@@ -24,9 +24,14 @@
 						<wbutton (click)="create()">Create</wbutton>
 
 						<healthdrug-selector
-							[value]="drug_id"
-							(wChange)="drug_id = $event; load()"
+							[value]="pharmacy_drug"
+							(wChange)="pharmacy_drug = $event; load()"
 						></healthdrug-selector>
+
+						<!-- <healthplace-selector
+							[value]="place_drug"
+							(wChange)="place_drug = $event; load()"
+						></healthplace-selector> -->
 
 						<!-- <healthlink-selector
 						[value]="link_id"
@@ -34,8 +39,9 @@
 
 						<winput
 							[type]="'search'"
-							(wChange)="search = $event.toString()"
+							(wChange)="search = $event + ''"
 							(wSubmit)="load()"
+							[clearable]="true"
 						></winput>
 					</div>
 				</div>

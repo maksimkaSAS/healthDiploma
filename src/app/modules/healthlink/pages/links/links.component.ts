@@ -145,35 +145,6 @@ export class LinksComponent {
 
 
 
-		// this._core.on('healthdrug_get').subscribe(() => {
-		// 	const currentDrugs = healthlinkFormComponents.components[0]
-		// 		.fields[2].value as Array<Healthdrug>;
-
-		// 	currentDrugs.splice(0, currentDrugs.length);
-
-		// 	currentDrugs.push(...this._healthdrugService.healthdrugs);
-		// });
-
-		// this._core.on('healthplace_get').subscribe(() => {
-		// 	const currentPlace = healthlinkFormComponents.components[1]
-		// 		.fields[2].value as Array<Healthplace>;
-
-		// 	currentPlace.splice(0, currentPlace.length);
-
-		// 	currentPlace.push(...this._healthplaceService.healthplaces);
-
-		// 	console.log(this._healthplaceService.healthplaces);
-			
-		// });
-
-		// this._core.on('healthpharmacy_get').subscribe(() => {
-		// 	const currentPharmacy = healthlinkFormComponents.components[2]
-		// 		.fields[2].value as Array<Healthpharmacy>;
-
-		// 		currentPharmacy.splice(0, currentPharmacy.length);
-
-		// 		currentPharmacy.push(...this._healthpharmacyService.healthpharmacy);
-		// });
 		console.log(_healthdrugService);
 		console.log(_healthplaceService);
 		console.log(_healthpharmacyService);

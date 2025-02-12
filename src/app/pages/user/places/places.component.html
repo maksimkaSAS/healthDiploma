@@ -28,6 +28,11 @@
 							(wChange)="clinic_id = $event; load()"
 						>
 						</healthclinic-selector>
+
+						<healthdrug-selector
+							[value]="pharmacy_drug"
+							(wChange)="pharmacy_drug = $event; load()"
+						></healthdrug-selector>
 					</div>
 				</div>
 			</div>

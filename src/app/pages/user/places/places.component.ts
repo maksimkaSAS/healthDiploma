@@ -12,6 +12,7 @@ import { HealthplaceService } from 'src/app/modules/healthplace/services/healthp
 })
 export class PlacesComponent {
 	clinic_id = '';
+	pharmacy_drug ='';
 	places: Healthplace[] = [];
 
 	constructor(
@@ -27,7 +28,7 @@ export class PlacesComponent {
 		this._healthplaceService
 			.get(
 				{
-					query: this.clinic_id ? 'clinic=' + this.clinic_id : ''
+					query: this._query()
 				},
 				{ name: 'public' }
 			)
@@ -35,6 +36,27 @@ export class PlacesComponent {
 				this.places.splice(0, this.places.length);
 				this.places.push(...places);
 			});
+	}
+
+	private _query(): string {
+		let query = '';
+
+		// if (this.search) {
+		// 	query += (query ? '&' : '') + 'search=' + this.search;
+		// }
+
+		if (this.pharmacy_drug) {
+			query += (query ? '&' : '') + 'place_drug=' + this.pharmacy_drug;
+		}
+
+
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic_id=' + this.clinic_id;
+		}
+
+		
+
+		return query;
 	}
 
 	form: FormInterface = this._form.getForm(
