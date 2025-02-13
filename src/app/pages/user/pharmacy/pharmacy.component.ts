@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { Value } from 'src/app/core/modules/input/input.component';
 import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
@@ -41,6 +42,10 @@ export class PharmacyComponent {
 			});
 	}
 
+	setField(value: Value): void {
+		this.search = (value as string) || '';
+	}
+
 	private _query(): string {
 		let query = '';
 
@@ -62,8 +67,6 @@ export class PharmacyComponent {
 
 		return query;
 	}
-
-	
 
 	form: FormInterface = this._form.getForm(
 		'clinic',

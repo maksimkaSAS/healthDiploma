@@ -39,7 +39,7 @@
 
 						<winput
 							[type]="'search'"
-							(wChange)="search = $event + ''"
+							(wChange)="setField($event)"
 							(wSubmit)="load()"
 							[clearable]="true"
 						></winput>

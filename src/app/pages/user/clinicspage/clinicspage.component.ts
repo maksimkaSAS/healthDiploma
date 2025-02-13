@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { Value } from 'src/app/core/modules/input/input.component';
 import { healthclinicFormComponents } from 'src/app/modules/healthclinic/formcomponents/healthclinic.formcomponents';
 import { Healthclinic } from 'src/app/modules/healthclinic/interfaces/healthclinic.interface';
 import { HealthclinicService } from 'src/app/modules/healthclinic/services/healthclinic.service';
@@ -40,6 +41,10 @@ export class ClinicspageComponent {
 				this.clinics.splice(0, this.clinics.length);
 				this.clinics.push(...clinics);
 			});
+	}
+
+	setField(value: Value): void {
+		this.search = (value as string) || '';
 	}
 
 	private _query(): string {

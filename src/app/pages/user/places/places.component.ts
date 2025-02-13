@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { Value } from 'src/app/core/modules/input/input.component';
 import { healthplaceFormComponents } from 'src/app/modules/healthplace/formcomponents/healthplace.formcomponents';
 import { Healthplace } from 'src/app/modules/healthplace/interfaces/healthplace.interface';
 import { HealthplaceService } from 'src/app/modules/healthplace/services/healthplace.service';
@@ -45,6 +46,11 @@ export class PlacesComponent {
 
 			this.clinicDisabled = this.place_drug ? true : false;
 			this.drugDisabled = this.clinic_id ? true : false;
+	}
+
+
+	setField (value: Value): void {
+		this.search = (value as string) || '';
 	}
 
 	private _query(): string {

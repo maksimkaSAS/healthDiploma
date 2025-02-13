@@ -38,9 +38,9 @@
 
 						<winput
 							[type]="'search'"
-							(wChange)="search = $event + ''"
-							(wSubmit)="load()"
 							[clearable]="true"
+							(wChange)="setField($event)"
+							(wSubmit)="load()"
 						></winput>
 					</div>
 				</div>
