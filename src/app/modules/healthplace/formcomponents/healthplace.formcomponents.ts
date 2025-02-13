@@ -9,11 +9,11 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthplace title'
+					value: 'Fill place name'
 				},
 				{
 					name: 'Label',
-					value: 'Title'
+					value: 'Name'
 				}
 			]
 		},
@@ -23,7 +23,7 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthplace description'
+					value: 'Fill place description'
 				},
 				{
 					name: 'Label',
@@ -37,7 +37,7 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill address'
+					value: 'Fill address'
 				},
 				{
 					name: 'Label',
@@ -52,7 +52,7 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill latitude'
+					value: 'Fill latitude'
 				},
 				{
 					name: 'Label',
@@ -67,7 +67,7 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill longitude'
+					value: 'Fill longitude'
 				},
 				{
 					name: 'Label',
@@ -82,7 +82,7 @@ export const healthplaceFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill placeType'
+					value: 'Fill place type'
 				},
 				{
 					name: 'Label',

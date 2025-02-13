@@ -9,11 +9,11 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthdoctor title'
+					value: 'Fill doctor name'
 				},
 				{
 					name: 'Label',
-					value: 'Title'
+					value: 'Name'
 				}
 			]
 		},
@@ -23,7 +23,7 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthdoctor description'
+					value: 'Fill doctor description'
 				},
 				{
 					name: 'Label',
@@ -38,7 +38,7 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill phone'
+					value: 'Fill phone'
 				},
 				{
 					name: 'Label',
@@ -53,7 +53,7 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill specialty'
+					value: 'Fill specialty'
 				},
 				{
 					name: 'Label',
@@ -68,7 +68,7 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill Experience years'
+					value: 'Fill experience years'
 				},
 				{
 					name: 'Label',
@@ -83,7 +83,7 @@ export const healthdoctorFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill Consultation fee'
+					value: 'Fill consultation fee'
 				},
 				{
 					name: 'Label',

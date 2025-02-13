@@ -13,6 +13,7 @@ import { HealthdoctorService } from 'src/app/modules/healthdoctor/services/healt
 export class DoctorspageComponent {
 	//TODO clinic_id = '';
 	clinic_id = '';
+	search = '';
 	doctors: Healthdoctor[] = [];
 
 	constructor(
@@ -28,7 +29,7 @@ export class DoctorspageComponent {
 		this._healthdoctorService
 			.get(
 				{
-					query: this.clinic_id ? 'clinic=' + this.clinic_id : ''
+					query: this._query()
 				},
 				{ name: 'public' }
 			)
@@ -36,6 +37,23 @@ export class DoctorspageComponent {
 				this.doctors.splice(0, this.doctors.length);
 				this.doctors.push(...doctors);
 			});
+	}
+
+	private _query(): string {
+		let query = '';
+
+		if (this.clinic_id) {
+			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		}
+
+
+		if (this.search) {
+			query += (query ? '&' : '') + 'search=' + this.search;
+		}
+
+		
+
+		return query;
 	}
 
 	form: FormInterface = this._form.getForm(

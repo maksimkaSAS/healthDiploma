@@ -9,11 +9,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthpatient title',
+					value: 'Fill name',
 				},
 				{
 					name: 'Label',
-					value: 'Title',
+					value: 'Name',
 				}
 			]
 		},
@@ -23,7 +23,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthpatient description',
+					value: 'Fill description',
 				},
 				{
 					name: 'Label',
@@ -38,7 +38,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill date of birth',
+					value: 'Fill date of birth',
 				},
 				{
 					name: 'Label',
@@ -53,7 +53,7 @@ export const healthpatientFormComponents = {
 			fields: [
 			  {
 				name: 'Placeholder',
-				value: 'Select gender',
+				value: 'Choose gender',
 			  },
 			  {
 				name: 'Label',
@@ -72,7 +72,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill patient category',
+					value: 'Choose patient category',
 				},
 				{
 					name: 'Label',
@@ -92,7 +92,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill phone',
+					value: 'Fill phone',
 				},
 				{
 					name: 'Label',
@@ -107,7 +107,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill email',
+					value: 'Fill email',
 				},
 				{
 					name: 'Label',
@@ -122,7 +122,7 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill address',
+					value: 'Fill address',
 				},
 				{
 					name: 'Label',

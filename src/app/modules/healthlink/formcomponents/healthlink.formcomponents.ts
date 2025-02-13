@@ -9,7 +9,7 @@ export const healthlinkFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthlink title',
+					value: 'Choose drug',
 				},
 				{
 					name: 'Label',
@@ -28,7 +28,7 @@ export const healthlinkFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthlink description',
+					value: 'Choose place',
 				},
 				{
 					name: 'Label',
@@ -48,7 +48,7 @@ export const healthlinkFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthlink description',
+					value: 'Choose pharmacy',
 				},
 				{
 					name: 'Label',

@@ -12,7 +12,9 @@ import { HealthplaceService } from 'src/app/modules/healthplace/services/healthp
 })
 export class PlacesComponent {
 	clinic_id = '';
-	pharmacy_drug ='';
+	place_drug ='';
+	search = '';
+	
 	places: Healthplace[] = [];
 
 	constructor(
@@ -23,6 +25,10 @@ export class PlacesComponent {
 	}
 
 	isMenuOpen = false;
+	clinicDisabled = false;
+	drugDisabled = false;
+
+	
 
 	load(): void {
 		this._healthplaceService
@@ -36,22 +42,28 @@ export class PlacesComponent {
 				this.places.splice(0, this.places.length);
 				this.places.push(...places);
 			});
+
+			this.clinicDisabled = this.place_drug ? true : false;
+			this.drugDisabled = this.clinic_id ? true : false;
 	}
 
 	private _query(): string {
 		let query = '';
 
-		// if (this.search) {
-		// 	query += (query ? '&' : '') + 'search=' + this.search;
-		// }
 
-		if (this.pharmacy_drug) {
-			query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
+		if (this.place_drug) {
+			query += (query ? '&' : '') + 'place_drug=' + this.place_drug;
+			
 		}
 
 
 		if (this.clinic_id) {
 			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
+		
+		}
+
+		if (this.search) {
+			query += (query ? '&' : '') + 'search=' + this.search;
 		}
 
 		

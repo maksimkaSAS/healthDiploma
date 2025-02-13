@@ -18,7 +18,7 @@ import { Healthdrug } from '../../interfaces/healthdrug.interface';
 })
 export class SelectHealthDrugComponent implements OnChanges {
 	@Input() value: string;
-
+	@Input() disabled: boolean;
 	@Output() wChange = new EventEmitter();
 
 	get items(): Healthdrug[] {
@@ -30,6 +30,9 @@ export class SelectHealthDrugComponent implements OnChanges {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['value'] && !changes['value'].firstChange) {
 			this.value = changes['value'].currentValue;
+		}
+		if (changes['disabled'] && !changes['disabled'].firstChange) {
+			this.disabled = changes['disabled'].currentValue;
 		}
 	}
 }

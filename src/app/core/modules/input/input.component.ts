@@ -39,6 +39,7 @@ export class InputComponent implements OnInit, OnChanges {
 
 	@Input() clearable: boolean = false;
 
+	
 	/**
 	 * A function to replace the input value before emitting changes.
 	 * This allows custom transformations of the input value.
@@ -207,6 +208,8 @@ export class InputComponent implements OnInit, OnChanges {
 			this.error = true;
 		}
 	}
+
+	
 
 	/**
 	 * Sets the disabled state of the input field.

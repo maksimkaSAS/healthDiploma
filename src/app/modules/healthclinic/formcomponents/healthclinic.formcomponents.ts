@@ -9,11 +9,11 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthclinic title',
+					value: 'Fill clinic name',
 				},
 				{
 					name: 'Label',
-					value: 'Title',
+					value: 'Name',
 				}
 			]
 		},
@@ -23,7 +23,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthclinic description',
+					value: 'Fill clinic description',
 				},
 				{
 					name: 'Label',
@@ -38,7 +38,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill phone',
+					value: 'Fill phone',
 				},
 				{
 					name: 'Label',
@@ -53,7 +53,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill email',
+					value: 'Fill email',
 				},
 				{
 					name: 'Label',
@@ -68,7 +68,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill website',
+					value: 'Fill website',
 				},
 				{
 					name: 'Label',
@@ -83,7 +83,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill Working hours',
+					value: 'Fill working hours',
 				},
 				{
 					name: 'Label',
@@ -98,7 +98,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill License number',
+					value: 'Fill license number',
 				},
 				{
 					name: 'Label',
@@ -113,7 +113,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill specialties',
+					value: 'Fill specialties',
 				},
 				{
 					name: 'Label',
@@ -128,7 +128,7 @@ export const healthclinicFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill clinic type',
+					value: 'Fill clinic type',
 				},
 				{
 					name: 'Label',

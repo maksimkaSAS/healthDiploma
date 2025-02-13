@@ -1,7 +1,8 @@
 <wselect
 	(modelChange)="wChange.emit($event)"
-	placeholder="Select healthdrug"
+	placeholder="Select drug"
 	[select]="value"
 	[items]="items"
 	[clearable]="true"
+	[disabled]= "disabled"
 ></wselect>

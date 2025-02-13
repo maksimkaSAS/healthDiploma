@@ -19,7 +19,7 @@ const routes: Routes = [
 	},
 
 	{
-		path: ':pharmacy_drug',
+		path: ':place_drug',
 		component: PlacesComponent
 	}
 ];

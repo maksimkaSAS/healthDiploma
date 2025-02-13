@@ -20,6 +20,13 @@
                             (wChange)="clinic_id = $event; load()">
                         </healthclinic-selector>
 
+                        <winput
+							[type]="'search'"
+							(wChange)="search = $event + ''"
+							(wSubmit)="load()"
+							[clearable]="true"
+						></winput>
+
                        
                         
                     </div>

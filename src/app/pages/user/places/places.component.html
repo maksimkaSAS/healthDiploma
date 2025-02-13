@@ -25,14 +25,23 @@
 
 						<healthclinic-selector
 							[value]="clinic_id"
+							[disabled]="clinicDisabled"
 							(wChange)="clinic_id = $event; load()"
 						>
 						</healthclinic-selector>
 
 						<healthdrug-selector
-							[value]="pharmacy_drug"
-							(wChange)="pharmacy_drug = $event; load()"
+							[value]="place_drug"
+							[disabled]="drugDisabled"
+							(wChange)="place_drug = $event; load()"
 						></healthdrug-selector>
+
+						<winput
+							[type]="'search'"
+							(wChange)="search = $event + ''"
+							(wSubmit)="load()"
+							[clearable]="true"
+						></winput>
 					</div>
 				</div>
 			</div>

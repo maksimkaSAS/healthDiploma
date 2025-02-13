@@ -18,6 +18,7 @@ import { Healthclinic } from '../../interfaces/healthclinic.interface';
 })
 export class SelectHealthClinicComponent implements OnChanges {
 	@Input() value: string;
+	@Input() disabled: boolean;
 
 	@Output() wChange = new EventEmitter();
 
@@ -30,6 +31,9 @@ export class SelectHealthClinicComponent implements OnChanges {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['value'] && !changes['value'].firstChange) {
 			this.value = changes['value'].currentValue;
+		}
+		if (changes['disabled'] && !changes['disabled'].firstChange) {
+			this.disabled = changes['disabled'].currentValue;
 		}
 	}
 }

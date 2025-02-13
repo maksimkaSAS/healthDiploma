@@ -9,11 +9,11 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthrecord title',
+					value: 'Fill record name'
 				},
 				{
 					name: 'Label',
-					value: 'Title',
+					value: 'Name'
 				}
 			]
 		},
@@ -23,11 +23,11 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill healthrecord description',
+					value: 'Fill record description'
 				},
 				{
 					name: 'Label',
-					value: 'Description',
+					value: 'Description'
 				}
 			]
 		},
@@ -38,29 +38,29 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill diagnosis',
+					value: 'Fill diagnosis'
 				},
 				{
 					name: 'Label',
-					value: 'Diagnosis',
+					value: 'Diagnosis'
 				}
 			]
 		},
 
-		{
-			name: 'Text',
-			key: 'visitDate',
-			fields: [
-				{
-					name: 'Placeholder',
-					value: 'fill visit date',
-				},
-				{
-					name: 'Label',
-					value: 'Visit date',
-				}
-			]
-		},
+		// {
+		// 	name: 'Text',
+		// 	key: 'visitDate',
+		// 	fields: [
+		// 		{
+		// 			name: 'Placeholder',
+		// 			value: 'Fill visit date',
+		// 		},
+		// 		{
+		// 			name: 'Label',
+		// 			value: 'Visit date',
+		// 		}
+		// 	]
+		// },
 
 		{
 			name: 'Text',
@@ -68,11 +68,11 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill allergy',
+					value: 'Fill allergy'
 				},
 				{
 					name: 'Label',
-					value: 'Allergy',
+					value: 'Allergy'
 				}
 			]
 		},
@@ -83,11 +83,11 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill result',
+					value: 'fill result'
 				},
 				{
 					name: 'Label',
-					value: 'Result',
+					value: 'Result'
 				}
 			]
 		},
@@ -97,13 +97,13 @@ export const healthrecordFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'fill treatment type',
+					value: 'fill treatment type'
 				},
 				{
 					name: 'Label',
-					value: 'Treatment type',
+					value: 'Treatment type'
 				}
 			]
-		},
+		}
 	]
-}
+};
