@@ -20,7 +20,7 @@ export class TreatmentComponent {
 		? this._router.url.replace('/treatment/', '')
 		: '';
 
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'recommendedMedication', 'duration', 'precautions', 'patientAdvised'];
 
 	form: FormInterface = this._form.getForm(
 		'healthtreatment',

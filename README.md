@@ -194,6 +194,14 @@ Records
     treatmentType: string;
 }
 
+
+HealthTreatment: {      
+  recommendedMedication: String,
+  duration: String,             
+  precautions: String,      // Запобіжні заходи або обмеження під час лікування    
+  patientAdvised: String    // Рекомендації для пацієнтів (наприклад, зміни в режимі дня, харчуванні)    
+}
+
 сайдбар
 
 

@@ -20,7 +20,7 @@ import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/health
 	standalone: false
 })
 export class LinksComponent {
-	columns = ['name', 'description'];
+	columns = ['place', 'drug', 'pharmacy'];
 
 	form: FormInterface = this._form.getForm(
 		'healthlink',
