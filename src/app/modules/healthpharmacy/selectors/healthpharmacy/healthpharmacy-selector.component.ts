@@ -16,9 +16,9 @@ import { Healthpharmacy } from '../../interfaces/healthpharmacy.interface';
 	styleUrls: ['./healthpharmacy-selector.component.scss'],
 	imports: [SelectModule]
 })
-export class SelectUserComponent implements OnChanges {
+export class SelectHealthPharmacyComponent implements OnChanges {
 	@Input() value: string;
-
+	@Input() disabled: boolean;
 	@Output() wChange = new EventEmitter();
 
 	get items(): Healthpharmacy[] {
@@ -30,6 +30,9 @@ export class SelectUserComponent implements OnChanges {
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['value'] && !changes['value'].firstChange) {
 			this.value = changes['value'].currentValue;
+		}
+		if (changes['disabled'] && !changes['disabled'].firstChange) {
+			this.disabled = changes['disabled'].currentValue;
 		}
 	}
 }

@@ -30,6 +30,14 @@
 						>
 						</healthclinic-selector>
 
+						<healthpharmacy-selector
+							[value]="pharmacy_id"
+							[disabled]="pharmacyDisabled"
+							(wChange)="pharmacy_id = $event; load()"
+						>
+						</healthpharmacy-selector>
+
+
 						<healthdrug-selector
 							[value]="place_drug"
 							[disabled]="drugDisabled"

@@ -13,9 +13,10 @@ import { HealthplaceService } from 'src/app/modules/healthplace/services/healthp
 })
 export class PlacesComponent {
 	clinic_id = '';
-	place_drug ='';
+	place_drug = '';
 	search = '';
-	
+	pharmacy_id = '';
+
 	places: Healthplace[] = [];
 
 	constructor(
@@ -28,8 +29,7 @@ export class PlacesComponent {
 	isMenuOpen = false;
 	clinicDisabled = false;
 	drugDisabled = false;
-
-	
+	pharmacyDisabled = false;
 
 	load(): void {
 		this._healthplaceService
@@ -44,35 +44,56 @@ export class PlacesComponent {
 				this.places.push(...places);
 			});
 
-			this.clinicDisabled = this.place_drug ? true : false;
-			this.drugDisabled = this.clinic_id ? true : false;
+		// this.clinicDisabled   = this.place_drug ? true : false;
+		// this.drugDisabled = this.clinic_id ? true : false;
+
+		if (!this.clinic_id && !this.pharmacy_id && !this.place_drug) {
+			this.clinicDisabled = false;
+			this.pharmacyDisabled = false;
+			this.drugDisabled = false;
+		}
+
+		if (this.clinic_id) {
+			this.clinicDisabled = false;
+			this.pharmacyDisabled = true;
+			this.drugDisabled = true;
+		}
+
+		if (this.pharmacy_id) {
+			this.clinicDisabled = true;
+			this.pharmacyDisabled = false;
+			this.drugDisabled = true;
+		}
+
+		if (this.place_drug) {
+			this.clinicDisabled = true;
+			this.pharmacyDisabled = true;
+			this.drugDisabled = false;
+		}
 	}
 
-
-	setField (value: Value): void {
+	setField(value: Value): void {
 		this.search = (value as string) || '';
 	}
 
 	private _query(): string {
 		let query = '';
 
-
 		if (this.place_drug) {
 			query += (query ? '&' : '') + 'place_drug=' + this.place_drug;
-			
 		}
-
 
 		if (this.clinic_id) {
 			query += (query ? '&' : '') + 'clinic=' + this.clinic_id;
-		
 		}
 
 		if (this.search) {
 			query += (query ? '&' : '') + 'search=' + this.search;
 		}
 
-		
+		if (this.pharmacy_id) {
+			query += (query ? '&' : '') + 'pharmacy=' + this.pharmacy_id;
+		}
 
 		return query;
 	}
