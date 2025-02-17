@@ -14,7 +14,7 @@ import { firstValueFrom } from 'rxjs';
 	standalone: false
 })
 export class PharmaciesComponent {
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'address', 'phone', 'email', 'workingHours', 'website', 'availableMedicines', 'deliveryAvailable'];
 
 	form: FormInterface = this._form.getForm(
 		'healthpharmacy',

@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecordsComponent {
 	//disease_id = this._router.url.includes('diseases/') ? this._router.url.replace('/diseases/', '') : '';
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'diagnosis', 'allergy', 'result', 'treatmentType'];
 
 	form: FormInterface = this._form.getForm(
 		'healthrecord',

@@ -21,7 +21,7 @@ export class DoctorsComponent {
 	/*patient_id = this._router.url.includes('doctors/')
 		? this._router.url.replace('/doctors/', '')
 		: '';*/
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'phone', 'specialty', 'experienceYears', 'consultationFee'];
 
 	form: FormInterface = this._form.getForm(
 		'healthdoctor',

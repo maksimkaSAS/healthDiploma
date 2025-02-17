@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class DrugsComponent {
 	//record_id = this._router.url.includes('drugs/') ? this._router.url.replace('/drugs/', '') : '';
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'dose', 'frequency', 'startDate'];
 
 	form: FormInterface = this._form.getForm(
 		'healthdrug',
@@ -43,6 +43,8 @@ export class DrugsComponent {
 
 					this._healthdrugService.update(doc);
 				});
+
+				
 		},
 		delete: (doc: Healthdrug): void => {
 			this._alert.question({

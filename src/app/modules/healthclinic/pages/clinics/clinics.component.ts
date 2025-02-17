@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ClinicsComponent {
 	record_id = this._router.url.includes('clinics/') ? this._router.url.replace('/clinics/', '') : '';
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'phone', 'email', 'website', 'workingHours', 'licenseNumber', 'specialties', 'clinicType'];
 
 	form: FormInterface = this._form.getForm(
 		'healthclinic',

@@ -18,7 +18,7 @@ export class PlacesComponent {
 	/*drug_id = this._router.url.includes('drugs/')
 		? this._router.url.replace('/drugs/', '')
 		: '';*/
-	columns = ['name', 'description'];
+	columns = ['name', 'description', 'address', 'latitude', 'longitude', 'placeType'];
 
 	form: FormInterface = this._form.getForm(
 		'healthplace',
