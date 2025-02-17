@@ -13,6 +13,11 @@ const routes: Routes = [
 		path: ':patient_id',
 		component: DiseasesComponent
 	}
+	// {
+	// 	path: ':record_id',
+	// 	component: DiseasesComponent
+	// }
+
 ];
 
 @NgModule({

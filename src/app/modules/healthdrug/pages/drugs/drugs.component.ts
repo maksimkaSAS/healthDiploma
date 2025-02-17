@@ -8,6 +8,7 @@ import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interfa
 import { healthdrugFormComponents } from '../../formcomponents/healthdrug.formcomponents';
 import { Router } from '@angular/router';
 
+
 @Component({
 	templateUrl: './drugs.component.html',
 	styleUrls: ['./drugs.component.scss'],
@@ -193,4 +194,8 @@ export class DrugsComponent {
 
 		return query;
 	}
+
+
+	
+	
 }

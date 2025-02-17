@@ -2,6 +2,23 @@ export const healthrecordFormComponents = {
 	formId: 'healthrecord',
 	title: 'Healthrecord',
 	components: [
+
+		{
+			name: 'Select',
+			key: 'type',
+			focused: true,
+			fields: [
+				{
+					name: 'Placeholder',
+					value: 'Choose record type'
+				},
+				{
+					name: 'Label',
+					value: []
+				}
+			]
+		},
+
 		{
 			name: 'Text',
 			key: 'name',

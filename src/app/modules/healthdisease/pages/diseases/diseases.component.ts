@@ -6,7 +6,7 @@ import { FormService } from 'src/app/core/modules/form/form.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { healthdiseaseFormComponents } from '../../formcomponents/healthdisease.formcomponents';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
 	templateUrl: './diseases.component.html',
@@ -109,14 +109,22 @@ export class DiseasesComponent {
 		return this._healthdiseaseService.healthdiseases;
 	}
 
+	//record_id = '';
+
 	constructor(
 		private _translate: TranslateService,
 		private _healthdiseaseService: HealthdiseaseService,
 		private _alert: AlertService,
 		private _form: FormService,
 		private _core: CoreService,
-		private _router: Router
+		private _router: Router,
+		private _route: ActivatedRoute
 	) {
+		// this._route.paramMap.subscribe((params) => {
+		// 	this.record_id = params.get('record_id') || '';
+		// });
+
+
 		this.setRows();
 	}
 
@@ -197,6 +205,10 @@ export class DiseasesComponent {
 	private _preCreate(healthdisease: Healthdisease): void {
 		delete healthdisease.__created;
 
+		// if (this.record_id) {
+		// 	healthdisease.patient = this.record_id;
+		// }
+
 		if (this.patient_id) {
 			healthdisease.patient = this.patient_id;
 		}
@@ -204,6 +216,11 @@ export class DiseasesComponent {
 
 	private _query(): string {
 		let query = '';
+
+		// if (this.record_id) {
+		// 	query += (query ? '&' : '') + 'record=' + this.record_id;
+		// }
+
 		if (this.patient_id) {
 			query += (query ? '&' : '') + 'patient=' + this.patient_id;
 		}

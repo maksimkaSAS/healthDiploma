@@ -8,6 +8,7 @@ import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interfa
 import { healthrecordFormComponents } from '../../formcomponents/healthrecord.formcomponents';
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { DatePipe } from '@angular/common';
 
 @Component({
 	templateUrl: './records.component.html',
@@ -16,7 +17,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RecordsComponent {
 	//disease_id = this._router.url.includes('diseases/') ? this._router.url.replace('/diseases/', '') : '';
-	columns = ['name', 'description', 'diagnosis', 'allergy', 'result', 'treatmentType'];
+	columns = [
+		'name',
+		'description',
+		'diagnosis',
+		'allergy',
+		'result',
+		'treatmentType'
+	];
 
 	form: FormInterface = this._form.getForm(
 		'healthrecord',
@@ -82,12 +90,13 @@ export class RecordsComponent {
 			});
 		},
 		buttons: [
-			/*{
-							icon: 'local_hospital',
-							hrefFunc: (doc: Healthrecord): string => {
-								return '/clinics/' + doc._id;
-							}
-						},*/
+			// {
+			// 	icon: 'sick',
+			// 	hrefFunc: (doc: Healthrecord): string => {
+			// 		return '/diseases/' + doc._id;
+			// 	}
+			// },
+
 			{
 				icon: 'cloud_download',
 				click: (doc: Healthrecord): void => {
@@ -132,8 +141,8 @@ export class RecordsComponent {
 		private _core: CoreService,
 		private _router: Router,
 		private _route: ActivatedRoute
-	) {
-		
+	) // private datePipe: DatePipe
+	{
 		this._route.paramMap.subscribe((params) => {
 			this.patient_id = params.get('patient_id') || '';
 			this.disease_id = params.get('disease_id') || '';
@@ -149,6 +158,20 @@ export class RecordsComponent {
 
 		/*this._route.paramMap.subscribe(params => {this.disease_id = params.get('disease_id') || ''});
 		console.log(this.disease_id);*/
+
+
+
+
+		this._healthrecordService.get().subscribe(type => {
+					const currentType = _healthrecordService.components[0]
+						.fields[2].value as Array<Healthrecord>;
+		
+						currentType.splice(0, currentType.length);
+		
+						currentType.push(...type);
+					//console.log(type);
+					
+				})
 	}
 
 	setRows(page = this._page): void {
@@ -265,10 +288,10 @@ export class RecordsComponent {
 			healthrecord.clinic = this.clinic_id;
 		}
 
-		/* if(this.disease_id) {
-			healthrecord.healthdisease = this.disease_id;
+		//  if(this.disease_id) {
+		// 	healthrecord.healthdisease = this.disease_id;
 			
-		 }*/
+		//  }
 	}
 
 	private _query(): string {

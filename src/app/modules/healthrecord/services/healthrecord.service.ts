@@ -6,6 +6,7 @@ import { CrudService } from 'wacom';
 	providedIn: 'root'
 })
 export class HealthrecordService extends CrudService<Healthrecord> {
+	components: any;
 	constructor() {
 		super({
 			name: 'healthrecord'
