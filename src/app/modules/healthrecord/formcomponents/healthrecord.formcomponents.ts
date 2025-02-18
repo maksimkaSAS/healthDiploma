@@ -2,7 +2,6 @@ export const healthrecordFormComponents = {
 	formId: 'healthrecord',
 	title: 'Healthrecord',
 	components: [
-
 		{
 			name: 'Select',
 			key: 'type',
@@ -13,7 +12,7 @@ export const healthrecordFormComponents = {
 					value: 'Choose record type'
 				},
 				{
-					name: 'Label',
+					name: 'Items',
 					value: []
 				}
 			]

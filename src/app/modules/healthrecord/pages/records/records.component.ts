@@ -140,9 +140,8 @@ export class RecordsComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _router: Router,
-		private _route: ActivatedRoute
-	) // private datePipe: DatePipe
-	{
+		private _route: ActivatedRoute // private datePipe: DatePipe
+	) {
 		this._route.paramMap.subscribe((params) => {
 			this.patient_id = params.get('patient_id') || '';
 			this.disease_id = params.get('disease_id') || '';
@@ -159,19 +158,18 @@ export class RecordsComponent {
 		/*this._route.paramMap.subscribe(params => {this.disease_id = params.get('disease_id') || ''});
 		console.log(this.disease_id);*/
 
+		this._healthrecordService
+			.get({}, { name: 'type' })
+			.subscribe((type) => {
+				const currentType = healthrecordFormComponents.components[0]
+					.fields[1].value as Array<Healthrecord>;
 
+				currentType.splice(0, currentType.length);
 
-
-		this._healthrecordService.get().subscribe(type => {
-					const currentType = _healthrecordService.components[0]
-						.fields[2].value as Array<Healthrecord>;
-		
-						currentType.splice(0, currentType.length);
-		
-						currentType.push(...type);
-					//console.log(type);
-					
-				})
+				currentType.push(...type);
+				//console.log(type);
+				console.log(currentType);
+			});
 	}
 
 	setRows(page = this._page): void {
@@ -290,7 +288,7 @@ export class RecordsComponent {
 
 		//  if(this.disease_id) {
 		// 	healthrecord.healthdisease = this.disease_id;
-			
+
 		//  }
 	}
 
