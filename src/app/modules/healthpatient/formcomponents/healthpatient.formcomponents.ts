@@ -9,11 +9,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill name',
+					value: 'Fill name'
 				},
 				{
 					name: 'Label',
-					value: 'Name',
+					value: 'Name'
 				}
 			]
 		},
@@ -23,11 +23,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill description',
+					value: 'Fill description'
 				},
 				{
 					name: 'Label',
-					value: 'Description',
+					value: 'Description'
 				}
 			]
 		},
@@ -38,11 +38,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill date of birth',
+					value: 'Fill date of birth'
 				},
 				{
 					name: 'Label',
-					value: 'Date of birth',
+					value: 'Date of birth'
 				}
 			]
 		},
@@ -51,20 +51,20 @@ export const healthpatientFormComponents = {
 			name: 'Select',
 			key: 'gender',
 			fields: [
-			  {
-				name: 'Placeholder',
-				value: 'Choose gender',
-			  },
-			  {
-				name: 'Label',
-				value: 'Gender',
-			  },
-			  {
-				name: 'Items',
-				value: ['Male', 'Female'],
-			  }
+				{
+					name: 'Placeholder',
+					value: 'Choose gender'
+				},
+				{
+					name: 'Label',
+					value: 'Gender'
+				},
+				{
+					name: 'Items',
+					value: ['Male', 'Female']
+				}
 			]
-		  },
+		},
 
 		{
 			name: 'Select',
@@ -72,16 +72,16 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Choose patient category',
+					value: 'Choose patient category'
 				},
 				{
 					name: 'Label',
-					value: 'Patient category',
+					value: 'Patient category'
 				},
 
 				{
-				  name: 'Items',
-				  value: ['Child', 'Adult', 'Elderly'],
+					name: 'Items',
+					value: ['Child', 'Adult', 'Elderly']
 				}
 			]
 		},
@@ -92,11 +92,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill phone',
+					value: 'Fill phone'
 				},
 				{
 					name: 'Label',
-					value: 'Phone',
+					value: 'Phone'
 				}
 			]
 		},
@@ -107,11 +107,11 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill email',
+					value: 'Fill email'
 				},
 				{
 					name: 'Label',
-					value: 'Email',
+					value: 'Email'
 				}
 			]
 		},
@@ -122,13 +122,24 @@ export const healthpatientFormComponents = {
 			fields: [
 				{
 					name: 'Placeholder',
-					value: 'Fill address',
+					value: 'Fill address'
 				},
 				{
 					name: 'Label',
-					value: 'Address',
+					value: 'Address'
 				}
 			]
 		},
+
+		{
+			name: 'Photo',
+			key: 'thumb',
+			fields: [
+				{
+					name: 'Photo',
+					value: 'photo'
+				}
+			]
+		}
 	]
-}
+};

@@ -13,7 +13,7 @@ export const healthrecordFormComponents = {
 				},
 				{
 					name: 'Items',
-					value: []
+					value: ['Symptom', 'Analysis', 'Disease', 'Treatment']
 				}
 			]
 		},

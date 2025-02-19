@@ -158,18 +158,18 @@ export class RecordsComponent {
 		/*this._route.paramMap.subscribe(params => {this.disease_id = params.get('disease_id') || ''});
 		console.log(this.disease_id);*/
 
-		this._healthrecordService
-			.get({}, { name: 'type' })
-			.subscribe((type) => {
-				const currentType = healthrecordFormComponents.components[0]
-					.fields[1].value as Array<Healthrecord>;
+		// this._healthrecordService
+		// 	.get({}, { name: 'type' })
+		// 	.subscribe((type) => {
+		// 		const currentType = healthrecordFormComponents.components[0]
+		// 			.fields[1].value as Array<Healthrecord>;
 
-				currentType.splice(0, currentType.length);
+		// 		currentType.splice(0, currentType.length);
 
-				currentType.push(...type);
-				//console.log(type);
-				console.log(currentType);
-			});
+		// 		currentType.push(...type);
+		// 		//console.log(type);
+		// 		console.log(currentType);
+		// 	});
 	}
 
 	setRows(page = this._page): void {

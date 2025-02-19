@@ -14,9 +14,8 @@
 				[class.documents-sidebar--open]="isMenuOpen"
 			>
 				<div class="documents-sidebar-content">
-
-					 <wbutton (click) = "update(onepatient)">Update</wbutton>  
-					 <wbutton (click) = "delete(onepatient)">Delete</wbutton>  
+					<wbutton (click)="update(onepatient)">Update</wbutton>
+					<wbutton (click)="delete(onepatient)">Delete</wbutton>
 					<!--<div class="documents-sidebar__img">
 						<img src="assets/default.png" alt="" />
 					</div>
@@ -35,9 +34,7 @@
 			<div class="documents-main">
 				<div class="documents-main-content">
 					<div class="documents-main-row">
-						<div class="documents__name">
-							{{onepatient.name}}
-						</div>
+						<div class="documents__name">{{onepatient.name}}</div>
 						<div class="documents__description">
 							{{onepatient.description}}
 						</div>
@@ -50,16 +47,18 @@
 						<div class="documents__category">
 							{{onepatient.category}}
 						</div>
-						<div class="documents__phone">
-							{{onepatient.phone}}
-						</div>
-						<div class="documents__email">
-							{{onepatient.email}}
-						</div>
+						<div class="documents__phone">{{onepatient.phone}}</div>
+						<div class="documents__email">{{onepatient.email}}</div>
 						<div class="documents__address">
-                            {{onepatient.address}}
+							{{onepatient.address}}
 						</div>
-						
+
+						<div class="documents__photo">
+							<img
+								src="{{ onepatient.thumb }}"
+								alt="Image description"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -67,11 +66,9 @@
 	</div>
 </div>
 
-
 <!--<h1>{{onepatient.name}}</h1>
 <h1>{{onepatient.dateOfBirth}}</h1>
 <h1>{{onepatient.gender}}</h1>
 <h1>{{onepatient.phone}}</h1>
 <h1>{{onepatient.email}}</h1>
 <h1>{{onepatient.address}}</h1>-->
-
