@@ -100,18 +100,15 @@ wHealth \*\*\* — це мобільний додаток для управлі�
 23. pharmacy.link
 24. drug.link
 
-
 pharmacy_drug
 
 places_drug
 
 healthlink
 
-
-
 -
 
-ДІТИ, ДОРОСТІ .. ДО ПАЦІЄНЦІВ   patientCategory
+ДІТИ, ДОРОСТІ .. ДО ПАЦІЄНЦІВ patientCategory
 
 disease.patient
 treatment.patient
@@ -129,8 +126,6 @@ email: Контактний email клініки.
 website: Офіційний вебсайт клініки (якщо є).
 working_hours: Графік роботи клініки.
 license_number: Номер ліцензії клініки (за потреби).
-
-
 
 Doctors
 
@@ -168,7 +163,7 @@ Patient
 
 {
 
- dateOfBirth: String,  
+dateOfBirth: String,  
  gender: String,  
  phone: String,  
  email: String,  
@@ -177,35 +172,48 @@ Patient
 
 Drug
 
- {
-  medicationName: String,   
-  dose: String,             
-  frequency: String,        
-  startDate: Date, 
+{
+medicationName: String,  
+ dose: String,  
+ frequency: String,  
+ startDate: Date,
 }
-
 
 Records
 {
-    diagnosis: string;
-    visitDate: date;
-    allergy; string;
-    result: string;
-    treatmentType: string;
+diagnosis: string;
+visitDate: date;
+allergy; string;
+result: string;
+treatmentType: string;
 }
 
-
-HealthTreatment: {      
-  recommendedMedication: String,
-  duration: String,             
-  precautions: String,      // Запобіжні заходи або обмеження під час лікування    
-  patientAdvised: String    // Рекомендації для пацієнтів (наприклад, зміни в режимі дня, харчуванні)    
+HealthTreatment: {  
+ recommendedMedication: String,
+duration: String,  
+ precautions: String, // Запобіжні заходи або обмеження під час лікування  
+ patientAdvised: String // Рекомендації для пацієнтів (наприклад, зміни в режимі дня, харчуванні)  
 }
 
 сайдбар
 
+При виборі "Symptom":
 
+diagnosis: приховати.
+result: приховати.
+treatmentType: приховати.
+При виборі "Analysis":
 
+diagnosis: показати.
+result: показати.
+treatmentType: приховати.
+При виборі "Disease":
 
+diagnosis: показати.
+result: показати.
+treatmentType: показати.
+При виборі "Treatment":
 
-
+diagnosis: показати.
+result: показати.
+treatmentType: показати.

@@ -40,22 +40,32 @@ export class RecordsComponent {
 		allDocs: false,
 		create: this._router.url.includes('records/')
 			? (): void => {
-					this._form.modal<Healthrecord>(this.form, {
-						label: 'Create',
-						click: async (created: unknown, close: () => void) => {
-							close();
+					this._form.modal<Healthrecord>(
+						this.form,
+						{
+							label: 'Create',
+							click: async (
+								created: unknown,
+								close: () => void
+							) => {
+								close();
 
-							this._preCreate(created as Healthrecord);
+								this._preCreate(created as Healthrecord);
 
-							await firstValueFrom(
-								this._healthrecordService.create(
-									created as Healthrecord
-								)
-							);
+								await firstValueFrom(
+									this._healthrecordService.create(
+										created as Healthrecord
+									)
+								);
 
-							this.setRows();
+								this.setRows();
+							}
+						},
+						{},
+						(changed: Healthrecord) => {
+							console.log(changed);
 						}
-					});
+					);
 			  }
 			: null,
 		update: (doc: Healthrecord): void => {
