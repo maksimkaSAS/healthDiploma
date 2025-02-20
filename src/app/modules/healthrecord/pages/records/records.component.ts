@@ -8,6 +8,7 @@ import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interfa
 import { healthrecordFormComponents } from '../../formcomponents/healthrecord.formcomponents';
 import { firstValueFrom } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormComponentInterface } from 'src/app/core/modules/form/interfaces/component.interface';
 // import { DatePipe } from '@angular/common';
 
 @Component({
@@ -40,6 +41,7 @@ export class RecordsComponent {
 		allDocs: false,
 		create: this._router.url.includes('records/')
 			? (): void => {
+					const submition = {};
 					this._form.modal<Healthrecord>(
 						this.form,
 						{
@@ -61,9 +63,64 @@ export class RecordsComponent {
 								this.setRows();
 							}
 						},
-						{},
+						submition,
 						(changed: Healthrecord) => {
-							console.log(changed);
+							// Access the "type" value to determine which fields to show/hide
+							const selectedType = changed.type;
+
+							// Accessing the individual form components
+							const diagnosisField = this._form.getComponent(
+								this.form,
+								'diagnosis'
+							) as FormComponentInterface;
+							const resultField = this._form.getComponent(
+								this.form,
+								'result'
+							) as FormComponentInterface;
+							const treatmentTypeField = this._form.getComponent(
+								this.form,
+								'treatmentType'
+							) as FormComponentInterface;
+
+							// Hide or show fields based on selected type
+							switch (selectedType) {
+								case 'Symptom':
+									// Hide diagnosis, result, and treatmentType fields
+									diagnosisField.hidden = true;
+									resultField.hidden = true;
+									treatmentTypeField.hidden = true;
+									break;
+
+								case 'Analysis':
+									// Show diagnosis and result, hide treatmentType
+									diagnosisField.hidden = false;
+									resultField.hidden = false;
+									treatmentTypeField.hidden = true;
+									break;
+
+								case 'Disease':
+									// Show diagnosis, result, and treatmentType
+									diagnosisField.hidden = false;
+									resultField.hidden = false;
+									treatmentTypeField.hidden = false;
+									break;
+
+								case 'Treatment':
+									// Show diagnosis, result, and treatmentType
+									diagnosisField.hidden = false;
+									resultField.hidden = false;
+									treatmentTypeField.hidden = false;
+									break;
+
+								default:
+									// Default case, hide all if no valid type is selected
+									diagnosisField.hidden = true;
+									resultField.hidden = true;
+									treatmentTypeField.hidden = true;
+									break;
+							}
+
+							// You can add any additional logic here based on your use case (e.g., handle form submission, validations, etc.)
 						}
 					);
 			  }
