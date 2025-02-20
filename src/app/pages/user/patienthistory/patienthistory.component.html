@@ -34,6 +34,9 @@
 			</div>
 			<div class="documents-main">
 				<div class="documents-main-content">
+					<div *ngIf="type">
+						<span>sorted by {{ type }}</span>
+					</div>
 					<div
 						*ngFor="let record of records"
 						class="documents-main-row"
