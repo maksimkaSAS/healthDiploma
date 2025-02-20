@@ -14,7 +14,7 @@ import { AlertService, CoreService } from 'wacom';
 	standalone: false
 })
 export class OnepatientpageComponent {
-	
+	type = '';
 
 	onepatient = this._healthpatientService.doc(
 		this._router.url.replace('/onepatientpage/', '')
@@ -26,17 +26,17 @@ export class OnepatientpageComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService,
+		private _translate: TranslateService
 	) {}
 
 	isMenuOpen = false;
 
-	form: FormInterface = this._form.getForm('patient', healthpatientFormComponents);
+	form: FormInterface = this._form.getForm(
+		'patient',
+		healthpatientFormComponents
+	);
 
-
-
-
-	update (doc: Healthpatient): void  {
+	update(doc: Healthpatient): void {
 		this._form
 			.modal<Healthpatient>(this.form, [], doc)
 			.then((updated: Healthpatient) => {
@@ -46,7 +46,7 @@ export class OnepatientpageComponent {
 			});
 	}
 
-	delete (doc: Healthpatient): void  {
+	delete(doc: Healthpatient): void {
 		this._alert.question({
 			text: this._translate.translate(
 				'Common.Are you sure you want to delete this healthpatient?'
@@ -59,10 +59,10 @@ export class OnepatientpageComponent {
 					text: this._translate.translate('Common.Yes'),
 					callback: (): void => {
 						this._healthpatientService.delete(doc);
-						this._router.navigateByUrl('/mypatients')
+						this._router.navigateByUrl('/mypatients');
 					}
 				}
 			]
 		});
-}
+	}
 }

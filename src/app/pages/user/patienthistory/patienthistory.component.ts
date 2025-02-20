@@ -15,6 +15,7 @@ export class PatienthistoryComponent {
 	records: Healthrecord[] = [];
 
 	patient_id = '';
+	type = '';
 
 	form: FormInterface = this._form.getForm(
 		'record',
@@ -30,8 +31,6 @@ export class PatienthistoryComponent {
 			this.patient_id = params.get('patient_id') || '';
 			this.load();
 		});
-
-		
 	}
 
 	load(): void {
@@ -75,6 +74,10 @@ export class PatienthistoryComponent {
 			query += (query ? '&' : '') + 'patient=' + this.patient_id;
 		}
 
+		if (this.type) {
+			query += (query ? '&' : '') + 'type=' + this.type;
+		}
+
 		return query;
 	}
 	private _preCreate(healthpatient: Healthrecord): void {
@@ -82,6 +85,10 @@ export class PatienthistoryComponent {
 
 		if (this.patient_id) {
 			healthpatient.patient = this.patient_id;
+		}
+
+		if (this.type) {
+			healthpatient.type = this.type;
 		}
 	}
 

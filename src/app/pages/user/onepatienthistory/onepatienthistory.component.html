@@ -21,14 +21,21 @@
 						Title of sidebar...
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click) = "update(onepatienthistory)">Update</wbutton>  
-						 <wbutton (click) = "delete(onepatienthistory)">Delete</wbutton>  
+						<wbutton (click)="update(onepatienthistory)"
+							>Update</wbutton
+						>
+						<wbutton (click)="delete(onepatienthistory)"
+							>Delete</wbutton
+						>
 					</div>
 				</div>
 			</div>
 			<div class="documents-main">
 				<div class="documents-main-content">
 					<div class="documents-main-row">
+						<div class="documents__name">
+							{{onepatienthistory.type}}
+						</div>
 						<div class="documents__name">
 							{{onepatienthistory.name}}
 						</div>
@@ -53,8 +60,6 @@
 						<!-- <div class="documents__treatmentType">
 							{{onepatienthistory.visitDate | date:'dd/MM/yyyy'}}
 						</div> -->
-						
-						  
 					</div>
 				</div>
 			</div>

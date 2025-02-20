@@ -15,4 +15,5 @@ export interface Healthrecord extends CrudDocument {
 	allergy: string;
 	result: string;
 	treatmentType: string;
+	type: string;
 }
