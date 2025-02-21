@@ -59,14 +59,6 @@ export class PatienthistoryComponent {
 					});
 			}
 		});
-
-		/*ngOnInit(): void {
-		this._healthrecordService
-			.get({ query: this._query() })
-			.subscribe((records) => {
-				this.records = records;
-			});
-	}*/
 	}
 	private _query(): string {
 		let query = '';

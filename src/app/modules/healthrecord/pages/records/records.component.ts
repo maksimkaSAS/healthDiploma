@@ -32,6 +32,8 @@ export class RecordsComponent {
 		healthrecordFormComponents
 	);
 
+	private _previousSelectedType: string | undefined = undefined;
+
 	config = {
 		paginate: this.setRows.bind(this),
 		perPage: 20,
@@ -41,7 +43,23 @@ export class RecordsComponent {
 		allDocs: false,
 		create: this._router.url.includes('records/')
 			? (): void => {
-					const submition = {};
+					// Ініціалізуємо об'єкт submition з типом
+					const submition: {
+						name: string;
+						description: string;
+						diagnosis: string;
+						result: string;
+						treatmentType: string;
+						allergy: string;
+					} = {
+						name: '',
+						description: '',
+						diagnosis: '',
+						result: '',
+						treatmentType: '',
+						allergy: ''
+					};
+
 					this._form.modal<Healthrecord>(
 						this.form,
 						{
@@ -52,23 +70,26 @@ export class RecordsComponent {
 							) => {
 								close();
 
+								// Підготовка даних перед створенням
 								this._preCreate(created as Healthrecord);
 
+								// Створення нового запису
 								await firstValueFrom(
 									this._healthrecordService.create(
 										created as Healthrecord
 									)
 								);
 
+								// Оновлення списку рядків
 								this.setRows();
 							}
 						},
 						submition,
 						(changed: Healthrecord) => {
-							// Access the "type" value to determine which fields to show/hide
+							// Отримуємо значення "type", щоб визначити які поля показувати/ховати
 							const selectedType = changed.type;
 
-							// Accessing the individual form components
+							// Доступ до компонентів форми
 							const diagnosisField = this._form.getComponent(
 								this.form,
 								'diagnosis'
@@ -81,46 +102,83 @@ export class RecordsComponent {
 								this.form,
 								'treatmentType'
 							) as FormComponentInterface;
+							const allergiesField = this._form.getComponent(
+								this.form,
+								'allergy'
+							) as FormComponentInterface;
+							const nameField = this._form.getComponent(
+								this.form,
+								'name'
+							) as FormComponentInterface;
+							const descriptionField = this._form.getComponent(
+								this.form,
+								'description'
+							) as FormComponentInterface;
 
-							// Hide or show fields based on selected type
+							// Очищаємо тільки при зміні типу (тобто коли змінюється type)
+							const clearFields = () => {
+								// Очищаємо всі поля форми
+								submition.name = '';
+								submition.description = '';
+								submition.diagnosis = '';
+								submition.result = '';
+								submition.treatmentType = '';
+								submition.allergy = '';
+							};
+
+							// Перевіряємо, чи змінився тип, якщо так, очищаємо поля
+							if (selectedType !== this._previousSelectedType) {
+								clearFields();
+								this._previousSelectedType = selectedType; // Запам'ятовуємо попередній тип
+							}
+
+							// Визначаємо, які поля показати або приховати залежно від типу
 							switch (selectedType) {
 								case 'Symptom':
-									// Hide diagnosis, result, and treatmentType fields
+									nameField.hidden = false;
+									descriptionField.hidden = false;
 									diagnosisField.hidden = true;
 									resultField.hidden = true;
 									treatmentTypeField.hidden = true;
+									allergiesField.hidden = true;
 									break;
 
 								case 'Analysis':
-									// Show diagnosis and result, hide treatmentType
+									nameField.hidden = false;
+									descriptionField.hidden = false;
 									diagnosisField.hidden = false;
 									resultField.hidden = false;
 									treatmentTypeField.hidden = true;
+									allergiesField.hidden = true;
 									break;
 
 								case 'Disease':
-									// Show diagnosis, result, and treatmentType
+									nameField.hidden = false;
+									descriptionField.hidden = false;
 									diagnosisField.hidden = false;
 									resultField.hidden = false;
 									treatmentTypeField.hidden = false;
+									allergiesField.hidden = false;
 									break;
 
 								case 'Treatment':
-									// Show diagnosis, result, and treatmentType
-									diagnosisField.hidden = false;
+									nameField.hidden = false;
+									descriptionField.hidden = false;
+									diagnosisField.hidden = true;
 									resultField.hidden = false;
+									allergiesField.hidden = true;
 									treatmentTypeField.hidden = false;
 									break;
 
-								default:
-									// Default case, hide all if no valid type is selected
-									diagnosisField.hidden = true;
-									resultField.hidden = true;
-									treatmentTypeField.hidden = true;
-									break;
+								// default:
+								// 	nameField.hidden = true;
+								// 	descriptionField.hidden = true;
+								// 	diagnosisField.hidden = true;
+								// 	resultField.hidden = true;
+								// 	allergiesField.hidden = true;
+								// 	treatmentTypeField.hidden = true;
+								// 	break;
 							}
-
-							// You can add any additional logic here based on your use case (e.g., handle form submission, validations, etc.)
 						}
 					);
 			  }
