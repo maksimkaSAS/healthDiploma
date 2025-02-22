@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">wHealth</string>
+    <string name="title_activity_main">wHealth</string>
+    <string name="package_name">whealth.webart.work</string>
+    <string name="custom_url_scheme">whealth.webart.work</string>
+</resources>
