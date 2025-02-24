@@ -8,4 +8,5 @@ export interface User extends CrudDocument {
 	bio: string;
 	email: string;
 	thumb: string;
+	// author: string;
 }

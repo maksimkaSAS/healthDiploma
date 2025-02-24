@@ -10,4 +10,5 @@ export interface Healthpatient extends CrudDocument {
 	email: string;
 	address: string;
 	thumb: string;
+	author: string;
 }

@@ -60,6 +60,50 @@ export class RecordsComponent {
 						allergy: ''
 					};
 
+					// Очищення та приховування полів
+					const clearFields = () => {
+						// Очищаємо всі поля форми
+						submition.name = '';
+						submition.description = '';
+						submition.diagnosis = '';
+						submition.result = '';
+						submition.treatmentType = '';
+						submition.allergy = '';
+
+						// Сховуємо всі поля
+						const nameField = this._form.getComponent(
+							this.form,
+							'name'
+						) as FormComponentInterface;
+						const descriptionField = this._form.getComponent(
+							this.form,
+							'description'
+						) as FormComponentInterface;
+						const diagnosisField = this._form.getComponent(
+							this.form,
+							'diagnosis'
+						) as FormComponentInterface;
+						const resultField = this._form.getComponent(
+							this.form,
+							'result'
+						) as FormComponentInterface;
+						const treatmentTypeField = this._form.getComponent(
+							this.form,
+							'treatmentType'
+						) as FormComponentInterface;
+						const allergiesField = this._form.getComponent(
+							this.form,
+							'allergy'
+						) as FormComponentInterface;
+
+						nameField.hidden = true;
+						descriptionField.hidden = true;
+						diagnosisField.hidden = true;
+						resultField.hidden = true;
+						treatmentTypeField.hidden = true;
+						allergiesField.hidden = true;
+					};
+
 					this._form.modal<Healthrecord>(
 						this.form,
 						{
@@ -82,6 +126,9 @@ export class RecordsComponent {
 
 								// Оновлення списку рядків
 								this.setRows();
+
+								// Очищаємо і приховуємо поля після створення
+								clearFields();
 							}
 						},
 						submition,
@@ -90,6 +137,14 @@ export class RecordsComponent {
 							const selectedType = changed.type;
 
 							// Доступ до компонентів форми
+							const nameField = this._form.getComponent(
+								this.form,
+								'name'
+							) as FormComponentInterface;
+							const descriptionField = this._form.getComponent(
+								this.form,
+								'description'
+							) as FormComponentInterface;
 							const diagnosisField = this._form.getComponent(
 								this.form,
 								'diagnosis'
@@ -106,29 +161,10 @@ export class RecordsComponent {
 								this.form,
 								'allergy'
 							) as FormComponentInterface;
-							const nameField = this._form.getComponent(
-								this.form,
-								'name'
-							) as FormComponentInterface;
-							const descriptionField = this._form.getComponent(
-								this.form,
-								'description'
-							) as FormComponentInterface;
 
 							// Очищаємо тільки при зміні типу (тобто коли змінюється type)
-							const clearFields = () => {
-								// Очищаємо всі поля форми
-								submition.name = '';
-								submition.description = '';
-								submition.diagnosis = '';
-								submition.result = '';
-								submition.treatmentType = '';
-								submition.allergy = '';
-							};
-
-							// Перевіряємо, чи змінився тип, якщо так, очищаємо поля
 							if (selectedType !== this._previousSelectedType) {
-								clearFields();
+								clearFields(); // Очищуємо і приховуємо поля при зміні типу
 								this._previousSelectedType = selectedType; // Запам'ятовуємо попередній тип
 							}
 

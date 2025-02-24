@@ -6,6 +6,8 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthpatientFormComponents } from 'src/app/modules/healthpatient/formcomponents/healthpatient.formcomponents';
 import { Healthpatient } from 'src/app/modules/healthpatient/interfaces/healthpatient.interface';
 import { HealthpatientService } from 'src/app/modules/healthpatient/services/healthpatient.service';
+import { User } from 'src/app/modules/user/interfaces/user.interface';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { AlertService, CoreService } from 'wacom';
 
 @Component({
@@ -14,6 +16,7 @@ import { AlertService, CoreService } from 'wacom';
 	standalone: false
 })
 export class OnepatientpageComponent {
+	user: User;
 	type = '';
 
 	onepatient = this._healthpatientService.doc(
@@ -26,8 +29,12 @@ export class OnepatientpageComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
-	) {}
+		private _translate: TranslateService,
+		private _userService: UserService
+	) {
+		this.user = this._userService.doc(this.onepatient.author);
+		console.log(this.user);
+	}
 
 	isMenuOpen = false;
 
