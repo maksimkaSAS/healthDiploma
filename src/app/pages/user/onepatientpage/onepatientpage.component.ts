@@ -9,6 +9,7 @@ import { HealthpatientService } from 'src/app/modules/healthpatient/services/hea
 import { User } from 'src/app/modules/user/interfaces/user.interface';
 import { UserService } from 'src/app/modules/user/services/user.service';
 import { AlertService, CoreService } from 'wacom';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
 	templateUrl: './onepatientpage.component.html',
@@ -18,6 +19,8 @@ import { AlertService, CoreService } from 'wacom';
 export class OnepatientpageComponent {
 	user: User;
 	type = '';
+
+	apiUrl = environment.url;
 
 	onepatient = this._healthpatientService.doc(
 		this._router.url.replace('/onepatientpage/', '')

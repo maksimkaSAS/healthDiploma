@@ -13,7 +13,16 @@ import { healthpatientFormComponents } from '../../formcomponents/healthpatient.
 	standalone: false
 })
 export class PatientsComponent {
-	columns = ['name', 'description', 'dateOfBirth', 'gender', 'category', 'phone', 'email', 'address' ];
+	columns = [
+		'name',
+		'description',
+		'dateOfBirth',
+		'gender',
+		'category',
+		'phone',
+		'email',
+		'address'
+	];
 
 	form: FormInterface = this._form.getForm(
 		'healthpatient',
