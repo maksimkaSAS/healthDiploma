@@ -3,6 +3,7 @@
 @use 'src/scss/utils/vars' as vars;
 
 .w-btn {
+	margin-bottom: 5px;
 	font-size: var(--fs);
 	font-weight: 500;
 	font-family: var(--ff-base);
@@ -23,8 +24,8 @@
 	width: 100%;
 	border: none;
 	cursor: pointer;
-  	transition: all .3s;
-  	border-radius: 4px;
+	transition: all 0.3s;
+	border-radius: 4px;
 	&._primary {
 		background-color: var(--c-primary);
 

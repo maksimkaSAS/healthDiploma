@@ -1,21 +1,43 @@
 // ===== ICONS IMPORT =====
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(src/fonts/5.woff2) format('woff2');
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(src/fonts/5.woff2) format('woff2');
 }
 
-.material-icons, i {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 26px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
+.material-icons,
+i {
+	cursor: pointer;
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 26px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	color: var(--c-text-primary); /* Встановлення вашого бажаного кольору */
+	transition: color 0.3s ease; /* Плавна зміна кольору при наведенні */
+}
+
+.material-icons:hover,
+i:hover {
+	color: var(
+		--c-primary
+	); /* Колір при наведенні, можна змінити за необхідністю */
+}
+
+/* Для темної теми */
+html.dark .material-icons,
+html.dark i {
+	color: var(--c-text-primary); /* Основний колір іконок для темної теми */
+}
+
+html.dark .material-icons:hover,
+html.dark i:hover {
+	color: var(--c-primary-hover); /* Колір при наведенні для темної теми */
 }

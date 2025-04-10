@@ -470,21 +470,24 @@ wform {
 @media screen and (max-width: 991px) {
 	.documents-sidebar {
 		flex: 0 0 100%;
-		max-width: 100%;
+		max-width: 100%; /* Це вже є, не потрібно змінювати */
+		width: 100%; /* Додаємо цю властивість, щоб зайняти всю ширину */
 		height: 0;
 		border-radius: 4px;
 		position: fixed;
 		top: 0;
 		left: 0;
-		margin: 15px;
+		margin: 0; /* Забираємо відступи, якщо не хочемо залишати їх */
 		transition: all 0.3s;
 		overflow: hidden;
+
 		&--open {
 			height: calc(100% - 75px);
 		}
 	}
+
 	.documents-sidebar-content {
-		padding: 15px 30px 15px 15px;
+		padding: 15px;
 	}
 	.documents-main {
 		padding-left: 0;
