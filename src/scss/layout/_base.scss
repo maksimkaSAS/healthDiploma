@@ -549,3 +549,16 @@ wform {
 		max-width: 100%;
 	}
 }
+
+// Десктопна версія — 2 колонки
+@media screen and (min-width: 992px) {
+	.documents-main-content {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px; // проміжок між колонками і рядами
+	}
+
+	.documents-main-row {
+		flex: 0 0 calc(50% - 10px); // половина ширини з урахуванням gap
+	}
+}
