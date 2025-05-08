@@ -22,7 +22,7 @@ export const healthrecordFormComponents = {
 			name: 'Text',
 			key: 'name',
 			focused: true,
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',
@@ -37,7 +37,7 @@ export const healthrecordFormComponents = {
 		{
 			name: 'Text',
 			key: 'description',
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',
@@ -53,7 +53,7 @@ export const healthrecordFormComponents = {
 		{
 			name: 'Text',
 			key: 'diagnosis',
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',
@@ -84,7 +84,7 @@ export const healthrecordFormComponents = {
 		{
 			name: 'Text',
 			key: 'allergy',
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',
@@ -100,7 +100,7 @@ export const healthrecordFormComponents = {
 		{
 			name: 'Text',
 			key: 'result',
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',
@@ -115,7 +115,7 @@ export const healthrecordFormComponents = {
 		{
 			name: 'Text',
 			key: 'treatmentType',
-			hidden: true,
+			//hidden: true,
 			fields: [
 				{
 					name: 'Placeholder',

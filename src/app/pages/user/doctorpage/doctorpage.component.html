@@ -21,20 +21,16 @@
 						Title of sidebar...
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click) = "update(onedoctor)">Update</wbutton>  
-					 <wbutton (click) = "delete(onedoctor)">Delete</wbutton>  
+						<wbutton (click)="update(onedoctor)">Update</wbutton>
+						<wbutton (click)="delete(onedoctor)">Delete</wbutton>
 					</div>
 				</div>
 			</div>
 			<div class="documents-main">
 				<div class="documents-main-content">
 					<div class="documents-main-row">
-						<div class="documents__name">
-							{{onedoctor.name}}
-						</div>
-						<div class="documents__phone">
-							{{onedoctor.phone}}
-						</div>
+						<div class="documents__name">{{onedoctor.name}}</div>
+						<div class="documents__phone">{{onedoctor.phone}}</div>
 						<div class="documents__specialty">
 							{{onedoctor.specialty}}
 						</div>
@@ -42,21 +38,14 @@
 							{{onedoctor.experienceYears}}
 						</div>
 						<div class="documents__consultationFee">
-							{{onedoctor.consultationFee}}
+							{{onedoctor.consultationFee}} $
 						</div>
-						
-						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-
-
 
 <!--<h1>{{onedoctor.name}}</h1>
 <h1>{{onedoctor.phone}}</h1>
