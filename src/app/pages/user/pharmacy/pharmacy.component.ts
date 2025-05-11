@@ -12,14 +12,11 @@ import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/h
 	standalone: false
 })
 export class PharmacyComponent {
-	//TODO drug_id = '';
-	// drug_id = '';
 	search = '';
-	pharmacy_drug = '';
-	place_drug = '';
-
-	// link_id = '';
+	pharmacy_drug: string = ''; // Тепер містить лише name препарату
 	pharmacies: Healthpharmacy[] = [];
+	isMenuOpen = false;
+	drug_id = '';
 
 	constructor(
 		private _healthpharmacyService: HealthpharmacyService,
@@ -30,12 +27,7 @@ export class PharmacyComponent {
 
 	load(): void {
 		this._healthpharmacyService
-			.get(
-				{
-					query: this._query()
-				},
-				{ name: 'public' }
-			)
+			.get({ query: this._query() }, { name: 'public' })
 			.subscribe((pharmacies) => {
 				this.pharmacies.splice(0, this.pharmacies.length);
 				this.pharmacies.push(...pharmacies);
@@ -46,6 +38,12 @@ export class PharmacyComponent {
 		this.search = (value as string) || '';
 	}
 
+	// Обробка зміни препарату
+	onDrugChange(drug: string | { name: string; _id: string }): void {
+		this.pharmacy_drug = typeof drug === 'object' ? drug.name : drug;
+		this.load();
+	}
+
 	private _query(): string {
 		let query = '';
 
@@ -53,17 +51,9 @@ export class PharmacyComponent {
 			query += (query ? '&' : '') + 'search=' + this.search;
 		}
 
-		// if (this.drug_id) {
-		// 	query += (query ? '&' : '') + 'drug=' + this.drug_id;
-		// }
-
 		if (this.pharmacy_drug) {
 			query += (query ? '&' : '') + 'pharmacy_drug=' + this.pharmacy_drug;
 		}
-
-		// if (this.place_drug) {
-		// 	query += (query ? '&' : '') + 'place_drug=' + this.place_drug;
-		// }
 
 		return query;
 	}
@@ -81,39 +71,12 @@ export class PharmacyComponent {
 				close: () => void
 			): Promise<void> => {
 				close();
-
 				this._healthpharmacyService
 					.create(created as Healthpharmacy)
 					.subscribe(() => {
 						this.load();
 					});
-
-				close();
 			}
 		});
 	}
-
-	/*ngOnInit(): void {
-		this._healthpharmacyService
-			.get({}, { name: 'public' })
-			.subscribe((pharmacies) => {
-				this.pharmacies = pharmacies;
-			});
-	}*/
-
-	isMenuOpen = false;
 }
-
-/*const addIds = async (rec, res, next) => 
-{
-	if(rec.query.pharmacy.drug) {
-		rec.locals.pharmacy_ids = ( await waw.Healthlink.find({
-		drug: req.query.pharmacy_drug,
-		}).select("pharmacy")
-		).map((p) => p.pharmacy);
-
-		query._id = pharmacy_ids
-
-	}
-}
-*/

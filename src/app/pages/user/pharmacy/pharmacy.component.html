@@ -3,12 +3,12 @@
 		<div class="documents-list">
 			<div
 				class="burger-wrap"
-				class="burger-wrap"
-				(click)="isMenuOpen=!isMenuOpen"
+				(click)="isMenuOpen = !isMenuOpen"
 				[class.burger-wrap--open]="isMenuOpen"
 			>
 				<div class="burger" [class.burger--close]="isMenuOpen"></div>
 			</div>
+
 			<div
 				class="documents-sidebar"
 				[class.documents-sidebar--open]="isMenuOpen"
@@ -17,25 +17,18 @@
 					<div class="documents-sidebar__img">
 						<img src="assets/default.png" alt="" />
 					</div>
+
 					<div class="documents-sidebar__title">
 						Title of sidebar...
 					</div>
+
 					<div class="documents-sidebar__description">
 						<wbutton (click)="create()">Create</wbutton>
 
 						<healthdrug-selector
-							[value]="pharmacy_drug"
-							(wChange)="pharmacy_drug = $event; load()"
+							[value]="pharmacy_drug || ''"
+							(wChange)="onDrugChange($event)"
 						></healthdrug-selector>
-
-						<!-- <healthplace-selector
-							[value]="place_drug"
-							(wChange)="place_drug = $event; load()"
-						></healthplace-selector> -->
-
-						<!-- <healthlink-selector
-						[value]="link_id"
-							(wChange)="link_id = $event; load()"></healthlink-selector> -->
 
 						<winput
 							[type]="'search'"
@@ -43,10 +36,22 @@
 							(wSubmit)="load()"
 							[clearable]="true"
 						></winput>
+
+						<!-- Посилання на tabletki.ua -->
+						<div *ngIf="pharmacy_drug" class="tabletki-link">
+							<a
+								[href]="'https://tabletki.ua/uk/' + pharmacy_drug + '/'"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Переглянути на tabletki.ua
+							</a>
+						</div>
 					</div>
 
 					<div class="documents-sidebar__socials">
 						<a href="https://x.com" target="_blank" aria-label="X">
+							<!-- SVG X -->
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="18"
@@ -59,11 +64,13 @@
 								/>
 							</svg>
 						</a>
+
 						<a
 							href="https://t.me/yourchannel"
 							target="_blank"
 							aria-label="Telegram"
 						>
+							<!-- SVG Telegram -->
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="18"
@@ -79,6 +86,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="documents-main">
 				<div class="documents-main-content">
 					<div
