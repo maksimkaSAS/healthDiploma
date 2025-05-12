@@ -40,7 +40,7 @@
 						<!-- Посилання на tabletki.ua -->
 						<div *ngIf="pharmacy_drug" class="tabletki-link">
 							<a
-								[href]="'https://tabletki.ua/uk/' + pharmacy_drug + '/'"
+								[href]="'https://tabletki.ua/uk/' + healthdrugService.doc(pharmacy_drug).name + '/'"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

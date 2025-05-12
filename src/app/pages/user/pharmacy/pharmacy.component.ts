@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { Value } from 'src/app/core/modules/input/input.component';
+import { HealthdrugService } from 'src/app/modules/healthdrug/services/healthdrug.service';
+import { HealthlinkService } from 'src/app/modules/healthlink/services/healthlink.service';
 import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
@@ -19,14 +21,16 @@ export class PharmacyComponent {
 	drug_id = '';
 
 	constructor(
-		private _healthpharmacyService: HealthpharmacyService,
+		public healthpharmacyService: HealthpharmacyService,
+		public healthdrugService: HealthdrugService,
+		public healthlinkService: HealthlinkService,
 		private _form: FormService
 	) {
 		this.load();
 	}
 
 	load(): void {
-		this._healthpharmacyService
+		this.healthpharmacyService
 			.get({ query: this._query() }, { name: 'public' })
 			.subscribe((pharmacies) => {
 				this.pharmacies.splice(0, this.pharmacies.length);
@@ -71,7 +75,7 @@ export class PharmacyComponent {
 				close: () => void
 			): Promise<void> => {
 				close();
-				this._healthpharmacyService
+				this.healthpharmacyService
 					.create(created as Healthpharmacy)
 					.subscribe(() => {
 						this.load();
