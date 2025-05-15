@@ -1,16 +1,53 @@
-<!--{{patient|json}}-->
-<a routerLink="/onepatientpage/{{patient._id}}">
-    <div class="documents__title">
-        {{patient.name}}
-    </div>
-    <div class="documents__description">
-        {{patient.description}}
-    </div>           
-</a>
+<div class="patient-tile">
+	<a [routerLink]="'/onepatientpage/' + patient._id" class="card-link">
+		<div class="tile-main">
+			<div class="tile-row">
+				<span class="tile-icon">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ patient.name }}</span>
+			</div>
 
-<a routerLink="/patienthistory/{{patient._id}}" class="nav__burger-link">
-    <span class="material-icons">folder</span>
-</a>
+			<div class="tile-row">
+				<span class="tile-icon">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ patient.description }}</span>
+			</div>
+		</div>
+	</a>
 
-<span (click) = "update(patient)" class="material-icons">edit</span>
-<span (click) = "delete(patient)" class="material-icons">delete</span>
+	<div class="tile-actions">
+		<a
+			[routerLink]="'/patienthistory/' + patient._id"
+			class="tile-action-btn"
+			title="Історія"
+		>
+			<span class="material-icons">folder</span>
+		</a>
+
+		<span
+			(click)="update(patient)"
+			class="material-icons tile-action-btn"
+			title="Редагувати"
+		>
+			edit
+		</span>
+
+		<span
+			(click)="delete(patient)"
+			class="material-icons tile-action-btn danger"
+			title="Видалити"
+		>
+			delete
+		</span>
+	</div>
+</div>
