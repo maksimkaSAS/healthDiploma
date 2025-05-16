@@ -1,7 +1,45 @@
-<a routerLink="/clinicpage/{{clinic._id}}">
-<div class="documents__title">
-    {{clinic.name}}
+<div class="patient-tile">
+	<a [routerLink]="'/clinicpage/' + clinic._id" class="card-link">
+		<div class="tile-main">
+			<div class="tile-row">
+				<span class="tile-icon">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M19 3H5c-1.1 0-2 .9-2 2v16h6v-6h6v6h6V5c0-1.1-.9-2-2-2zm0 16h-2v-6H7v6H5V5h14v14zm-6-8h-2V9H9V7h2V5h2v2h2v2h-2v2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ clinic.name }}</span>
+			</div>
+
+			<div class="tile-row">
+				<span class="tile-icon">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ clinic.description }}</span>
+			</div>
+		</div>
+	</a>
+
+	<div class="tile-actions">
+		<span
+			(click)="update(clinic)"
+			class="material-icons tile-action-btn"
+			title="Редагувати"
+		>
+			edit
+		</span>
+
+		<span
+			(click)="delete(clinic)"
+			class="material-icons tile-action-btn danger"
+			title="Видалити"
+		>
+			delete
+		</span>
+	</div>
 </div>
-</a>
-<span (click) = "update(clinic)" class="material-icons">edit</span>
-<span (click) = "delete(clinic)" class="material-icons">delete</span>

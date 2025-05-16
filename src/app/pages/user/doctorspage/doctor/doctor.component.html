@@ -1,9 +1,55 @@
+<div class="patient-tile">
+	<a [routerLink]="'/doctorpage/' + doctor._id" class="card-link">
+		<div class="tile-main">
+			<!-- Ім’я лікаря -->
+			<div class="tile-row">
+				<span class="tile-icon">
+					<!-- Іконка лікаря -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M12 2a7 7 0 0 0-7 7c0 3.9 3.1 7 7 7s7-3.1 7-7a7 7 0 0 0-7-7zm0 12c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5zm6 2h-2.1c-.8.6-1.8 1-2.9 1s-2.1-.4-2.9-1H6c-1.1 0-2 .9-2 2v4h16v-4c0-1.1-.9-2-2-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ doctor.name }}</span>
+			</div>
 
+			<!-- Спеціальність або опис -->
+			<div
+				class="tile-row"
+				*ngIf="doctor.specialty || doctor.description"
+			>
+				<span class="tile-icon">
+					<!-- Іконка тексту -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">
+					{{ doctor.specialty || doctor.description }}
+				</span>
+			</div>
+		</div>
+	</a>
 
+	<!-- Дії -->
+	<div class="tile-actions">
+		<span
+			(click)="update(doctor)"
+			class="material-icons tile-action-btn"
+			title="Редагувати"
+		>
+			edit
+		</span>
 
-<a routerLink="/doctorpage/{{doctor._id}}">
-    <div class="documents__title">{{doctor.name}}</div>
-</a>
-
-<span (click) = "update(doctor)" class="material-icons">edit</span>
-<span (click) = "delete(doctor)" class="material-icons">delete</span>
+		<span
+			(click)="delete(doctor)"
+			class="material-icons tile-action-btn danger"
+			title="Видалити"
+		>
+			delete
+		</span>
+	</div>
+</div>

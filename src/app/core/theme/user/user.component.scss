@@ -281,12 +281,21 @@ hr {
 	}
 	@include media.bp-max(md) {
 		order: 2;
+		width: 99%;
+		margin: 0 auto 7px auto; // по центру (автоматичні відступи зліва і справа), знизу 7px
+		border-radius: 20px; // округлі краї
+		//background-color: rgba(255, 255, 255, 0.068); // трохи прозора плитка
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // легка тінь для ефекту "підняття"
+
 		&__ul {
-			justify-content: space-between;
+			justify-content: center; // центровано вміст
+			//justify-content: space-between;
 		}
+
 		&__li:last-child {
 			margin-left: 0;
 		}
+
 		&__burger {
 			top: 0;
 		}

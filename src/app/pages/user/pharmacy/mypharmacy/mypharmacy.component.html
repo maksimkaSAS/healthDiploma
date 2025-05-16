@@ -1,8 +1,50 @@
+<div class="patient-tile">
+	<a [routerLink]="'/onepharmacypage/' + pharmacy._id" class="card-link">
+		<div class="tile-main">
+			<!-- Назва аптеки -->
+			<div class="tile-row">
+				<span class="tile-icon">
+					<!-- Іконка аптеки (аптечний хрест/будівля з аптекою) -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M21 7h-4V3H7v4H3v2h1v12h16V9h1V7zm-6-2v2H9V5h6zm2 14H7V9h10v10zm-2-7h-2v-2h-2v2H9v2h2v2h2v-2h2v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ pharmacy.name }}</span>
+			</div>
 
+			<!-- Опис або адреса аптеки -->
+			<div class="tile-row" *ngIf="pharmacy.description">
+				<span class="tile-icon">
+					<!-- Іконка тексту/опису -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ pharmacy.description }}</span>
+			</div>
+		</div>
+	</a>
 
-<a routerLink="/onepharmacypage/{{pharmacy._id}}">
-    <div class="documents__title">{{pharmacy.name}}</div>
-</a>
+	<!-- Дії з аптекою -->
+	<div class="tile-actions">
+		<span
+			(click)="update(pharmacy)"
+			class="material-icons tile-action-btn"
+			title="Редагувати"
+		>
+			edit
+		</span>
 
-<span (click) = "update(pharmacy)" class="material-icons">edit</span>
-<span (click) = "delete(pharmacy)" class="material-icons">delete</span>
+		<span
+			(click)="delete(pharmacy)"
+			class="material-icons tile-action-btn danger"
+			title="Видалити"
+		>
+			delete
+		</span>
+	</div>
+</div>

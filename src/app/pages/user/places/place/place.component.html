@@ -1,7 +1,50 @@
+<div class="patient-tile">
+	<a [routerLink]="'/oneplacepage/' + place._id" class="card-link">
+		<div class="tile-main">
+			<!-- Назва місця -->
+			<div class="tile-row">
+				<span class="tile-icon">
+					<!-- Іконка локації / мітки на карті -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ place.name }}</span>
+			</div>
 
-<a routerLink="/oneplacepage/{{place._id}}">
-    <div class="documents__title">{{place.name}}</div>
-</a>
+			<!-- Опис або додаткова інформація, якщо є -->
+			<div class="tile-row" *ngIf="place.description">
+				<span class="tile-icon">
+					<!-- Іконка опису / тексту -->
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text">{{ place.description }}</span>
+			</div>
+		</div>
+	</a>
 
-<span (click)="update(place)" class="material-icons">edit</span>
-<span (click)="delete(place)" class="material-icons">delete</span>
+	<!-- Дії -->
+	<div class="tile-actions">
+		<span
+			(click)="update(place)"
+			class="material-icons tile-action-btn"
+			title="Редагувати"
+		>
+			edit
+		</span>
+
+		<span
+			(click)="delete(place)"
+			class="material-icons tile-action-btn danger"
+			title="Видалити"
+		>
+			delete
+		</span>
+	</div>
+</div>
