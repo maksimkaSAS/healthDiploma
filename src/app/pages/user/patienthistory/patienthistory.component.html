@@ -65,19 +65,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="documents-main">
-				<div class="documents-main-content">
-					<div *ngIf="type">
-						<span>sorted by {{ type }}</span>
+			<div class="documents-sortable">
+				<div class="documents-sortable-content">
+					<div *ngIf="type" class="documents-sortable-banner">
+						<span>Sorted by {{ type }}</span>
 					</div>
-					<div
-						*ngFor="let record of records"
-						class="documents-main-row"
-					>
-						<app-history
-							[record]="record"
-							(load)="load()"
-						></app-history>
+
+					<div class="documents-sortable-list">
+						<div
+							*ngFor="let record of records"
+							class="documents-main-row"
+						>
+							<app-history
+								[record]="record"
+								(load)="load()"
+							></app-history>
+						</div>
 					</div>
 				</div>
 			</div>
