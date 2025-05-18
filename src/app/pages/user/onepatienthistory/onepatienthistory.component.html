@@ -64,35 +64,121 @@
 				</div>
 			</div>
 			<div class="documents-main">
-				<div class="documents-main-content">
-					<div class="documents-main-row">
-						<div class="documents__name">
-							{{onepatienthistory.type}}
+				<div class="patient-card">
+					<div class="patient-grid">
+						<div class="info-block" *ngIf="onepatienthistory.type">
+							<div class="info-block__title">Type</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.type }}</span>
 						</div>
-						<div class="documents__name">
-							{{onepatienthistory.name}}
+
+						<div class="info-block" *ngIf="onepatienthistory.name">
+							<div class="info-block__title">Name</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM13 9V3.5L18.5 9H13z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.name }}</span>
 						</div>
-						<div class="documents__description">
-							{{onepatienthistory.description}}
+
+						<div
+							class="info-block"
+							*ngIf="onepatienthistory.description"
+						>
+							<div class="info-block__title">Description</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M21 3H3c-1.1 0-2 .9-2 2v14l4-4h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.description }}</span>
 						</div>
-						<div class="documents__diagnosis">
-							{{onepatienthistory.diagnosis}}
+
+						<div
+							class="info-block"
+							*ngIf="onepatienthistory.diagnosis"
+						>
+							<div class="info-block__title">Diagnosis</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M20 6h-3V3H7v3H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM7 3h10v3H7V3zm8 10h-2v2h-2v-2H9v-2h2V9h2v2h2v2z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.diagnosis }}</span>
 						</div>
-						<div class="documents__allergy">
-							{{onepatienthistory.allergy}}
+
+						<div
+							class="info-block"
+							*ngIf="onepatienthistory.allergy"
+						>
+							<div class="info-block__title">Allergy</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.allergy }}</span>
 						</div>
-						<div class="documents__result">
-							{{onepatienthistory.result}}
+
+						<div
+							class="info-block"
+							*ngIf="onepatienthistory.result"
+						>
+							<div class="info-block__title">Result</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.result }}</span>
 						</div>
-						<div class="documents__treatmentType">
-							{{onepatienthistory.treatmentType}}
+
+						<div
+							class="info-block"
+							*ngIf="onepatienthistory.treatmentType"
+						>
+							<div class="info-block__title">Treatment Type</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M17.7 19.3l-1.4 1.4-4.3-4.3-4.3 4.3-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4 4.3 4.3 4.3-4.3 1.4 1.4-4.3 4.3 4.3 4.3z"
+									/>
+								</svg>
+							</span>
+							<span>{{ onepatienthistory.treatmentType }}</span>
 						</div>
-						<div class="documents__visitDate">
-							{{onepatienthistory._id|mongodate|date:'d MMM y'}}
+
+						<div class="info-block" *ngIf="onepatienthistory._id">
+							<div class="info-block__title">Visit Date</div>
+							<span class="icon">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M7 10h5v5H7v-5zm-4 8h18V8H3v10zm16-14V2h-2v2H7V2H5v2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-2z"
+									/>
+								</svg>
+							</span>
+							<span
+								>{{ onepatienthistory._id | mongodate | date: 'd
+								MMM y' }}</span
+							>
 						</div>
-						<!-- <div class="documents__treatmentType">
-							{{onepatienthistory.visitDate | date:'dd/MM/yyyy'}}
-						</div> -->
 					</div>
 				</div>
 			</div>
