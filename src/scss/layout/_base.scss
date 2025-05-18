@@ -177,7 +177,7 @@ body {
 	}
 }
 
-wform {
+.wform {
 	flex: 1 0;
 
 	@include media.bp-max(sm) {
@@ -363,6 +363,7 @@ wform {
 			color: var(--c-text-primary);
 		}
 	}
+
 	&-tags {
 		display: flex;
 		flex-flow: row wrap;
@@ -439,6 +440,7 @@ wform {
 	&__description {
 		color: var(--c-text-primary);
 	}
+
 	&__btn {
 		max-width: 200px;
 		padding: 10px 0;
@@ -470,6 +472,7 @@ wform {
 @media screen and (max-width: 991px) {
 	.documents-sidebar {
 		flex: 0 0 100%;
+		z-index: 2;
 		max-width: 100%; /* Це вже є, не потрібно змінювати */
 		width: 100%; /* Додаємо цю властивість, щоб зайняти всю ширину */
 		height: 0;
@@ -483,11 +486,12 @@ wform {
 
 		&--open {
 			height: calc(100% - 75px);
+			z-index: 2;
 		}
 	}
 
 	.documents-sidebar-content {
-		padding: 15px;
+		padding: 50px 15px 15px 15px;
 	}
 	.documents-main {
 		padding-left: 0;
@@ -567,8 +571,6 @@ wform {
 	&-content {
 		display: flex;
 		flex-direction: column;
-		padding: 15px;
-		height: 100%;
 		overflow-y: auto;
 		scrollbar-width: none;
 
@@ -582,7 +584,7 @@ wform {
 		display: flex;
 		justify-content: center;
 		gap: 12px;
-		margin-top: auto; // Закріплює блок внизу
+		margin-top: auto; // це кріпить блок донизу
 		padding-top: 20px;
 		padding-bottom: 10px;
 
@@ -609,6 +611,61 @@ wform {
 		}
 	}
 }
+
+// .documents-sidebar {
+// 	&-content {
+// 		display: flex;
+// 		flex-direction: column;
+// 		padding: 15px;
+// 		height: 100%;
+// 		overflow-y: auto;
+// 		scrollbar-width: none;
+
+// 		&::-webkit-scrollbar {
+// 			width: 0px;
+// 			height: 0px;
+// 		}
+// 	}
+
+// 	&__socials {
+// 		display: flex;
+// 		justify-content: center;
+// 		gap: 12px;
+// 		margin-top: auto; // Закріплює блок внизу
+// 		padding-top: 20px;
+// 		padding-bottom: 10px;
+
+// 		a {
+// 			display: flex;
+// 			justify-content: center;
+// 			align-items: center;
+// 			width: 36px;
+// 			height: 36px;
+// 			border-radius: 50%;
+// 			background-color: #1a1a1a69;
+// 			color: #fff;
+// 			transition: background-color 0.3s ease;
+// 			font-size: 18px;
+
+// 			&:hover {
+// 				background-color: #333;
+// 			}
+
+// 			svg {
+// 				width: 18px;
+// 				height: 18px;
+// 			}
+// 		}
+// 	}
+// }
+
+// @media screen and (min-width: 992px) {
+// 	.documents-sidebar {
+// 		&-content {
+// 			padding: 100px;
+// 		}
+// 	}
+// }
 
 //////другорядна сторінка
 
@@ -643,7 +700,7 @@ wform {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 	white-space: nowrap;
 	transition: var(--transition);
-	z-index: 1;
+	z-index: 0;
 }
 
 // Темна тема
