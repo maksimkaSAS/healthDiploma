@@ -163,6 +163,7 @@
 							<img
 								[src]="apiUrl + onepatient.thumb"
 								alt="Photo"
+								(error)="onImageError($event)"
 							/>
 						</div>
 					</div>

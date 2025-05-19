@@ -75,4 +75,9 @@ export class OnepatientpageComponent {
 			]
 		});
 	}
+
+	onImageError(event: Event) {
+		const target = event.target as HTMLImageElement;
+		target.src = 'assets/defaultProfile.png';
+	}
 }
