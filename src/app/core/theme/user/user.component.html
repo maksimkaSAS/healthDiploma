@@ -94,8 +94,8 @@
 					routerLink="/profile"
 				>
 					<img
-						[src]="forceAvatarUrl || us.user.thumb ? url + us.user.thumb : 'assets/default.png'"
-						(error)="forceAvatarUrl = 'assets/default.png'"
+						[src]="forceAvatarUrl || us.user.thumb ? url + us.user.thumb : 'assets/defaultProfile.png'"
+						(error)="forceAvatarUrl = 'assets/defaultProfile.png'"
 						alt="Profile Picture"
 						class="avatar__img"
 						height="50"

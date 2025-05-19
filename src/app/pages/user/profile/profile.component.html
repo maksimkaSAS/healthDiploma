@@ -5,9 +5,9 @@
 				<div class="avatar _profile">
 					<ngx-file
 						(update)="updateThumb($event)"
-						[value]="us.user.thumb ? url + us.user.thumb : 'assets/default.png'"
+						[value]="us.user.thumb ? url + us.user.thumb : 'assets/defaultProfile.png'"
 						[name]="us.user._id + '.jpg'"
-						err="assets/default.png"
+						err="assets/defaultProfile.png"
 						[isPhoto]="true"
 						[imgStyle]="{
 							'border-radius': 'var(--c-img-round)',
