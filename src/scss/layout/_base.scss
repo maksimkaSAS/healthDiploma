@@ -965,3 +965,56 @@ svg {
 		}
 	}
 }
+
+////// tabletki
+
+.tabletki-link {
+	padding: 0.75rem 1.25rem;
+	border-radius: var(--b-radius-btn);
+	background-color: var(--c-bg-tertiary);
+	box-shadow: var(--card-box-shadow);
+	margin-top: 1.5rem;
+	display: inline-block;
+	text-align: center;
+
+	// Центрування на мобільних
+	@media (max-width: 768px) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+
+	a {
+		display: inline-block;
+		color: var(--c-secondary);
+		font-family: var(--ff-base);
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		letter-spacing: var(--letter-spacing);
+		transition: var(--transition);
+		position: relative;
+		padding-bottom: 2px;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 0%;
+			height: 2px;
+			background-color: var(--c-secondary-hover);
+			transition: width 0.3s ease;
+		}
+
+		&:hover {
+			color: var(--c-secondary-hover);
+			transform: translateY(-1px);
+
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+}
