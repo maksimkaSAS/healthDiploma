@@ -27,6 +27,15 @@
 						<wbutton (click)="delete(oneplace)">Delete</wbutton>
 					</div>
 
+					<div class="documents-sidebar__map-link">
+						<a
+							[target]="'_blank'"
+							[href]="'https://www.google.com/maps/search/?api=1&query=' + oneplace.latitude + ',' + oneplace.longitude"
+						>
+							View on Google Maps
+						</a>
+					</div>
+
 					<div class="documents-sidebar__socials">
 						<a href="https://x.com" target="_blank" aria-label="X">
 							<svg
