@@ -186,6 +186,7 @@
 
 		.table-header__sort {
 			position: relative;
+
 			cursor: pointer;
 			.icon-arrow {
 				transform: rotate(90deg);
@@ -208,6 +209,7 @@
 			letter-spacing: var(--letter-spacing);
 			text-transform: capitalize;
 			color: var(--c-text-primary);
+
 			border-bottom: 1px solid var(--c-border);
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -259,6 +261,7 @@
 				align-items: center;
 				justify-content: space-between;
 				column-gap: 5px;
+				border-radius: 50px;
 				border-bottom: 0;
 				border: 2px solid var(--c-border);
 				height: auto;
@@ -285,6 +288,7 @@
 			&:last-child {
 				td {
 					border-bottom: none;
+
 					@media (max-width: 991.9px) {
 						border-bottom: 2px solid var(--c-border);
 					}
