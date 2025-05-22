@@ -104,6 +104,7 @@
 					<div class="name">{{us.user.name || "Profile"}}</div>
 				</a>
 				<hr />
+
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
@@ -137,6 +138,9 @@
 					<span class="material-icons">translate</span>
 					<span translate>Theme.Translates</span>
 				</a>
+
+				<hr *ngIf="us.role('admin')" />
+
 				<a
 					[routerLinkActiveOptions]="{ exact: true }"
 					routerLinkActive="_activeLink"
