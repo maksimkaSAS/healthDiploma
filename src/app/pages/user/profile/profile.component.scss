@@ -1,77 +1,118 @@
 @use 'src/scss/utils/mixins' as mixins;
 @use 'src/scss/utils/media' as media;
 @use 'src/scss/utils/vars' as vars;
+
 :host {
 	width: 100%;
+	display: block;
+	padding: 24px;
 
 	wcard {
 		width: 100%;
-		// padding: 20px 260px 0px 20px;
-		transition: all 0.3s;
-		display: block;
+		background-color: var(--c-bg-primary);
+		border-radius: 16px;
+		padding: 32px 24px;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+		transition: background-color 0.3s ease, box-shadow 0.3s ease;
 	}
 }
 
-/*  PROFILE STYLE  */
 .container {
-	padding: unset;
+	padding: 0;
+	max-width: 80%;
 }
 
 .profile {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
 	&__header {
-		z-index: 9;
-		top: 20px;
 		position: absolute;
-		right: 30px;
-		@include mixins.text-default(0, 23px, 500, 20px, var(--c-text-primary));
-		@include mixins.flexBox(flex, null, space-between, center, null);
-		border-radius: 12px;
+		top: 24px;
+		right: 24px;
+		z-index: 10;
+		@include mixins.flexBox(flex, null, flex-end, center);
+		@include mixins.text-default(0, 20px, 600, 20px, var(--c-text-primary));
+	}
+
+	&__body {
+		padding-top: 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
 	}
 
 	&__footer {
-		margin-top: 20px;
+		margin-top: 32px;
 		@include mixins.flexBox(flex, null, space-between, center, wrap);
+		gap: 16px;
 
 		@include media.bp-max(sm) {
 			flex-direction: column;
-			align-items: center;
+			align-items: stretch;
+			text-align: center;
 
 			.profile__logout {
 				order: 2;
-				margin-top: 20px;
+				margin-top: 16px;
 			}
 		}
 	}
 
-	&__logout {
+	&__logout,
+	&__password {
 		.w-btn {
-			margin: 0;
-			@include mixins.flexBox(flex, null, space-between, center, null);
+			padding: 12px 20px;
+			border-radius: 10px;
+			font-weight: 600;
+			transition: filter 0.3s ease, background-color 0.3s ease;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			cursor: pointer;
 		}
+	}
 
-		.material-icons {
-			margin-right: 10px;
+	&__logout .w-btn {
+		background-color: var(--c-danger);
+		color: #fff;
+
+		&:hover {
+			filter: brightness(0.92);
+		}
+	}
+
+	&__password .w-btn {
+		background-color: var(--c-bg-secondary);
+		color: var(--c-primary);
+
+		&:hover {
+			filter: brightness(0.95);
 		}
 	}
 }
 
 .imgClass {
-	height: 52px;
 	width: 52px;
-}
-
-/*  AVATAR PHOTO STYLE  */
-.avatar {
+	height: 52px;
+	object-fit: cover;
 	border-radius: vars.$b-radius-img;
 	border: 1px solid var(--c-border);
-	position: relative;
-	margin: 0 auto;
-	padding: 3px;
+}
 
-	&._profile {
-		width: 60px;
-		height: 60px;
-	}
+/* AVATAR */
+.avatar {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	border-radius: vars.$b-radius-img;
+	border: 1px solid var(--c-border);
+	background: var(--c-bg-secondary);
+	padding: 3px;
+	margin: 0 auto;
+	overflow: hidden;
 
 	&__img {
 		width: 100%;
@@ -81,16 +122,22 @@
 	}
 
 	&__upload {
-		cursor: pointer;
 		position: absolute;
-		right: 0px;
-		bottom: 0px;
-		width: 24px;
-		height: 24px;
-		border-radius: vars.$b-radius-img;
-		background: var(--c-primary);
-		@include mixins.flexBox(flex, null, center, center, null);
-		transition: vars.$transition;
+		bottom: 0;
+		right: 0;
+		width: 26px;
+		height: 26px;
+		border-radius: 50%;
+		background-color: var(--c-primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: filter 0.3s ease;
+
+		&:hover {
+			filter: brightness(1.1);
+		}
 	}
 
 	&__icon {
@@ -99,6 +146,8 @@
 	}
 }
 
-.profile__password {
-	cursor: pointer;
+@media (max-width: 991px) {
+	.container {
+		max-width: 100%;
+	}
 }
