@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { AlertService, CoreService, HashService, HttpService, UiService } from 'wacom';
+import {
+	AlertService,
+	CoreService,
+	HashService,
+	HttpService,
+	UiService
+} from 'wacom';
 import { Router } from '@angular/router';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
 import { FormService } from 'src/app/core/modules/form/form.service';
@@ -104,8 +110,7 @@ export class SignComponent {
 		private _hash: HashService,
 		private _router: Router,
 		private _form: FormService,
-		private _translate: TranslateService,
-		
+		private _translate: TranslateService
 	) {}
 
 	submit(): void {
@@ -180,8 +185,6 @@ export class SignComponent {
 
 	private _set = (user: User): void => {
 		if (user) {
-
-	
 			const token = (user as unknown as { token: string }).token || '';
 
 			if (token) {
