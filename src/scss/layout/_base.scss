@@ -1000,17 +1000,12 @@ svg {
 	border-radius: var(--b-radius-btn);
 	background-color: var(--c-bg-tertiary);
 	box-shadow: var(--card-box-shadow);
-	margin-top: 1.5rem;
-	display: inline-block;
+	margin: 1.5rem auto 0 auto; // Центрування по горизонталі
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
-
-	// Центрування на мобільних
-	@media (max-width: 768px) {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-	}
+	width: fit-content; // Розмір за контентом (можна прибрати, якщо треба на всю ширину)
 
 	a {
 		display: inline-block;
