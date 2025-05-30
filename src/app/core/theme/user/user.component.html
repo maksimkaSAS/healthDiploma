@@ -232,6 +232,17 @@
 
 				<hr />
 
+				<div class="page__language">
+					<span translate>Profile.Change language</span>
+
+					<wselect
+						value="code"
+						[items]="ts.languages"
+						[select]="ts.language.code"
+						(modelChange)="set_language($event)"
+					></wselect>
+				</div>
+
 				<!-- <hr *ngIf="us.role('admin')" /> -->
 			</div>
 		</div>
