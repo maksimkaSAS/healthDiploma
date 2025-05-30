@@ -235,12 +235,22 @@
 				<div class="page__language">
 					<span translate>Profile.Change language</span>
 
-					<wselect
-						value="code"
-						[items]="ts.languages"
-						[select]="ts.language.code"
-						(modelChange)="set_language($event)"
-					></wselect>
+					<div class="lang-switch">
+						<ng-container *ngFor="let lang of ts.languages">
+							<span
+								class="lang"
+								[class.active]="lang.code === ts.language.code"
+								(click)="set_language(lang.code)"
+							>
+								{{ lang.code }}
+							</span>
+							<span
+								*ngIf="lang !== ts.languages[ts.languages.length - 1]"
+							>
+								|
+							</span>
+						</ng-container>
+					</div>
 				</div>
 
 				<!-- <hr *ngIf="us.role('admin')" /> -->
