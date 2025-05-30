@@ -8,6 +8,7 @@ import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/for
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 
 @Component({
 	templateUrl: './pharmacy.component.html',
@@ -26,7 +27,8 @@ export class PharmacyComponent {
 		public healthdrugService: HealthdrugService,
 		public healthlinkService: HealthlinkService,
 		private _form: FormService,
-		private translateService: TranslateService
+		private translateService: TranslateService,
+		public us: UserService
 	) {
 		this.load();
 	}

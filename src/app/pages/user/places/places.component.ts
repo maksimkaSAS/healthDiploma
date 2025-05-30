@@ -6,6 +6,7 @@ import { healthplaceFormComponents } from 'src/app/modules/healthplace/formcompo
 import { Healthplace } from 'src/app/modules/healthplace/interfaces/healthplace.interface';
 import { HealthplaceService } from 'src/app/modules/healthplace/services/healthplace.service';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 
 @Component({
 	templateUrl: './places.component.html',
@@ -23,7 +24,8 @@ export class PlacesComponent {
 	constructor(
 		private _healthplaceService: HealthplaceService,
 		private _form: FormService,
-		private translateService: TranslateService
+		private translateService: TranslateService,
+		public us: UserService
 	) {
 		this.load();
 	}

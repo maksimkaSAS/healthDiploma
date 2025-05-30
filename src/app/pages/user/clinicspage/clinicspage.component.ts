@@ -8,6 +8,7 @@ import { Healthclinic } from 'src/app/modules/healthclinic/interfaces/healthclin
 import { HealthclinicService } from 'src/app/modules/healthclinic/services/healthclinic.service';
 import { AlertService, CoreService } from 'wacom';
 import { TranslateService } from 'src/app/core/modules/translate/translate.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 
 @Component({
 	templateUrl: './clinicspage.component.html',
@@ -23,7 +24,8 @@ export class ClinicspageComponent {
 		private _healthclinicService: HealthclinicService,
 
 		private _form: FormService,
-		private translateService: TranslateService
+		private translateService: TranslateService,
+		public us: UserService
 	) {
 		this.load();
 	}

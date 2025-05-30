@@ -23,12 +23,14 @@
 					</div> -->
 
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(oneplace)"
-							><span translate>Button.Update</span></wbutton
-						>
-						<wbutton (click)="delete(oneplace)"
-							><span translate>Button.Delete</span></wbutton
-						>
+						<div *ngIf="us.role('admin')">
+							<wbutton (click)="update(oneplace)"
+								><span translate>Button.Update</span></wbutton
+							>
+							<wbutton (click)="delete(oneplace)"
+								><span translate>Button.Delete</span></wbutton
+							>
+						</div>
 					</div>
 
 					<div class="documents-sidebar__map-link">

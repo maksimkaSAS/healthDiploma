@@ -6,6 +6,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthplaceFormComponents } from 'src/app/modules/healthplace/formcomponents/healthplace.formcomponents';
 import { Healthplace } from 'src/app/modules/healthplace/interfaces/healthplace.interface';
 import { HealthplaceService } from 'src/app/modules/healthplace/services/healthplace.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { CoreService, AlertService } from 'wacom';
 
 @Component({
@@ -24,7 +25,8 @@ export class OneplacepageComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
+		private _translate: TranslateService,
+		public us: UserService
 	) {}
 
 	isMenuOpen = false;

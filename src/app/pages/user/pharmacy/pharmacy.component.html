@@ -23,9 +23,11 @@
 					</div>
 
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()"
-							><span translate>Button.Create</span></wbutton
-						>
+						<div *ngIf="us.role('admin')">
+							<wbutton (click)="create()"
+								><span translate>Button.Create</span></wbutton
+							>
+						</div>
 
 						<healthdrug-selector
 							[placeholder]="'Pharmacy.Select drug' | translate"

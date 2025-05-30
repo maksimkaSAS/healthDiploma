@@ -21,12 +21,14 @@
 						{{ onepharmacy.name }}
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(onepharmacy)"
-							><span translate>Button.Update</span></wbutton
-						>
-						<wbutton (click)="delete(onepharmacy)"
-							><span translate>Button.Delete</span></wbutton
-						>
+						<div *ngIf="us.role('admin')">
+							<wbutton (click)="update(onepharmacy)"
+								><span translate>Button.Update</span></wbutton
+							>
+							<wbutton (click)="delete(onepharmacy)"
+								><span translate>Button.Delete</span></wbutton
+							>
+						</div>
 					</div>
 
 					<div class="documents-sidebar__socials">

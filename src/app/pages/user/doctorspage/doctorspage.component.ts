@@ -6,6 +6,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthdoctorFormComponents } from 'src/app/modules/healthdoctor/formcomponents/healthdoctor.formcomponents';
 import { Healthdoctor } from 'src/app/modules/healthdoctor/interfaces/healthdoctor.interface';
 import { HealthdoctorService } from 'src/app/modules/healthdoctor/services/healthdoctor.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 
 @Component({
 	templateUrl: './doctorspage.component.html',
@@ -21,7 +22,8 @@ export class DoctorspageComponent {
 	constructor(
 		private _healthdoctorService: HealthdoctorService,
 		private _form: FormService,
-		private translateService: TranslateService
+		private translateService: TranslateService,
+		public us: UserService
 	) {
 		this.load();
 	}

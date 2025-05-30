@@ -6,6 +6,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { CoreService, AlertService } from 'wacom';
 
 @Component({
@@ -24,7 +25,8 @@ export class OnepharmacypageComponent {
 		private _form: FormService,
 		private _core: CoreService,
 		private _alert: AlertService,
-		private _translate: TranslateService
+		private _translate: TranslateService,
+		public us: UserService
 	) {}
 
 	form: FormInterface = this._form.getForm(
