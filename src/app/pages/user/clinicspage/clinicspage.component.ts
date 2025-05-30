@@ -7,6 +7,7 @@ import { healthclinicFormComponents } from 'src/app/modules/healthclinic/formcom
 import { Healthclinic } from 'src/app/modules/healthclinic/interfaces/healthclinic.interface';
 import { HealthclinicService } from 'src/app/modules/healthclinic/services/healthclinic.service';
 import { AlertService, CoreService } from 'wacom';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 
 @Component({
 	templateUrl: './clinicspage.component.html',
@@ -21,7 +22,8 @@ export class ClinicspageComponent {
 	constructor(
 		private _healthclinicService: HealthclinicService,
 
-		private _form: FormService
+		private _form: FormService,
+		private translateService: TranslateService
 	) {
 		this.load();
 	}
@@ -86,5 +88,9 @@ export class ClinicspageComponent {
 				close();
 			}
 		});
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this.translateService.translate(toTranslate);
 	}
 }

@@ -7,6 +7,7 @@ import { HealthlinkService } from 'src/app/modules/healthlink/services/healthlin
 import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 
 @Component({
 	templateUrl: './pharmacy.component.html',
@@ -24,7 +25,8 @@ export class PharmacyComponent {
 		public healthpharmacyService: HealthpharmacyService,
 		public healthdrugService: HealthdrugService,
 		public healthlinkService: HealthlinkService,
-		private _form: FormService
+		private _form: FormService,
+		private translateService: TranslateService
 	) {
 		this.load();
 	}
@@ -82,5 +84,9 @@ export class PharmacyComponent {
 					});
 			}
 		});
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this.translateService.translate(toTranslate);
 	}
 }

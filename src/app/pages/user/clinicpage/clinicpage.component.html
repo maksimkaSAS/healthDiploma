@@ -14,8 +14,12 @@
 				[class.documents-sidebar--open]="isMenuOpen"
 			>
 				<div class="documents-sidebar-content">
-					<wbutton (click)="update(oneclinic)">Update</wbutton>
-					<wbutton (click)="delete(oneclinic)">Delete</wbutton>
+					<wbutton (click)="update(oneclinic)"
+						><span translate>Button.Update</span></wbutton
+					>
+					<wbutton (click)="delete(oneclinic)"
+						><span translate>Button.Delete</span></wbutton
+					>
 
 					<div class="documents-sidebar__socials">
 						<a href="https://x.com" target="_blank" aria-label="X">
@@ -56,7 +60,9 @@
 				<div class="patient-card">
 					<div class="patient-grid">
 						<div class="info-block">
-							<div class="info-block__title">Name</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Name</span>
+							</div>
 							<span class="icon">
 								<!-- name -->
 								<svg viewBox="0 0 24 24">
@@ -69,7 +75,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Description</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Description</span>
+							</div>
 							<span class="icon">
 								<!-- description -->
 								<svg viewBox="0 0 24 24">
@@ -82,7 +90,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Phone</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Phone</span>
+							</div>
 							<span class="icon">
 								<!-- phone -->
 								<svg viewBox="0 0 24 24">
@@ -95,7 +105,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Email</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Email</span>
+							</div>
 							<span class="icon">
 								<!-- email -->
 								<svg viewBox="0 0 24 24">
@@ -108,7 +120,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Website</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Website</span>
+							</div>
 							<span class="icon">
 								<!-- website -->
 								<svg viewBox="0 0 24 24">
@@ -121,7 +135,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Working Hours</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Working Hours</span>
+							</div>
 							<span class="icon">
 								<!-- working hours -->
 								<svg viewBox="0 0 24 24">
@@ -134,7 +150,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">License Number</div>
+							<div class="info-block__title">
+								<span translate>Clinic.License Number</span>
+							</div>
 							<span class="icon">
 								<!-- license -->
 								<svg viewBox="0 0 24 24">
@@ -147,7 +165,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Specialties</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Specialties</span>
+							</div>
 							<span class="icon">
 								<!-- specialties -->
 								<svg viewBox="0 0 24 24">
@@ -160,7 +180,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Clinic Type</div>
+							<div class="info-block__title">
+								<span translate>Clinic.Clinic Type</span>
+							</div>
 							<span class="icon">
 								<!-- type -->
 								<svg viewBox="0 0 24 24">

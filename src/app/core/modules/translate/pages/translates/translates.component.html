@@ -7,6 +7,7 @@
 						>Common.Select language</label
 					>
 					<wselect
+						value="code"
 						[items]="ts.languages"
 						[select]="ts.language.code"
 						(modelChange)="set_language($event)"
@@ -18,56 +19,7 @@
 						>Common.Select page</label
 					>
 					<wselect
-						[items]="pages"
-						[select]="page"
-						(modelChange)="setPage($event)"
-					></wselect>
-				</div>
-			</div>
-
-			<div class="translate-actions">
-				<wbutton class="btn-icon" (click)="translateAll()">
-					<span class="material-icons">translate</span>
-					<span translate>Common.Translate all</span>
-				</wbutton>
-
-				<wbutton class="btn-icon" (click)="translateAll(true)">
-					<span class="material-icons">translate</span>
-					<span translate>Common.Translate missed</span>
-				</wbutton>
-			</div>
-		</section>
-
-		<wtable [columns]="columns" [config]="config" [rows]="rows">
-			<ng-template cell="page" let-element>
-				{{ element?.slug?.split('.')[0] }}
-			</ng-template>
-			<ng-template cell="translation" let-element>
-				{{ element?.slug | translate: ts.now }}
-			</ng-template>
-		</wtable>
-	</div>
-</div>
-<div class="container-fluid">
-	<div class="page-wrapper">
-		<section class="translate-header">
-			<div class="translate-controls">
-				<div class="form-group">
-					<label class="form-label" translate
-						>Common.Select language</label
-					>
-					<wselect
-						[items]="ts.languages"
-						[select]="ts.language.code"
-						(modelChange)="set_language($event)"
-					></wselect>
-				</div>
-
-				<div class="form-group">
-					<label class="form-label" translate
-						>Common.Select page</label
-					>
-					<wselect
+						style="width: 300px"
 						[items]="pages"
 						[select]="page"
 						(modelChange)="setPage($event)"

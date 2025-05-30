@@ -21,8 +21,12 @@
 						{{ onepharmacy.name }}
 					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(onepharmacy)">Update</wbutton>
-						<wbutton (click)="delete(onepharmacy)">Delete</wbutton>
+						<wbutton (click)="update(onepharmacy)"
+							><span translate>Button.Update</span></wbutton
+						>
+						<wbutton (click)="delete(onepharmacy)"
+							><span translate>Button.Delete</span></wbutton
+						>
 					</div>
 
 					<div class="documents-sidebar__socials">
@@ -66,7 +70,9 @@
 				<div class="patient-card">
 					<div class="patient-grid">
 						<div class="info-block">
-							<div class="info-block__title">Опис</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Description</span>
+							</div>
 							<span class="icon">
 								<!-- description -->
 								<svg viewBox="0 0 24 24">
@@ -79,7 +85,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Адреса</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Address</span>
+							</div>
 							<span class="icon">
 								<!-- location -->
 								<svg viewBox="0 0 24 24">
@@ -92,7 +100,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Телефон</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Phone</span>
+							</div>
 							<span class="icon">
 								<!-- phone -->
 								<svg viewBox="0 0 24 24">
@@ -105,7 +115,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Email</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Email</span>
+							</div>
 							<span class="icon">
 								<!-- email -->
 								<svg viewBox="0 0 24 24">
@@ -118,7 +130,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Години роботи</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Working hours</span>
+							</div>
 							<span class="icon">
 								<!-- clock -->
 								<svg viewBox="0 0 24 24">
@@ -131,7 +145,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Вебсайт</div>
+							<div class="info-block__title">
+								<span translate>Pharmacy.Website</span>
+							</div>
 							<span class="icon">
 								<!-- link -->
 								<svg viewBox="0 0 24 24">
@@ -145,7 +161,9 @@
 
 						<div class="info-block">
 							<div class="info-block__title">
-								Ліки в наявності
+								<span translate
+									>Pharmacy.Available medicines</span
+								>
 							</div>
 							<span class="icon">
 								<!-- pill -->
@@ -159,7 +177,11 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Доставка</div>
+							<div class="info-block__title">
+								<span translate
+									>Pharmacy.Delivery available</span
+								>
+							</div>
 							<span class="icon">
 								<!-- delivery -->
 								<svg viewBox="0 0 24 24">

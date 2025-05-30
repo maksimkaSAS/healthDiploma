@@ -20,6 +20,7 @@ export class SelectHealthDrugComponent implements OnChanges {
 	@Input() value: string;
 	@Input() disabled: boolean;
 	@Output() wChange = new EventEmitter();
+	@Input() placeholder: string = '';
 
 	get items(): Healthdrug[] {
 		return this._healthdrugService.healthdrugs;

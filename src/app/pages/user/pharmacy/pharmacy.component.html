@@ -18,12 +18,17 @@
 						<img src="assets/logo.png" alt="" />
 					</div>
 
-					<div class="documents-sidebar__title">PHARMACIES</div>
+					<div class="documents-sidebar__title">
+						<span translate>Pharmacy.PHARMACIES</span>
+					</div>
 
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
+						<wbutton (click)="create()"
+							><span translate>Button.Create</span></wbutton
+						>
 
 						<healthdrug-selector
+							[placeholder]="'Pharmacy.Select drug' | translate"
 							[value]="pharmacy_drug || ''"
 							(wChange)="onDrugChange($event)"
 						></healthdrug-selector>
@@ -42,7 +47,9 @@
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								Переглянути на tabletki.ua
+								<span translate
+									>Pharmacy.view on tabletki.ua</span
+								>
 							</a>
 						</div>
 					</div>

@@ -63,4 +63,8 @@ export class OneplacepageComponent {
 			]
 		});
 	}
+
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

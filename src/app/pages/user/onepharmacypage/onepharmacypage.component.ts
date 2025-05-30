@@ -28,41 +28,43 @@ export class OnepharmacypageComponent {
 	) {}
 
 	form: FormInterface = this._form.getForm(
-			'record',
-			healthpharmacyFormComponents
-		);
+		'record',
+		healthpharmacyFormComponents
+	);
 
-		update(doc: Healthpharmacy): void {
-				this._form
-					.modal<Healthpharmacy>(this.form, [], doc)
-					.then((updated: Healthpharmacy) => {
-						this._core.copy(updated, doc);
-		
-						this._healthpharmacyService.update(doc);
-					});
-			}
+	update(doc: Healthpharmacy): void {
+		this._form
+			.modal<Healthpharmacy>(this.form, [], doc)
+			.then((updated: Healthpharmacy) => {
+				this._core.copy(updated, doc);
 
-			delete(doc: Healthpharmacy): void {
-					this._alert.question({
-						text: this._translate.translate(
-							'Common.Are you sure you want to delete this healthrecord?'
-						),
-						buttons: [
-							{
-								text: this._translate.translate('Common.No')
-							},
-							{
-								text: this._translate.translate('Common.Yes'),
-								callback: (): void => {
-									this._healthpharmacyService.delete(doc);
-									this._router.navigateByUrl(
-										'/pharmacy'
-									);
-								}
-							}
-						]
-					});
+				this._healthpharmacyService.update(doc);
+			});
+	}
+
+	delete(doc: Healthpharmacy): void {
+		this._alert.question({
+			text: this._translate.translate(
+				'Common.Are you sure you want to delete this healthrecord?'
+			),
+			buttons: [
+				{
+					text: this._translate.translate('Common.No')
+				},
+				{
+					text: this._translate.translate('Common.Yes'),
+					callback: (): void => {
+						this._healthpharmacyService.delete(doc);
+						this._router.navigateByUrl('/pharmacy');
+					}
 				}
+			]
+		});
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 
 	isMenuOpen = false;
 }

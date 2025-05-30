@@ -16,11 +16,16 @@
 					<div class="documents-sidebar__img">
 						<img src="assets/logo.png" alt="" />
 					</div>
-					<div class="documents-sidebar__title">DOCTORS</div>
+					<div class="documents-sidebar__title">
+						<span translate>Doctor.DOCTORS</span>
+					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
+						<wbutton (click)="create()"
+							><span translate>Button.Create</span></wbutton
+						>
 
 						<healthclinic-selector
+							[placeholder]="'Doctor.Select clinic' | translate"
 							[value]="clinic_id"
 							(wChange)="clinic_id = $event; load()"
 						>

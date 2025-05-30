@@ -18,21 +18,25 @@
 						<img src="assets/logo.png" alt="" />
 					</div>
 
-					<div class="documents-sidebar__title">PATIENTS</div>
+					<div class="documents-sidebar__title">
+						<span translate>Patient.PATIENTS</span>
+					</div>
 
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
+						<wbutton (click)="create()">
+							<span translate>Button.Create</span>
+						</wbutton>
 
 						<wselect
-							[items]="['Male', 'Female']"
-							[placeholder]="'Gender'"
+							[items]="genderList"
+							[placeholder]="'Patient.Gender' | translate"
 							(modelChange)="gender=$event; load()"
 							[clearable]="true"
 						></wselect>
 
 						<wselect
-							[items]="['Child', 'Adult', 'Elderly']"
-							[placeholder]="'Patient category'"
+							[items]="categoryList"
+							[placeholder]="'Patient.Patient category' | translate"
 							(modelChange)="category=$event; load()"
 							[clearable]="true"
 						></wselect>

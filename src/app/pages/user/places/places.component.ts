@@ -5,6 +5,7 @@ import { Value } from 'src/app/core/modules/input/input.component';
 import { healthplaceFormComponents } from 'src/app/modules/healthplace/formcomponents/healthplace.formcomponents';
 import { Healthplace } from 'src/app/modules/healthplace/interfaces/healthplace.interface';
 import { HealthplaceService } from 'src/app/modules/healthplace/services/healthplace.service';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 
 @Component({
 	templateUrl: './places.component.html',
@@ -21,7 +22,8 @@ export class PlacesComponent {
 
 	constructor(
 		private _healthplaceService: HealthplaceService,
-		private _form: FormService
+		private _form: FormService,
+		private translateService: TranslateService
 	) {
 		this.load();
 	}
@@ -121,6 +123,10 @@ export class PlacesComponent {
 				close();
 			}
 		});
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this.translateService.translate(toTranslate);
 	}
 
 	// ngOnInit(): void {

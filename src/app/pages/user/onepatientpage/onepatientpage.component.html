@@ -14,8 +14,12 @@
 				[class.documents-sidebar--open]="isMenuOpen"
 			>
 				<div class="documents-sidebar-content">
-					<wbutton (click)="update(onepatient)">Update</wbutton>
-					<wbutton (click)="delete(onepatient)">Delete</wbutton>
+					<wbutton (click)="update(onepatient)">
+						<span translate>Button.Update</span>
+					</wbutton>
+					<wbutton (click)="delete(onepatient)">
+						<span translate>Button.Delete</span>
+					</wbutton>
 
 					<div class="documents-sidebar__socials">
 						<a href="https://x.com" target="_blank" aria-label="X">
@@ -55,7 +59,9 @@
 				<div class="patient-card">
 					<div class="patient-grid">
 						<div class="info-block">
-							<div class="info-block__title">Name</div>
+							<div class="info-block__title">
+								<span translate>Patient.Name</span>
+							</div>
 							<span class="icon">
 								<!-- user -->
 								<svg viewBox="0 0 24 24">
@@ -68,7 +74,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Description</div>
+							<div class="info-block__title">
+								<span translate>Patient.Description</span>
+							</div>
 							<span class="icon">
 								<!-- description -->
 								<svg viewBox="0 0 24 24">
@@ -81,7 +89,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Date of Birth</div>
+							<div class="info-block__title">
+								<span translate>Patient.Date of Birth</span>
+							</div>
 							<span class="icon">
 								<!-- calendar -->
 								<svg viewBox="0 0 24 24">
@@ -94,7 +104,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Gender</div>
+							<div class="info-block__title">
+								<span translate>Patient.Gender</span>
+							</div>
 							<span class="icon">
 								<!-- gender -->
 								<svg viewBox="0 0 24 24">
@@ -107,7 +119,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Category</div>
+							<div class="info-block__title">
+								<span translate>Patient.Category</span>
+							</div>
 							<span class="icon">
 								<!-- tag -->
 								<svg viewBox="0 0 24 24">
@@ -120,7 +134,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Phone</div>
+							<div class="info-block__title">
+								<span translate>Patient.Phone</span>
+							</div>
 							<span class="icon">
 								<!-- phone -->
 								<svg viewBox="0 0 24 24">
@@ -133,7 +149,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Email</div>
+							<div class="info-block__title">
+								<span translate>Patient.Email</span>
+							</div>
 							<span class="icon">
 								<!-- email -->
 								<svg viewBox="0 0 24 24">
@@ -146,7 +164,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Address</div>
+							<div class="info-block__title">
+								<span translate>Patient.Address</span>
+							</div>
 							<span class="icon">
 								<!-- location -->
 								<svg viewBox="0 0 24 24">
@@ -159,7 +179,9 @@
 						</div>
 
 						<div class="info-block photo">
-							<div class="info-block__title">Photo</div>
+							<div class="info-block__title">
+								<span translate>Patient.Photo</span>
+							</div>
 							<img
 								[src]="apiUrl + onepatient.thumb"
 								alt="Photo"

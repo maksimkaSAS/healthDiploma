@@ -23,8 +23,12 @@
 					</div> -->
 
 					<div class="documents-sidebar__description">
-						<wbutton (click)="update(oneplace)">Update</wbutton>
-						<wbutton (click)="delete(oneplace)">Delete</wbutton>
+						<wbutton (click)="update(oneplace)"
+							><span translate>Button.Update</span></wbutton
+						>
+						<wbutton (click)="delete(oneplace)"
+							><span translate>Button.Delete</span></wbutton
+						>
 					</div>
 
 					<div class="documents-sidebar__map-link">
@@ -32,7 +36,7 @@
 							[target]="'_blank'"
 							[href]="'https://www.google.com/maps/search/?api=1&query=' + oneplace.name + ',' + oneplace.address"
 						>
-							View on Google Maps
+							<span translate>Place.View on Google Maps</span>
 						</a>
 					</div>
 
@@ -75,7 +79,9 @@
 				<div class="patient-card">
 					<div class="patient-grid">
 						<div class="info-block">
-							<div class="info-block__title">Name</div>
+							<div class="info-block__title">
+								<span translate>Place.Name</span>
+							</div>
 							<span class="icon">
 								<!-- name icon (user) -->
 								<svg viewBox="0 0 24 24">
@@ -88,7 +94,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Description</div>
+							<div class="info-block__title">
+								<span translate>Place.Description</span>
+							</div>
 							<span class="icon">
 								<!-- description icon -->
 								<svg viewBox="0 0 24 24">
@@ -101,7 +109,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Address</div>
+							<div class="info-block__title">
+								<span translate>Place.Address</span>
+							</div>
 							<span class="icon">
 								<!-- location icon -->
 								<svg viewBox="0 0 24 24">
@@ -114,7 +124,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Latitude</div>
+							<div class="info-block__title">
+								<span translate>Place.Latitude</span>
+							</div>
 							<span class="icon">
 								<!-- latitude icon -->
 								<svg viewBox="0 0 24 24">
@@ -127,7 +139,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Longitude</div>
+							<div class="info-block__title">
+								<span translate>Place.Longitude</span>
+							</div>
 							<span class="icon">
 								<!-- longitude icon -->
 								<svg viewBox="0 0 24 24">
@@ -140,7 +154,9 @@
 						</div>
 
 						<div class="info-block">
-							<div class="info-block__title">Place Type</div>
+							<div class="info-block__title">
+								<span translate>Place.Place Type</span>
+							</div>
 							<span class="icon">
 								<!-- placeType icon -->
 								<svg viewBox="0 0 24 24">

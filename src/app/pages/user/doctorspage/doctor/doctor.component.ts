@@ -66,4 +66,8 @@ export class DoctorComponent {
 			]
 		});
 	}
+
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

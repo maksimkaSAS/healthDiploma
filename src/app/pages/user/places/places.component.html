@@ -17,11 +17,16 @@
 					<div class="documents-sidebar__img">
 						<img src="assets/logo.png" alt="" />
 					</div>
-					<div class="documents-sidebar__title">PLACES</div>
+					<div class="documents-sidebar__title">
+						<span translate>Place.PLACES</span>
+					</div>
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
+						<wbutton (click)="create()"
+							><span translate>Button.Create</span></wbutton
+						>
 
 						<healthclinic-selector
+							[placeholder]="'Place.Select clinic' | translate"
 							[value]="clinic_id"
 							[disabled]="clinicDisabled"
 							(wChange)="clinic_id = $event; load()"
@@ -29,6 +34,7 @@
 						</healthclinic-selector>
 
 						<healthpharmacy-selector
+							[placeholder]="'Place.Select pharmacy' | translate"
 							[value]="pharmacy_id"
 							[disabled]="pharmacyDisabled"
 							(wChange)="pharmacy_id = $event; load()"
@@ -36,6 +42,7 @@
 						</healthpharmacy-selector>
 
 						<healthdrug-selector
+							[placeholder]="'Place.Select drug' | translate"
 							[value]="place_drug"
 							[disabled]="drugDisabled"
 							(wChange)="place_drug = $event; load()"

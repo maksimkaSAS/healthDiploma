@@ -30,39 +30,41 @@ export class DoctorpageComponent {
 	isMenuOpen = false;
 
 	form: FormInterface = this._form.getForm(
-			'record',
-			healthdoctorFormComponents
-		);
+		'record',
+		healthdoctorFormComponents
+	);
 
-		update(doc: Healthdoctor): void {
-				this._form
-					.modal<Healthdoctor>(this.form, [], doc)
-					.then((updated: Healthdoctor) => {
-						this._core.copy(updated, doc);
-		
-						this._healthdoctorService.update(doc);
-					});
-			}
+	update(doc: Healthdoctor): void {
+		this._form
+			.modal<Healthdoctor>(this.form, [], doc)
+			.then((updated: Healthdoctor) => {
+				this._core.copy(updated, doc);
 
-			delete(doc: Healthdoctor): void {
-					this._alert.question({
-						text: this._translate.translate(
-							'Common.Are you sure you want to delete this healthrecord?'
-						),
-						buttons: [
-							{
-								text: this._translate.translate('Common.No')
-							},
-							{
-								text: this._translate.translate('Common.Yes'),
-								callback: (): void => {
-									this._healthdoctorService.delete(doc);
-									this._router.navigateByUrl(
-										'/doctorspage'
-									);
-								}
-							}
-						]
-					});
+				this._healthdoctorService.update(doc);
+			});
+	}
+
+	delete(doc: Healthdoctor): void {
+		this._alert.question({
+			text: this._translate.translate(
+				'Common.Are you sure you want to delete this healthrecord?'
+			),
+			buttons: [
+				{
+					text: this._translate.translate('Common.No')
+				},
+				{
+					text: this._translate.translate('Common.Yes'),
+					callback: (): void => {
+						this._healthdoctorService.delete(doc);
+						this._router.navigateByUrl('/doctorspage');
+					}
 				}
+			]
+		});
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

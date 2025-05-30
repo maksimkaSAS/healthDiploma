@@ -76,6 +76,10 @@ export class OnepatientpageComponent {
 		});
 	}
 
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
+
 	onImageError(event: Event) {
 		const target = event.target as HTMLImageElement;
 		target.src = 'assets/defaultProfile.png';

@@ -21,6 +21,7 @@ export class SelectHealthClinicComponent implements OnChanges {
 	@Input() disabled: boolean;
 
 	@Output() wChange = new EventEmitter();
+	@Input() placeholder: string = '';
 
 	get items(): Healthclinic[] {
 		return this._healthclinicService.healthclinics;
