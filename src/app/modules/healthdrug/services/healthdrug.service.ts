@@ -8,15 +8,15 @@ import { CrudService } from 'wacom';
 export class HealthdrugService extends CrudService<Healthdrug> {
 	healthdrugs: Healthdrug[] = this.getDocs();
 
-	healthdrugsByAuthor: Record<string, Healthdrug[]> = {};
+	//healthdrugsByAuthor: Record<string, Healthdrug[]> = {};
 
 	constructor() {
 		super({
 			name: 'healthdrug'
 		});
 
-		this.get();
+		this.get({}, { name: 'public' });
 
-		this.filteredDocuments(this.healthdrugsByAuthor);
+		//this.filteredDocuments(this.healthdrugsByAuthor);
 	}
 }
