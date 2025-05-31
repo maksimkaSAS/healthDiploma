@@ -12,6 +12,21 @@
 				<span class="tile-text">{{ record.name }}</span>
 			</div>
 		</div>
+
+		<div class="tile-main">
+			<div class="tile-row">
+				<span class="tile-icon">
+					<svg viewBox="0 0 24 24">
+						<path
+							d="M7 10h5v5H7v-5zm-4 8h18V8H3v10zm16-14V2h-2v2H7V2H5v2H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-2z"
+						/>
+					</svg>
+				</span>
+				<span class="tile-text"
+					>{{ record._id | mongodate | date: 'dd/MM/yyyy' }}
+				</span>
+			</div>
+		</div>
 	</a>
 
 	<div class="tile-actions">
