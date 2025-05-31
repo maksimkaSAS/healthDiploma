@@ -36,6 +36,7 @@
 						></healthdrug-selector>
 
 						<winput
+							[placeholder]="'Common.Enter text' | translate"
 							[type]="'search'"
 							(wChange)="setField($event)"
 							(wSubmit)="load()"
