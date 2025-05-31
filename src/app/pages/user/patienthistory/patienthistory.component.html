@@ -69,10 +69,12 @@
 			</div>
 			<div class="documents-sortable">
 				<div class="documents-sortable-content">
-					<!-- <div *ngIf="type" class="documents-sortable-banner">
+					<div *ngIf="type" class="documents-sortable-banner">
 						<span translate>Record.Sorted by</span>
-						<span> {{ type | translate}}</span>
-					</div> -->
+						<span>:&nbsp;</span>
+
+						<span> {{getTranslatedText('Record.'+type)}}</span>
+					</div>
 
 					<div class="documents-sortable-list">
 						<div

@@ -77,7 +77,10 @@
 									/>
 								</svg>
 							</span>
-							<span>{{ onepatienthistory.type }}</span>
+							<span
+								>{{ getTranslatedText('Record.' +
+								onepatienthistory.type) }}</span
+							>
 						</div>
 
 						<div class="info-block" *ngIf="onepatienthistory.name">
