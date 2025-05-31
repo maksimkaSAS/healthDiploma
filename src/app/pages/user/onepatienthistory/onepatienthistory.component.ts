@@ -65,4 +65,8 @@ export class OnepatienthistoryComponent {
 			]
 		});
 	}
+
+	getTranslatedText(toTranslate: string) {
+		return this._translate.translate(toTranslate);
+	}
 }

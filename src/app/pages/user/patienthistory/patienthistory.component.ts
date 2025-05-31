@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormService } from 'src/app/core/modules/form/form.service';
 import { FormComponentInterface } from 'src/app/core/modules/form/interfaces/component.interface';
 import { FormInterface } from 'src/app/core/modules/form/interfaces/form.interface';
+import { TranslateService } from 'src/app/core/modules/translate/translate.service';
 import { healthrecordFormComponents } from 'src/app/modules/healthrecord/formcomponents/healthrecord.formcomponents';
 import { Healthrecord } from 'src/app/modules/healthrecord/interfaces/healthrecord.interface';
 import { HealthrecordService } from 'src/app/modules/healthrecord/services/healthrecord.service';
@@ -28,7 +29,8 @@ export class PatienthistoryComponent {
 	constructor(
 		private _healthrecordService: HealthrecordService,
 		private _route: ActivatedRoute,
-		private _form: FormService
+		private _form: FormService,
+		private translateService: TranslateService
 	) {
 		this._route.paramMap.subscribe((params) => {
 			this.patient_id = params.get('patient_id') || '';
@@ -44,6 +46,28 @@ export class PatienthistoryComponent {
 				this.records.push(...records);
 			});
 	}
+
+	recordTypeList = [
+		{ _id: 'Symptom', name: this.getTranslatedText('Record.Symptom') },
+
+		{
+			_id: 'Analysis',
+
+			name: this.getTranslatedText('Record.Analysis')
+		},
+
+		{
+			_id: 'Disease',
+
+			name: this.getTranslatedText('Record.Disease')
+		},
+
+		{
+			_id: 'Treatment',
+
+			name: this.getTranslatedText('Record.Treatment')
+		}
+	];
 
 	create(): void {
 		// Ініціалізуємо об'єкт submition з типом
@@ -241,6 +265,10 @@ export class PatienthistoryComponent {
 		if (this.type) {
 			healthpatient.type = this.type;
 		}
+	}
+
+	getTranslatedText(toTranslate: string) {
+		return this.translateService.translate(toTranslate);
 	}
 
 	isMenuOpen = false;

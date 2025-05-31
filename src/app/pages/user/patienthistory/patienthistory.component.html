@@ -21,11 +21,13 @@
 						Title of sidebar...
 					</div> -->
 					<div class="documents-sidebar__description">
-						<wbutton (click)="create()">Create</wbutton>
+						<wbutton (click)="create()"
+							><span translate>Button.Create</span></wbutton
+						>
 
 						<wselect
-							[items]="['Symptom', 'Analysis', 'Disease', 'Treatment']"
-							[placeholder]="'Type'"
+							[items]="recordTypeList"
+							[placeholder]="'Record.Type' | translate"
 							(modelChange)="type=$event; load()"
 							[clearable]="true"
 						></wselect>
@@ -67,9 +69,10 @@
 			</div>
 			<div class="documents-sortable">
 				<div class="documents-sortable-content">
-					<div *ngIf="type" class="documents-sortable-banner">
-						<span>Sorted by {{ type }}</span>
-					</div>
+					<!-- <div *ngIf="type" class="documents-sortable-banner">
+						<span translate>Record.Sorted by</span>
+						<span> {{ type | translate}}</span>
+					</div> -->
 
 					<div class="documents-sortable-list">
 						<div

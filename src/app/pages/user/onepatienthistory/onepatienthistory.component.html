@@ -22,10 +22,10 @@
 					</div> -->
 					<div class="documents-sidebar__description">
 						<wbutton (click)="update(onepatienthistory)"
-							>Update</wbutton
+							><span translate>Button.Update</span></wbutton
 						>
 						<wbutton (click)="delete(onepatienthistory)"
-							>Delete</wbutton
+							><span translate>Button.Delete</span></wbutton
 						>
 					</div>
 
@@ -67,7 +67,9 @@
 				<div class="patient-card">
 					<div class="patient-grid">
 						<div class="info-block" *ngIf="onepatienthistory.type">
-							<div class="info-block__title">Type</div>
+							<div class="info-block__title">
+								<span translate>Record.Type</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -79,7 +81,9 @@
 						</div>
 
 						<div class="info-block" *ngIf="onepatienthistory.name">
-							<div class="info-block__title">Name</div>
+							<div class="info-block__title">
+								<span translate>Record.Name</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -94,7 +98,9 @@
 							class="info-block"
 							*ngIf="onepatienthistory.description"
 						>
-							<div class="info-block__title">Description</div>
+							<div class="info-block__title">
+								<span translate>Record.Description</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -109,7 +115,9 @@
 							class="info-block"
 							*ngIf="onepatienthistory.diagnosis"
 						>
-							<div class="info-block__title">Diagnosis</div>
+							<div class="info-block__title">
+								<span translate>Record.Diagnosis</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -124,7 +132,9 @@
 							class="info-block"
 							*ngIf="onepatienthistory.allergy"
 						>
-							<div class="info-block__title">Allergy</div>
+							<div class="info-block__title">
+								<span translate>Record.Allergy</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -139,7 +149,9 @@
 							class="info-block"
 							*ngIf="onepatienthistory.result"
 						>
-							<div class="info-block__title">Result</div>
+							<div class="info-block__title">
+								<span translate>Record.Result</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -154,7 +166,9 @@
 							class="info-block"
 							*ngIf="onepatienthistory.treatmentType"
 						>
-							<div class="info-block__title">Treatment Type</div>
+							<div class="info-block__title">
+								<span translate>Record.Treatment Type</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
@@ -166,7 +180,9 @@
 						</div>
 
 						<div class="info-block" *ngIf="onepatienthistory._id">
-							<div class="info-block__title">Visit Date</div>
+							<div class="info-block__title">
+								<span translate>Record.Visit Date</span>
+							</div>
 							<span class="icon">
 								<svg viewBox="0 0 24 24">
 									<path
