@@ -25,21 +25,23 @@
 		</div>
 	</a>
 
-	<div class="tile-actions">
-		<span
-			(click)="update(clinic)"
-			class="material-icons tile-action-btn"
-			title="Редагувати"
-		>
-			edit
-		</span>
+	<div *ngIf="us.role('admin')">
+		<div class="tile-actions">
+			<span
+				(click)="update(clinic)"
+				class="material-icons tile-action-btn"
+				title="Редагувати"
+			>
+				edit
+			</span>
 
-		<span
-			(click)="delete(clinic)"
-			class="material-icons tile-action-btn danger"
-			title="Видалити"
-		>
-			delete
-		</span>
+			<span
+				(click)="delete(clinic)"
+				class="material-icons tile-action-btn danger"
+				title="Видалити"
+			>
+				delete
+			</span>
+		</div>
 	</div>
 </div>

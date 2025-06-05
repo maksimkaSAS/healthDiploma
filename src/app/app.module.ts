@@ -82,9 +82,12 @@ const routes: Routes = [
 						title: 'Links'
 					}
 				},
-				loadChildren: () => import('./modules/healthlink/pages/links/links.module').then(m => m.LinksModule)
-			}, 
-		
+				loadChildren: () =>
+					import(
+						'./modules/healthlink/pages/links/links.module'
+					).then((m) => m.LinksModule)
+			},
+
 			{
 				path: 'onepatienthistory',
 				canActivate: [MetaGuard],
@@ -93,8 +96,11 @@ const routes: Routes = [
 						title: 'Onepatienthistory'
 					}
 				},
-				loadChildren: () => import('./pages/user/onepatienthistory/onepatienthistory.module').then(m => m.OnepatienthistoryModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/onepatienthistory/onepatienthistory.module'
+					).then((m) => m.OnepatienthistoryModule)
+			},
 			{
 				path: 'oneplacepage',
 				canActivate: [MetaGuard],
@@ -103,8 +109,11 @@ const routes: Routes = [
 						title: 'Oneplacepage'
 					}
 				},
-				loadChildren: () => import('./pages/user/oneplacepage/oneplacepage.module').then(m => m.OneplacepageModule)
-			}, 
+				loadChildren: () =>
+					import(
+						'./pages/user/oneplacepage/oneplacepage.module'
+					).then((m) => m.OneplacepageModule)
+			},
 			{
 				path: 'onepharmacypage',
 				canActivate: [MetaGuard],
@@ -483,6 +492,20 @@ const routes: Routes = [
 						(m) => m.ProfileModule
 					)
 			}
+
+			// {
+			// 	path: 'translates',
+			// 	canActivate: [MetaGuard],
+			// 	data: {
+			// 		meta: {
+			// 			title: 'Translates'
+			// 		}
+			// 	},
+			// 	loadChildren: () =>
+			// 		import(
+			// 			'./core/modules/translate/pages/translates/translates.module'
+			// 		).then((m) => m.TranslatesModule)
+			// }
 		]
 	},
 	{

@@ -6,6 +6,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthdoctorFormComponents } from 'src/app/modules/healthdoctor/formcomponents/healthdoctor.formcomponents';
 import { Healthdoctor } from 'src/app/modules/healthdoctor/interfaces/healthdoctor.interface';
 import { HealthdoctorService } from 'src/app/modules/healthdoctor/services/healthdoctor.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { AlertService, CoreService } from 'wacom';
 
 @Component({
@@ -25,7 +26,8 @@ export class DoctorComponent {
 		private _alert: AlertService,
 		private _form: FormService,
 		private _core: CoreService,
-		private _router: Router
+		private _router: Router,
+		public us: UserService
 	) {}
 
 	form: FormInterface = this._form.getForm(

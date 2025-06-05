@@ -6,6 +6,7 @@ import { TranslateService } from 'src/app/core/modules/translate/translate.servi
 import { healthpharmacyFormComponents } from 'src/app/modules/healthpharmacy/formcomponents/healthpharmacy.formcomponents';
 import { Healthpharmacy } from 'src/app/modules/healthpharmacy/interfaces/healthpharmacy.interface';
 import { HealthpharmacyService } from 'src/app/modules/healthpharmacy/services/healthpharmacy.service';
+import { UserService } from 'src/app/modules/user/services/user.service';
 import { AlertService, CoreService } from 'wacom';
 
 @Component({
@@ -19,53 +20,55 @@ export class MypharmacyComponent {
 	@Input() pharmacy: Healthpharmacy;
 	@Output() load = new EventEmitter();
 
-
 	constructor(
-			private _translate: TranslateService,
-			private _healthpharmacyService: HealthpharmacyService,
-			private _alert: AlertService,
-			private _form: FormService,
-			private _core: CoreService,
-			private _router: Router
-		) {}
+		private _translate: TranslateService,
+		private _healthpharmacyService: HealthpharmacyService,
+		private _alert: AlertService,
+		private _form: FormService,
+		private _core: CoreService,
+		private _router: Router,
+		public us: UserService
+	) {}
 
-		form: FormInterface = this._form.getForm(
-				'patient',
-				healthpharmacyFormComponents
-			);
+	form: FormInterface = this._form.getForm(
+		'patient',
+		healthpharmacyFormComponents
+	);
 
-			update(doc: Healthpharmacy): void {
-					this._form
-						.modal<Healthpharmacy>(this.form, [], doc)
-						.then((updated: Healthpharmacy) => {
-							this._core.copy(updated, doc);
-			
-							this._healthpharmacyService.update(doc);
-							// TODO temporary >
-							const healthpharmacy = this._healthpharmacyService.doc(doc._id);
-							this._core.copy(updated, healthpharmacy);
-							//<
-						});
-				}
+	update(doc: Healthpharmacy): void {
+		this._form
+			.modal<Healthpharmacy>(this.form, [], doc)
+			.then((updated: Healthpharmacy) => {
+				this._core.copy(updated, doc);
 
-				delete(doc: Healthpharmacy): void {
-						this._alert.question({
-							text: this._translate.translate(
-								'Common.Are you sure you want to delete this healthclinic?'
-							),
-							buttons: [
-								{
-									text: this._translate.translate('Common.No')
-								},
-								{
-									text: this._translate.translate('Common.Yes'),
-									callback: async (): Promise<void> => {
-										this._healthpharmacyService.delete(doc).subscribe(() => {
-											this.load.emit();
-										});
-									}
-								}
-							]
-						});
+				this._healthpharmacyService.update(doc);
+				// TODO temporary >
+				const healthpharmacy = this._healthpharmacyService.doc(doc._id);
+				this._core.copy(updated, healthpharmacy);
+				//<
+			});
+	}
+
+	delete(doc: Healthpharmacy): void {
+		this._alert.question({
+			text: this._translate.translate(
+				'Common.Are you sure you want to delete this healthclinic?'
+			),
+			buttons: [
+				{
+					text: this._translate.translate('Common.No')
+				},
+				{
+					text: this._translate.translate('Common.Yes'),
+					callback: async (): Promise<void> => {
+						this._healthpharmacyService
+							.delete(doc)
+							.subscribe(() => {
+								this.load.emit();
+							});
 					}
+				}
+			]
+		});
+	}
 }
