@@ -492,7 +492,6 @@ const routes: Routes = [
 						(m) => m.ProfileModule
 					)
 			}
-
 			// {
 			// 	path: 'translates',
 			// 	canActivate: [MetaGuard],
